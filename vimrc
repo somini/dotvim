@@ -105,6 +105,7 @@ else "Sensible fallback
 endif
 syntax enable
 set hlsearch "Highlight searches ...
+set laststatus=2 "Always show the statusline
 nohlsearch "but not when starting up
 "{{{ Non-Printable Characters
 set list "Show non-printable characters
@@ -212,6 +213,12 @@ let g:NERDTreeShowBookmarks = 1
 "}}}
 " Airline {{{
 " let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#tabline#enabled = 1 "Show a tabline
+let g:airline#extensions#tabline#show_buffers = 1 "If there's only one tab, show the buffers
+let g:airline#extensions#tabline#buffer_min_count = 2 "But only if there's more than 1
+let g:airline#extensions#tabline#tab_nr_type = 1 "Show tabnumbers
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved' "Uniquify filenames
+let g:airline#extensions#tabline#show_close_button = 0
 "}}}
 "{{{ Bufferline
 let g:bufferline_echo = 0 "No echo on command line

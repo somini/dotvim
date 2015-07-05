@@ -10,3 +10,6 @@
 [submodule "3rd_party/ctrlp.vim"]
 	path = 3rd_party/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
+[submodule "3rd_party/vim-airline"]
+	path = 3rd_party/vim-airline
+	url = git@github.com:bling/vim-airline.git
