@@ -28,3 +28,6 @@
 [submodule "1st_party/bbcode"]
 	path = 1st_party/bbcode
 	url = git@github.com:somini/bbcode.git
+[submodule "3rd_party/vim-commentary"]
+	path = 3rd_party/vim-commentary
+	url = git://github.com/tpope/vim-commentary.git
