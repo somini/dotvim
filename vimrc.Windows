@@ -3,6 +3,7 @@
 " Data Safety and Managing {{{
 let s:user_temp = $TEMP
 let s:user_cache = s:user_temp.'/vim'
+call CheckDir(s:user_cache)
 
 " Vim Info {{{
 let s:viminfo_file = s:user_cache.'/viminfo'
@@ -31,6 +32,7 @@ let s:backup_dir = s:user_cache.'/backup'
 let &backupdir = s:backup_dir.','.s:user_temp.'//'.',.'
 let &backupskip = &backupskip.','.s:user_temp.'/*'
 " }}}
+let g:NERDTreeBookmarksFile = s:user_cache.'/NERDTree_Bookmarks'
 " }}}
 
 " Plugin Configuration {{{

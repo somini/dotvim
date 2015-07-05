@@ -5,6 +5,7 @@ let s:user_cache = $HOME.'/.cache/vim'
 let s:global_tmp = '/tmp'
 let s:global_mnt = '/media/'.$USERNAME
 let s:global_mnt2= '/run/media/'.$USERNAME
+call CheckDir(s:user_cache)
 
 " Vim Info {{{
 let s:viminfo_file = s:user_cache.'/viminfo'
@@ -39,6 +40,7 @@ call CheckDir(s:backup_dir)
 let &backupdir = s:backup_dir.'//'.','.s:global_tmp.'//'.',.'
 let &backupskip = &backupskip.','.s:global_tmp.'/*,'.s:global_mnt.'/*,'.s:global_mnt2.'/*'
 " }}}
+let g:NERDTreeBookmarksFile = s:user_cache.'/NERDTree_Bookmarks'
 " }}}
 
 " Plugin Configuration {{{

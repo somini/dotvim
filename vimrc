@@ -219,7 +219,19 @@ let g:ctrlp_abbrev = {
 "}}}
 "}}}
 " NERDTree {{{
+nnoremap <F2> :NERDTreeFocus<CR>
 let g:NERDTreeShowBookmarks = 1
+let g:NERDTreeHighlightCursorline = 1
+let g:NERDTreeHijackNetrw = 1 "Open secondary trees for :e $folder
+let g:NERDTreeAutoCenterThreshold = 1 "Auto-center when shifting between folder levels
+let g:NERDTreeMouseMode = 3 "Single-click to open file and folders
+let g:NERDTreeMinimalUI = 1 "No help and bookmark headers
+let g:NERDTreeCascadeOpenSingleChildDir = 1
+" let g:NERDTreeBookmarksFile = OS_specific
+" NERDTreeTabs{{{
+let g:nerdtree_tabs_open_on_gui_startup = 0 "Don't auto-open
+let g:nerdtree_tabs_open_on_console_startup = 0 "EVER
+"}}}
 "}}}
 " Airline {{{
 	" Tabline

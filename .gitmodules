@@ -19,3 +19,9 @@
 [submodule "3rd_party/syntastic"]
 	path = 3rd_party/syntastic
 	url = git@github.com:scrooloose/syntastic.git
+[submodule "3rd_party/NERDTree"]
+	path = 3rd_party/NERDTree
+	url = git@github.com:scrooloose/nerdtree.git
+[submodule "3rd_party/NERDTreeTabs"]
+	path = 3rd_party/NERDTreeTabs
+	url = git@github.com:jistr/vim-nerdtree-tabs.git
