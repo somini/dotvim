@@ -13,6 +13,8 @@ set modeline "Enable modeline
 if has('autocmd')
 	filetype plugin indent on "Enable filetype detection
 endif
+set updatetime=500 "ms
+set timeoutlen=1000 "ms
 " GUI Options {{{
 " Needs to be set here, to influence GUI loading
 " set guioptions-=M "Don't load $VIMRUNTIME/menu.vim
