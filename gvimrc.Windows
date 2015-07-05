@@ -1,0 +1,13 @@
+" somini.gvimrc - Windows
+
+" Clipboard {{{
+set clipboard=unnamed " This works as expected
+"}}}
+
+" Appearance {{{
+set guifont="DejaVu Sans Mono":h11,"Consolas":h12,monospace
+"}}}
+
+" Modeline {{{
+" vim:ft=vim:ts=2:sw=2:fdm=marker
+"}}}

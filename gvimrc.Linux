@@ -1,0 +1,9 @@
+" somini.gvimrc - Linux
+
+" Appearance" {{{
+set guifont=DejaVu\ Sans\ Mono\ 10,monospace
+"}}}
+
+" Modeline {{{
+" vim:ft=vim:ts=2:sw=2:fdm=marker
+"}}}

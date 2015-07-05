@@ -4,3 +4,6 @@
 [submodule "1st_party/harlequin"]
 	path = 1st_party/harlequin
 	url = git@github.com:somini/harlequin.git
+[submodule "1st_party/vim-multi_os"]
+	path = 1st_party/vim-multi_os
+	url = git@github.com:somini/vim-multi_os.git

@@ -1,0 +1,64 @@
+" somini.vimrc - Windows
+
+" Data Safety and Managing {{{
+let s:user_temp = $TEMP
+let s:user_cache = s:user_temp.'/vim'
+
+" Vim Info {{{
+let s:viminfo_file = s:user_cache.'/viminfo'
+let &viminfo = &viminfo.',r'.s:user_temp
+let &viminfo = &viminfo.',n'.s:viminfo_file
+if filereadable(s:viminfo_file) "Make sure it's there
+	rviminfo "This runs after the viminfo is read, so just read it again
+endif
+"}}}
+" Undo {{{
+let &undodir = s:user_cache.'/undo'
+call CheckDir(&undodir)
+" }}}
+" Views {{{
+let &viewdir = s:user_cache.'/views'
+call CheckDir(&viewdir)
+"}}}
+" Swap Files {{{
+let s:swap_dir = s:user_cache.'/swap'
+call CheckDir(s:swap_dir)
+let &directory = s:swap_dir.'//,'.s:user_temp.'//'.',.'
+" }}}
+" Backup Files {{{
+let s:backup_dir = s:user_cache.'/backup'
+" Same as swap, only on a different folder
+let &backupdir = s:backup_dir.','.s:user_temp.'//'.',.'
+let &backupskip = &backupskip.','.s:user_temp.'/*'
+" }}}
+" }}}
+
+" Plugin Configuration {{{
+" CtrlP {{{
+" Abbreviations {{{
+let g:ctrlp_abbrev['abbrevs'] += [
+	\ {
+	\ 'pattern': '^@h',
+	\ 'expanded': '@cd $HOMEDRIVE$HOMEPATH',
+	\ 'mode': 'pfrz',
+	\ },
+	\ {
+	\ 'pattern': '^@r',
+	\ 'expanded': '@cd $HOMEDRIVE',
+	\ 'mode': 'pfrz',
+	\ },
+\ ]
+"}}}
+"}}}
+"}}}
+
+" Workarounds {{{
+" Caffeine.exe {{{
+map  <F15> <NOP>
+map! <F15> <NOP>
+" }}}
+" }}}
+
+" Modeline {{{
+" vim:ft=vim:ts=2:sw=2:fdm=marker
+"}}}

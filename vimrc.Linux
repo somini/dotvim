@@ -1,0 +1,74 @@
+" somini.vimrc - Linux
+
+" Data Safety and Managing {{{
+let s:user_cache = $HOME.'/.cache/vim'
+let s:global_tmp = '/tmp'
+let s:global_mnt = '/media/'.$USERNAME
+let s:global_mnt2= '/run/media/'.$USERNAME
+
+" Vim Info {{{
+let s:viminfo_file = s:user_cache.'/viminfo'
+let &viminfo = &viminfo.',r'.s:global_tmp
+let &viminfo = &viminfo.',r'.s:global_mnt
+let &viminfo = &viminfo.',r'.s:global_mnt2
+let &viminfo = &viminfo.',n'.s:viminfo_file
+if filereadable(s:viminfo_file) "Make sure it's there
+	rviminfo "This runs after the viminfo is read, so just read it again
+endif
+"}}}
+" Undo {{{
+let &undodir = s:user_cache.'/undo'
+call CheckDir(&undodir)
+" }}}
+" Views {{{
+let &viewdir = s:user_cache.'/views'
+call CheckDir(&viewdir)
+"}}}
+" Swap Files {{{
+let s:swap_dir = s:user_cache.'/swap'
+call CheckDir(s:swap_dir)
+" Use the user cache with the full path name
+" Check the temporaries too, with full path name
+" If all those fail, use the current directory
+let &directory = s:swap_dir.'//,'.s:global_tmp.'//'.',.'
+" }}}
+" Backup Files {{{
+let s:backup_dir = s:user_cache.'/backup'
+call CheckDir(s:backup_dir)
+" Same as swap, only on a different folder
+let &backupdir = s:backup_dir.'//'.','.s:global_tmp.'//'.',.'
+let &backupskip = &backupskip.','.s:global_tmp.'/*,'.s:global_mnt.'/*,'.s:global_mnt2.'/*'
+" }}}
+" }}}
+
+" Plugin Configuration {{{
+" CtrlP {{{
+" Abbreviations {{{
+let g:ctrlp_abbrev['abbrevs'] += [
+	\ {
+	\ 'pattern': '^@h',
+	\ 'expanded': '@cd $HOME',
+	\ 'mode': 'pfrz',
+	\ },
+	\ {
+	\ 'pattern': '^@r',
+	\ 'expanded': '@cd /',
+	\ 'mode': 'pfrz',
+	\ },
+\ ]
+"}}}
+"}}}
+"}}}
+
+" Workarounds {{{
+" Fedora {{{
+" Delete all autocommands
+augroup fedora
+	autocmd!
+augroup END
+" }}}
+" }}}
+
+" Modeline {{{
+" vim:ft=vim:ts=2:sw=2:fdm=marker
+"}}}
