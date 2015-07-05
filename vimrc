@@ -230,6 +230,18 @@ let g:bufferline_rotate = 1 "Keep the current buffer name visible
 " Git Gutter{{{
 let g:gitgutter_max_signs = 1000 "Ignore big diffs
 "}}}
+" Syntastic {{{
+" Check if there's any syntax errors
+nnoremap <silent> Q :Errors<CR>
+let g:syntastic_enable_signs = 1 "Don't put signs on lines, that's for Git Gutter
+let g:syntastic_auto_loc_list = 2 "Close id there's no errors, but don't open automatically
+let g:syntastic_check_on_open = 1 "Check when opening and saving
+let g:syntastic_check_on_wq = 0 "Not when leaving
+let g:syntastic_loc_list_height = 5
+" File Types {{{
+let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
+"}}}
+"}}}
 "}}}
 
 " Modeline {{{

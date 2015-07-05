@@ -16,3 +16,6 @@
 [submodule "3rd_party/vim-gitgutter"]
 	path = 3rd_party/vim-gitgutter
 	url = git@github.com:airblade/vim-gitgutter.git
+[submodule "3rd_party/syntastic"]
+	path = 3rd_party/syntastic
+	url = git@github.com:scrooloose/syntastic.git
