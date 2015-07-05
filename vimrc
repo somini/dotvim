@@ -224,6 +224,9 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:bufferline_echo = 0 "No echo on command line
 let g:bufferline_rotate = 1 "Keep the current buffer name visible
 "}}}
+" Git Gutter{{{
+let g:gitgutter_max_signs = 1000
+"}}}
 "}}}
 
 " Modeline {{{
