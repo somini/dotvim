@@ -129,6 +129,14 @@ nnoremap <silent> <C-Right>  :bnext<CR>
 nnoremap <silent> <S-Left>   :tabprevious<CR>
 nnoremap <silent> <S-Right>  :tabnext<CR>
 set hidden "Don't prompt when changing buffers
+" Quickfix (q){{{
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+"}}}
+" Location list (l){{{
+nnoremap <silent> [l :lprevious<CR>
+nnoremap <silent> ]l :lnext<CR>
+"}}}
 "}}}
 
 " Diff & Splits {{{
