@@ -221,13 +221,14 @@ let g:airline#extensions#tabline#buffer_min_count = 2 "But only if there's more 
 let g:airline#extensions#tabline#tab_nr_type = 1 "Show tabnumbers
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved' "Uniquify filenames
 let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#hunks#non_zero_only = 1 "Don't show changes if there's none
 "}}}
 "{{{ Bufferline
 let g:bufferline_echo = 0 "No echo on command line
 let g:bufferline_rotate = 1 "Keep the current buffer name visible
 "}}}
 " Git Gutter{{{
-let g:gitgutter_max_signs = 1000
+let g:gitgutter_max_signs = 1000 "Ignore big diffs
 "}}}
 "}}}
 
