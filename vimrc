@@ -219,7 +219,7 @@ let g:ctrlp_abbrev = {
 "}}}
 "}}}
 " NERDTree {{{
-nnoremap <F2> :NERDTreeFocus<CR>
+nnoremap <silent> <F2> :NERDTreeFocus<CR>
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeHighlightCursorline = 1
 let g:NERDTreeHijackNetrw = 1 "Open secondary trees for :e $folder
