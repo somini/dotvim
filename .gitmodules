@@ -1,0 +1,6 @@
+[submodule "3rd_party/vim-pathogen"]
+	path = 3rd_party/vim-pathogen
+	url = git@github.com:tpope/vim-pathogen.git
+[submodule "1st_party/harlequin"]
+	path = 1st_party/harlequin
+	url = git@github.com:somini/harlequin.git
