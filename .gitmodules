@@ -37,3 +37,6 @@
 [submodule "3rd_party/vim-endwise"]
 	path = 3rd_party/vim-endwise
 	url = git@github.com:tpope/vim-endwise.git
+[submodule "3rd_party/vim-dispatch"]
+	path = 3rd_party/vim-dispatch
+	url = git@github.com:tpope/vim-dispatch.git
