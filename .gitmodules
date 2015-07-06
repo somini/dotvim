@@ -31,3 +31,6 @@
 [submodule "3rd_party/vim-commentary"]
 	path = 3rd_party/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
+[submodule "3rd_party/vim-surround"]
+	path = 3rd_party/vim-surround
+	url = git@github.com:tpope/vim-surround.git
