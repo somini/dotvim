@@ -46,3 +46,6 @@
 [submodule "3rd_party/vim-lastplace"]
 	path = 3rd_party/vim-lastplace
 	url = git@github.com:dietsche/vim-lastplace.git
+[submodule "3rd_party/tabular"]
+	path = 3rd_party/tabular
+	url = git@github.com:godlygeek/tabular.git
