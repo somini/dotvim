@@ -49,3 +49,6 @@
 [submodule "3rd_party/tabular"]
 	path = 3rd_party/tabular
 	url = git@github.com:godlygeek/tabular.git
+[submodule "3rd_party/supertab"]
+	path = 3rd_party/supertab
+	url = git@github.com:ervandew/supertab.git

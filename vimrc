@@ -280,6 +280,11 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
 "}}}
 "}}}
+" SuperTab {{{
+" C-Tab to do full line completion
+let g:SuperTabMappingTabLiteral = 1
+imap <C-Tab> <C-x><C-l>
+"}}}
 "}}}
 
 " Modeline {{{
