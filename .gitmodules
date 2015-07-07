@@ -40,3 +40,6 @@
 [submodule "3rd_party/vim-dispatch"]
 	path = 3rd_party/vim-dispatch
 	url = git@github.com:tpope/vim-dispatch.git
+[submodule "1st_party/current-func-info.vim"]
+	path = 1st_party/current-func-info.vim
+	url = git@github.com:somini/current-func-info.vim.git

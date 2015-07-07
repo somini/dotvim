@@ -234,6 +234,12 @@ let g:nerdtree_tabs_open_on_console_startup = 0 "EVER
 "}}}
 "}}}
 " Airline {{{
+	" Customization
+let g:airline#extensions#default#layout = [
+			\ [ 'a', 'b', 'c', 'gutter' ],
+			\ [ 'functionname','x', 'y', 'z', 'warning' ]
+			\ ]
+let g:airline_section_functionname = '%{cfi#format("%s","")}'
 	" Tabline
 let g:airline#extensions#tabline#enabled = 1 "Show a tabline
 let g:airline#extensions#tabline#show_buffers = 1 "If there's only one tab, show the buffers
