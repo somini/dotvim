@@ -58,3 +58,6 @@
 [submodule "3rd_party/vim-repeat"]
 	path = 3rd_party/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
+[submodule "3rd_party/vim-signature"]
+	path = 3rd_party/vim-signature
+	url = git@github.com:kshenoy/vim-signature.git

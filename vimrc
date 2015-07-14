@@ -315,6 +315,9 @@ imap <C-Tab> <C-x><C-l>
 let g:vim_markdown_math=1 "LaTeX math inside $$
 let g:vim_markdown_frontmatter = 1 "YAML frontmatter e.g Jekyll
 "}}}
+" Signature {{{
+let g:SignatureMarkTextHLDynamic = 1 "Integrate with vim-gitgutter
+"}}}
 "}}}
 
 " Modeline {{{
