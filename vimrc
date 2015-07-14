@@ -267,6 +267,32 @@ let g:bufferline_rotate = 1 "Keep the current buffer name visible
 "}}}
 " Git Gutter{{{
 let g:gitgutter_max_signs = 1000 "Ignore big diffs
+" Toggle Cached {{{
+let g:gitgutter_cached_enabled = 0
+function GitGutterToggleCached()
+	if g:gitgutter_cached_enabled
+		" Restore old values
+		let g:gitgutter_diff_args = g:gitgutter_diff_args_old
+		let g:gitgutter_sign_added = g:gitgutter_sign_added_old
+		let g:gitgutter_sign_modified = g:gitgutter_sign_modified_old
+		let g:gitgutter_sign_removed = g:gitgutter_sign_removed_old
+	else
+		" Old values
+		let g:gitgutter_diff_args_old = g:gitgutter_diff_args
+		let g:gitgutter_sign_added_old = g:gitgutter_sign_added
+		" Change them
+		let g:gitgutter_diff_args = g:gitgutter_diff_args . ' -M --cached'
+		let g:gitgutter_sign_added = 'S'
+		let g:gitgutter_sign_modified = 'M'
+		let g:gitgutter_sign_removed = 'R'
+	endif
+	call gitgutter#highlight#define_signs()
+	let g:gitgutter_cached_enabled = !g:gitgutter_cached_enabled
+	GitGutterAll
+endfunction
+
+nnoremap <silent> <LocalLeader>ht :call GitGutterToggleCached()<CR>
+"}}}
 "}}}
 " Syntastic {{{
 " Check if there's any syntax errors
