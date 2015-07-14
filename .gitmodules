@@ -55,3 +55,6 @@
 [submodule "3rd_party/vim-markdown_plasticboy"]
 	path = 3rd_party/vim-markdown_plasticboy
 	url = git@github.com:plasticboy/vim-markdown.git
+[submodule "3rd_party/vim-repeat"]
+	path = 3rd_party/vim-repeat
+	url = git@github.com:tpope/vim-repeat.git
