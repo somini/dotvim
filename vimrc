@@ -311,6 +311,10 @@ let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
 let g:SuperTabMappingSkipTabLiteral = 1
 imap <C-Tab> <C-x><C-l>
 "}}}
+" Markdown @ plasticboy {{{
+let g:vim_markdown_math=1 "LaTeX math inside $$
+let g:vim_markdown_frontmatter = 1 "YAML frontmatter e.g Jekyll
+"}}}
 "}}}
 
 " Modeline {{{
