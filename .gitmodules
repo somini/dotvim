@@ -51,7 +51,7 @@
 	url = git@github.com:godlygeek/tabular.git
 [submodule "3rd_party/supertab"]
 	path = 1st_party/supertab
-	url = git@github.com:ervandew/supertab.git
+	url = git@github.com:somini/supertab.git
 [submodule "3rd_party/vim-markdown_plasticboy"]
 	path = 3rd_party/vim-markdown_plasticboy
 	url = git@github.com:plasticboy/vim-markdown.git
