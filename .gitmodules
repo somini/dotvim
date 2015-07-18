@@ -67,3 +67,6 @@
 [submodule "3rd_party/vim-visualstar"]
 	path = 3rd_party/vim-visualstar
 	url = git@github.com:thinca/vim-visualstar.git
+[submodule "3rd_party/vim-fugitive"]
+	path = 3rd_party/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
