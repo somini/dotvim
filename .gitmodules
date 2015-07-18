@@ -61,3 +61,6 @@
 [submodule "3rd_party/vim-signature"]
 	path = 3rd_party/vim-signature
 	url = git@github.com:kshenoy/vim-signature.git
+[submodule "3rd_party/vim-speeddating"]
+	path = 3rd_party/vim-speeddating
+	url = git@github.com:tpope/vim-speeddating.git
