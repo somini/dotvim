@@ -14,7 +14,7 @@
 	path = 3rd_party/vim-airline
 	url = git@github.com:bling/vim-airline.git
 [submodule "3rd_party/vim-gitgutter"]
-	path = 3rd_party/vim-gitgutter
+	path = 1st_party/vim-gitgutter
 	url = git@github.com:airblade/vim-gitgutter.git
 [submodule "3rd_party/syntastic"]
 	path = 3rd_party/syntastic
