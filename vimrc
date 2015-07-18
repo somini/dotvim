@@ -156,6 +156,7 @@ set incsearch "Start searching right away
 " Mouse {{{
 set mouse=a "Enable the mouse in all modes
 set selectmode= "But no select mode, ever
+set mousemodel=extend "Just like xterm, everywhere
 "}}}
 
 " Help {{{

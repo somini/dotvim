@@ -3,6 +3,13 @@
 " Appearance {{{
 "}}}
 
+" Mouse {{{
+set mousehide "Hide mouse when typing
+" Mouse points to active window, always
+" Still smart enough not to inadvertent selects
+set mousefocus
+" }}}
+
 " No menus nor toolbars {{{
 set guioptions-=m guioptions-=T
 set go-=r go-=R go-=l go-=L go-=b "No scrollbars
