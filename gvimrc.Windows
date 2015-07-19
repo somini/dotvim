@@ -1,5 +1,11 @@
 " somini.gvimrc - Windows
 
+" Workarounds {{{
+set winaltkeys=no
+" This does close the current window on Windows. I think
+nnoremap <C-w><C-c> <C-c>
+" }}}
+
 " Clipboard {{{
 set clipboard=unnamed " This works as expected
 "}}}

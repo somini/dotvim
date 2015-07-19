@@ -7,7 +7,7 @@ execute pathogen#infect('1st_party/{}','3rd_party/{}')
 
 " Legacy Stuff {{{
 set nocompatible "Vim, not vi
-set backspace=indent,eol,start "Deletes work as intended
+set backspace=indent,eol,start "Backspace works as intended
 set showcmd "Show the command line as you type
 set modeline "Enable modeline
 if has('autocmd')
@@ -17,6 +17,13 @@ set updatetime=500 "ms
 " Timeouts and stuff, Esc is instantaneous but can also be used in mappings
 set ttimeout
 set ttimeoutlen=100 "ms
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j " Delete comment character when joining commented lines
+endif
+" i_C-u shouldn't delete so much
+inoremap <C-U> <C-G>u<C-U>
+" Baffling default
+nnoremap Y y$
 " GUI Options {{{
 " Needs to be set here, to influence GUI loading
 " set guioptions-=M "Don't load $VIMRUNTIME/menu.vim
@@ -37,6 +44,10 @@ function SetToggle(option, value)
 	execute 'set '.a:option.l:operator.a:value
 endfunction
 " }}}
+" Command line configuration
+set wildmenu
+set wildmode=list:full "Traditional Vim-way
+set wildignorecase "Ignore case
 " }}}
 
 " Clipboard {{{
@@ -59,6 +70,7 @@ function CheckDir(dir) "{{{
     call mkdir(a:dir,"p")
   endif
 endfunction "}}}
+set fileformats=unix,dos,mac "ALL the formats, by this order
 
 " Vim Info {{{
 set viminfo='150 "Save the marks for this much files !must exist!
@@ -107,10 +119,15 @@ if &t_Co >= 256 || has('gui_running') " Something nice
 else "Sensible fallback
 	colorscheme evening
 endif
-syntax enable
+if has("syntax")
+	syntax enable
+endif
 set hlsearch "Highlight searches ...
 set laststatus=2 "Always show the statusline
 nohlsearch "but not when starting up
+set scrolloff=5
+set sidescroll=1 "Scroll 1 line at a time, horizontally
+set sidescrolloff=10
 "{{{ Non-Printable Characters
 set list "Show non-printable characters
 let &listchars = 'tab:  '
@@ -147,12 +164,23 @@ set diffopt+=iwhite "Ignore whitespace on diffs
 "}}}
 " Splits {{{
 set splitright " New splits to the right
+set nosplitbelow " New splits on top
 "}}}
 "}}}
 
 " Search {{{
 set ignorecase smartcase "Sane defaults
 set incsearch "Start searching right away
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+endif
+" Center on search
+nnoremap n nzz
+nnoremap N Nzz
+" '&' to repeat last ':s', use flags too
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
 "}}}
 
 " Mouse {{{
@@ -182,6 +210,7 @@ nnoremap <S-CR> :put! =''<CR>
 nmap     g<CR>  <S-CR>
 "}}}
 " Tab {{{
+set smarttab "Use 'shiftwidth' with tabs
 " Tab to indent text
 nnoremap <Tab> >>
 nnoremap <S-Tab> <<
