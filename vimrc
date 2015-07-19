@@ -14,7 +14,9 @@ if has('autocmd')
 	filetype plugin indent on "Enable filetype detection
 endif
 set updatetime=500 "ms
-set timeoutlen=1000 "ms
+" Timeouts and stuff, Esc is instantaneous but can also be used in mappings
+set ttimeout
+set ttimeoutlen=100 "ms
 " GUI Options {{{
 " Needs to be set here, to influence GUI loading
 " set guioptions-=M "Don't load $VIMRUNTIME/menu.vim
