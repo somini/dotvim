@@ -350,6 +350,27 @@ let g:SignatureMarkTextHLDynamic = 1 "Integrate with vim-gitgutter
 " Speed Dating {{{
 set nrformats-=octal "Messes stuff up
 "}}}
+" EasyClip {{{
+let g:EasyClipShareYanks = 1 "Yank history across vim sessions even!
+let g:EasyClipShareYanksFile = 'EasyClip'
+" let g:EasyClipShareYanksDirectory = OS_specific
+let g:EasyClipYankHistorySize = 150 "Disk space is cheap
+let g:EasyClipPreserveCursorPositionAfterYank = 1 "Consistency with other operators be damned!
+let g:EasyClipAutoFormat = 1 "Auto-format pasted text ...
+" But press a key combination to toggle between formatted and unformatted text
+nmap <LocalLeader>cf <Plug>EasyClipToggleFormattedPaste
+"" Keybidings
+let g:EasyClipUseCutDefaults = 0 "Cut text, don't alias marks
+nmap x  <Plug>MoveMotionPlug
+xmap x  <Plug>MoveMotionXPlug
+nmap xx <Plug>MoveMotionLinePlug
+let g:EasyClipUseSubstituteDefaults = 0 "Use s<motion> to replace texts
+nmap s  <Plug>SubstituteOverMotionMap
+nmap ss <Plug>SubstituteLine
+let g:EasyClipUsePasteToggleDefaults = 0 " Paste and rotate the yank ring
+nmap <C-f> <Plug>EasyClipSwapPasteForward
+nmap <C-d> <Plug>EasyClipSwapPasteBackwards
+"}}}
 "}}}
 
 " Modeline {{{

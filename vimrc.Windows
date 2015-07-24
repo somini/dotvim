@@ -55,6 +55,9 @@ let g:ctrlp_abbrev['abbrevs'] += [
 \ ]
 "}}}
 "}}}
+" EasyClip {{{
+let g:EasyClipShareYanksDirectory = s:user_cache
+"}}}
 "}}}
 
 " Workarounds {{{
