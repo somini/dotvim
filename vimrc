@@ -2,6 +2,22 @@
 
 " Pathogen {{{
 runtime 3rd_party/vim-pathogen/autoload/pathogen.vim
+if !exists('*pathogen#infect')
+  let s:error_marker = expand('<sfile>:p:h').'/.novimrc'
+  if !filereadable(s:error_marker) " Warn only the first time
+    echohl WarningMsg
+      echo "Can't load pathogen, won't change any options!"
+      echo "Try running `git submodule update` or clone the repo recursively"
+    echohl None
+    " Create the marker file
+    silent execute 'tabnew '.s:error_marker
+    silent write!
+    silent tabclose
+  endif
+  autocmd VimEnter * echohl ErrorMsg | exec 'echo "'.'Fix the vim folder and `rm '.s:error_marker.'`"' | echohl None
+  colorscheme blue "Ugly-ass colors to hammer the point home
+  finish
+endif
 execute pathogen#infect('1st_party/{}','3rd_party/{}')
 "}}}
 
