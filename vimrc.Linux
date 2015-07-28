@@ -45,6 +45,9 @@ let g:NERDTreeBookmarksFile = s:user_cache.'/NERDTree_Bookmarks'
 
 " Plugin Configuration {{{
 " CtrlP {{{
+let s:ctrlp_cache = s:user_cache.'/plugin/ctrlp'
+call CheckDir(s:ctrlp_cache)
+let g:ctrlp_cache_dir = s:ctrlp_cache
 " Abbreviations {{{
 let g:ctrlp_abbrev['abbrevs'] += [
 	\ {

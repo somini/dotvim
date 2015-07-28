@@ -256,7 +256,7 @@ nnoremap <LocalLeader><LocalLeader>b         :buffers<CR>:buffer<Space>
 " Plugin Configuration {{{
 " CtrlP {{{
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20'
-let g:ctrlp_clear_cache_on_exit = 1 "Cache the results, F5 to purge
+let g:ctrlp_clear_cache_on_exit = 0 "Cache the results, F5 to purge
 let g:ctrlp_open_new_file = 'r' "Create new files in the current window
 let g:ctrlp_open_multiple_files = '1i' "Open multi files in hidden buffers
 let g:ctrlp_key_loop = 0 "Multi-byte keys (eg. tilde in PT keyboard)
