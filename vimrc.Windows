@@ -55,6 +55,7 @@ let g:ctrlp_abbrev['abbrevs'] += [
 "}}}
 
 " Workarounds {{{
+autocmd VimEnter * let $HOME = $HOMEDRIVE.$HOMEPATH " Make sure it's the correct path
 " Caffeine.exe {{{
 map  <F15> <NOP>
 map! <F15> <NOP>

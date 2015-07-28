@@ -11,7 +11,8 @@ set clipboard=unnamed " This works as expected
 "}}}
 
 " Appearance {{{
-set guifont="DejaVu Sans Mono":h11,"Consolas":h12,monospace
+" TODO: Check if it's possible to have multiple fonts on Windows
+set guifont=Consolas:h11
 "}}}
 
 " Modeline {{{
