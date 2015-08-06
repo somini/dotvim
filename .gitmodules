@@ -76,3 +76,6 @@
 [submodule "1st_party/vim-easyclip"]
 	path = 1st_party/vim-easyclip
 	url = git@github.com:somini/vim-easyclip.git
+[submodule "3rd_party/vim-characterize"]
+	path = 3rd_party/vim-characterize
+	url = git@github.com:tpope/vim-characterize.git

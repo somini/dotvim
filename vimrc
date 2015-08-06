@@ -71,6 +71,9 @@ endfunction
 set wildmenu
 set wildmode=list:full "Traditional Vim-way
 set wildignorecase "Ignore case
+
+" More information with less clicks
+nnoremap <C-g> 2<C-g>
 " }}}
 
 " Clipboard {{{
