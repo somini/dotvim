@@ -73,6 +73,6 @@
 [submodule "3rd_party/matchit.vim"]
 	path = 3rd_party/matchit.vim
 	url = git@github.com:vim-scripts/matchit.zip.git
-[submodule "3rd_party/vim-easyclip"]
-	path = 3rd_party/vim-easyclip
-	url = git@github.com:svermeulen/vim-easyclip.git
+[submodule "1st_party/vim-easyclip"]
+	path = 1st_party/vim-easyclip
+	url = git@github.com:somini/vim-easyclip.git

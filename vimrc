@@ -75,16 +75,30 @@ set wildignorecase "Ignore case
 
 " Clipboard {{{
 set clipboard=unnamedplus " Sync the unnamed register with the system clipboard
+
+autocmd VimEnter * call s:SetupClipboard()
+function s:SetupClipboard() "{{{
 " Insert mode {{{
 	" C-q does what C-v did, insert raw characters
 	inoremap <C-q> <C-v>
 	" C-v pastes
-	execute 'imap <script> <C-V> <C-G>u' . paste#paste_cmd['i']
+	if exists('g:loaded_EasyClip') && g:loaded_EasyClip == 1
+		" Make sure EasyClip is loaded, otherwise use a fallback
+		imap <C-v> <Plug>EasyClipInsertModePaste
+	else
+		execute 'imap <script> <C-V> <C-G>u' . paste#paste_cmd['i']
+	endif
 "}}}
 " Command mode {{{
 	" C-y pastes
-	cnoremap <C-y> <C-r>+
+	if exists('g:loaded_EasyClip') && g:loaded_EasyClip
+		" Make sure EasyClip is loaded, otherwise use a fallback
+		cmap <C-y> <Plug>EasyClipCommandModePaste
+	else
+		cnoremap <C-y> <C-r>+
+	endif
 "}}}
+endfunction "}}}
 "}}}
 
 " Data Safety and Managing {{{
@@ -352,9 +366,9 @@ set nrformats-=octal "Messes stuff up
 "}}}
 " EasyClip {{{
 let g:EasyClipShareYanks = 1 "Yank history across vim sessions even!
-let g:EasyClipShareYanksFile = 'EasyClip'
+let g:EasyClipShareYanksFile = 'EasyClip.yanks'
 " let g:EasyClipShareYanksDirectory = OS_specific
-let g:EasyClipYankHistorySize = 150 "Disk space is cheap
+let g:EasyClipYankHistorySize = 500 "Disk space is cheap
 let g:EasyClipPreserveCursorPositionAfterYank = 1 "Consistency with other operators be damned!
 let g:EasyClipAutoFormat = 1 "Auto-format pasted text ...
 " But press a key combination to toggle between formatted and unformatted text
@@ -364,6 +378,10 @@ let g:EasyClipUseCutDefaults = 0 "Cut text, don't alias marks
 nmap x  <Plug>MoveMotionPlug
 xmap x  <Plug>MoveMotionXPlug
 nmap xx <Plug>MoveMotionLinePlug
+" Keep the original 'x' action using Backspace
+nnoremap <BS> "_X
+nnoremap <S-BS> "_x
+nmap g<BS> <S-BS>
 let g:EasyClipUseSubstituteDefaults = 0 "Use s<motion> to replace texts
 nmap s  <Plug>SubstituteOverMotionMap
 nmap ss <Plug>SubstituteLine
