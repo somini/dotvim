@@ -300,6 +300,22 @@ vnoremap  <S-Tab>  <gv
 vmap      g<Tab>   <S-Tab>
 "
 "}}}
+
+" Tabularize on Steroids {{{
+function TabularizeThisN()
+	if exists('g:tabular_loaded')
+		let l:cmd = ':Tabularize'
+		if exists('*TabularizeHasPattern') && TabularizeHasPattern()
+			" Reuse the last Tabularize command
+			let l:cmd .= "\<CR>"
+		else
+			let l:cmd .= "\<Space>"
+		endif
+		return l:cmd
+	endif
+endfunction
+nnoremap <expr> <LocalLeader><Tab> TabularizeThisN()
+"}}}
 "}}}
 
 " 2Leader Commands{{{
