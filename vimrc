@@ -72,6 +72,7 @@ set wildmenu
 set wildmode=list:full "Traditional Vim-way
 set wildignorecase "Ignore case
 
+set autoread "Re-read files if they haven't been changed in vim
 " More information with less clicks
 nnoremap <C-g> 2<C-g>
 " }}}
@@ -105,6 +106,7 @@ endfunction "}}}
 "}}}
 
 " Data Safety and Managing {{{
+set history=1000 " Disk space is REALLY cheap
 function CheckDir(dir) "{{{
   if !isdirectory(a:dir)
     call mkdir(a:dir,"p")
