@@ -198,11 +198,35 @@ else
 	nnoremap <Esc>j <C-e>
 	nnoremap <Esc>k <C-y>
 endif
-" Switch the harder-to-type version for a single-key system
+
+" Smart Apostrophe {{{
 nnoremap ' `
 nnoremap ` '
+"}}}
+" Smart Zero {{{
 nnoremap 0 ^
 nnoremap ^ 0
+"}}}
+" Smart Underscore "{{{
+function SmartUnderscore()
+	let l:line = line('.')
+	let l:col  = col('.')
+
+	execute 'normal! ^'
+	let l:soft = col('.')
+
+	execute 'normal! 0'
+	let l:hard = col('.')
+
+	if l:col != l:soft
+		call cursor(l:line, l:soft)
+	else
+		call cursor(l:line, l:hard)
+	endif
+endfunction
+nnoremap <silent> _ :<C-u>call SmartUnderscore()<CR>
+"}}}
+
 " Quickfix (q){{{
 nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
