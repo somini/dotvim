@@ -392,6 +392,36 @@ let g:EasyClipUsePasteToggleDefaults = 0 " Paste and rotate the yank ring
 nmap <C-f> <Plug>EasyClipSwapPasteForward
 nmap <C-d> <Plug>EasyClipSwapPasteBackwards
 "}}}
+" EasyMotion {{{
+let g:EasyMotion_verbose = 0
+" User <Space> or <CR> to jump to first match
+let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_space_jump_first = 1
+let g:EasyMotion_grouping = 1 " Prioritize single-keys
+let g:EasyMotion_use_upper = 1 " Show uppercase but type lowercase
+let g:EasyMotion_keys = 'JKHLASDFGQWERZXCVTYUIOPBNM,.-1234567890' " The markers to use
+" Mappings {{{
+	" `map` for n,x(v,s),o mode all at once
+	let g:EasyMotion_do_mapping = 0 " Don't map anything
+	"             's' is f and F rolled into one, on steroids!
+	"            's2' is 's', but asking for 2 characters to narrow it down
+	"          'bd-t' is t, but bidirectional
+	"         'bd-jk' is choose the line to jump to
+	"'jumptoanywhere' is just that, customizable
+	map <C-f>          <Plug>(easymotion-s)
+	map <C-t>          <Plug>(easymotion-bd-t)
+	map <C-j>          <Plug>(easymotion-bd-jk)
+	map <C-k>          <Plug>(easymotion-bd-jk)
+	map <LocalLeader>s <Plug>(easymotion-jumptoanywhere)
+	map <LocalLeader>S <Plug>(easymotion-s2)
+"}}}
+" Appearance {{{
+" hi link EasyMotionShade         Comment
+" hi link EasyMotionTarget        IncSearch
+" hi link EasyMotionTarget2First  MatchParen
+" hi link EasyMotionTarget2Second MatchParen
+"}}}
+"}}}
 "}}}
 
 " Modeline {{{

@@ -79,3 +79,6 @@
 [submodule "3rd_party/vim-characterize"]
 	path = 3rd_party/vim-characterize
 	url = git@github.com:tpope/vim-characterize.git
+[submodule "1st_party/vim-easymotion"]
+	path = 1st_party/vim-easymotion
+	url = git@github.com:somini/vim-easymotion.git
