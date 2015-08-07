@@ -190,6 +190,19 @@ nnoremap <silent> <C-Right>  :bnext<CR>
 nnoremap <silent> <S-Left>   :tabprevious<CR>
 nnoremap <silent> <S-Right>  :tabnext<CR>
 set hidden "Don't prompt when changing buffers
+" Alt-jk to move around
+if has('gui_running')
+	nnoremap <A-j> <C-e>
+	nnoremap <A-k> <C-y>
+else
+	nnoremap <Esc>j <C-e>
+	nnoremap <Esc>k <C-y>
+endif
+" Switch the harder-to-type version for a single-key system
+nnoremap ' `
+nnoremap ` '
+nnoremap 0 ^
+nnoremap ^ 0
 " Quickfix (q){{{
 nnoremap <silent> [q :cprevious<CR>
 nnoremap <silent> ]q :cnext<CR>
@@ -254,13 +267,13 @@ nmap     g<CR>  <S-CR>
 " Tab {{{
 set smarttab "Use 'shiftwidth' with tabs
 " Tab to indent text
-nnoremap <Tab> >>
-nnoremap <S-Tab> <<
-nnoremap g<Tab> <S-Tab>
+nnoremap  <Tab>    >>
+nnoremap  <S-Tab>  <<
+nmap      g<Tab>   <S-Tab>
 " On visual mode, keep the indented text select
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
-vnoremap g<Tab> <S-Tab>
+vnoremap  <Tab>    >gv
+vnoremap  <S-Tab>  <gv
+vmap      g<Tab>   <S-Tab>
 "
 "}}}
 "}}}
@@ -341,6 +354,8 @@ let g:bufferline_rotate = 1 "Keep the current buffer name visible
 "}}}
 " Git Gutter{{{
 let g:gitgutter_max_signs = 1000 "Ignore big diffs
+nmap <LocalLeader>hj <Plug>GitGutterNextHunk
+nmap <LocalLeader>hk <Plug>GitGutterPrevHunk
 "}}}
 " Syntastic {{{
 " Check if there's any syntax errors
