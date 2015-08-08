@@ -46,9 +46,6 @@
 [submodule "1st_party/vim-lastplace"]
 	path = 1st_party/vim-lastplace
 	url = git@github.com:somini/vim-lastplace.git
-[submodule "3rd_party/tabular"]
-	path = 3rd_party/tabular
-	url = git@github.com:godlygeek/tabular.git
 [submodule "3rd_party/supertab"]
 	path = 1st_party/supertab
 	url = git@github.com:somini/supertab.git
@@ -82,3 +79,6 @@
 [submodule "1st_party/vim-easymotion"]
 	path = 1st_party/vim-easymotion
 	url = git@github.com:somini/vim-easymotion.git
+[submodule "1st_party/tabularize"]
+	path = 1st_party/tabularize
+	url = git@github.com:somini/tabular.git
