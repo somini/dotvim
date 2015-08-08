@@ -1,84 +1,84 @@
-[submodule "3rd_party/vim-pathogen"]
+[submodule "vim-pathogen"]
 	path = 3rd_party/vim-pathogen
 	url = git@github.com:tpope/vim-pathogen.git
-[submodule "1st_party/harlequin"]
+[submodule "harlequin"]
 	path = 1st_party/harlequin
 	url = git@github.com:somini/harlequin.git
-[submodule "1st_party/vim-multi_os"]
+[submodule "vim-multi_os"]
 	path = 1st_party/vim-multi_os
 	url = git@github.com:somini/vim-multi_os.git
-[submodule "3rd_party/ctrlp.vim"]
+[submodule "ctrlp.vim"]
 	path = 3rd_party/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
-[submodule "3rd_party/vim-airline"]
+[submodule "vim-airline"]
 	path = 3rd_party/vim-airline
 	url = git@github.com:bling/vim-airline.git
-[submodule "3rd_party/vim-gitgutter"]
+[submodule "vim-gitgutter"]
 	path = 1st_party/vim-gitgutter
-	url = git@github.com:airblade/vim-gitgutter.git
-[submodule "3rd_party/syntastic"]
+	url = git@github.com:somini/vim-gitgutter.git
+[submodule "syntastic"]
 	path = 3rd_party/syntastic
 	url = git@github.com:scrooloose/syntastic.git
-[submodule "3rd_party/NERDTree"]
+[submodule "NERDTree"]
 	path = 3rd_party/NERDTree
 	url = git@github.com:scrooloose/nerdtree.git
-[submodule "3rd_party/NERDTreeTabs"]
+[submodule "NERDTreeTabs"]
 	path = 3rd_party/NERDTreeTabs
 	url = git@github.com:jistr/vim-nerdtree-tabs.git
-[submodule "1st_party/bbcode"]
+[submodule "bbcode"]
 	path = 1st_party/bbcode
 	url = git@github.com:somini/bbcode.git
-[submodule "3rd_party/vim-commentary"]
+[submodule "vim-commentary"]
 	path = 3rd_party/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
-[submodule "3rd_party/vim-surround"]
+[submodule "vim-surround"]
 	path = 3rd_party/vim-surround
 	url = git@github.com:tpope/vim-surround.git
-[submodule "3rd_party/vim-endwise"]
+[submodule "vim-endwise"]
 	path = 3rd_party/vim-endwise
 	url = git@github.com:tpope/vim-endwise.git
-[submodule "3rd_party/vim-dispatch"]
+[submodule "vim-dispatch"]
 	path = 3rd_party/vim-dispatch
 	url = git@github.com:tpope/vim-dispatch.git
-[submodule "1st_party/current-func-info.vim"]
+[submodule "current-func-info.vim"]
 	path = 1st_party/current-func-info.vim
 	url = git@github.com:somini/current-func-info.vim.git
-[submodule "1st_party/vim-lastplace"]
+[submodule "vim-lastplace"]
 	path = 1st_party/vim-lastplace
 	url = git@github.com:somini/vim-lastplace.git
-[submodule "3rd_party/supertab"]
+[submodule "supertab"]
 	path = 1st_party/supertab
 	url = git@github.com:somini/supertab.git
-[submodule "3rd_party/vim-markdown_plasticboy"]
+[submodule "vim-markdown_plasticboy"]
 	path = 3rd_party/vim-markdown_plasticboy
 	url = git@github.com:plasticboy/vim-markdown.git
-[submodule "3rd_party/vim-repeat"]
+[submodule "vim-repeat"]
 	path = 3rd_party/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
-[submodule "3rd_party/vim-signature"]
+[submodule "vim-signature"]
 	path = 3rd_party/vim-signature
 	url = git@github.com:kshenoy/vim-signature.git
-[submodule "3rd_party/vim-speeddating"]
+[submodule "vim-speeddating"]
 	path = 3rd_party/vim-speeddating
 	url = git@github.com:tpope/vim-speeddating.git
-[submodule "3rd_party/vim-visualstar"]
+[submodule "vim-visualstar"]
 	path = 3rd_party/vim-visualstar
 	url = git@github.com:thinca/vim-visualstar.git
-[submodule "3rd_party/vim-fugitive"]
+[submodule "vim-fugitive"]
 	path = 3rd_party/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
-[submodule "3rd_party/matchit.vim"]
+[submodule "matchit.vim"]
 	path = 3rd_party/matchit.vim
 	url = git@github.com:vim-scripts/matchit.zip.git
-[submodule "1st_party/vim-easyclip"]
+[submodule "vim-easyclip"]
 	path = 1st_party/vim-easyclip
 	url = git@github.com:somini/vim-easyclip.git
-[submodule "3rd_party/vim-characterize"]
+[submodule "vim-characterize"]
 	path = 3rd_party/vim-characterize
 	url = git@github.com:tpope/vim-characterize.git
-[submodule "1st_party/vim-easymotion"]
+[submodule "vim-easymotion"]
 	path = 1st_party/vim-easymotion
 	url = git@github.com:somini/vim-easymotion.git
-[submodule "1st_party/tabularize"]
+[submodule "tabularize"]
 	path = 1st_party/tabularize
 	url = git@github.com:somini/tabular.git
