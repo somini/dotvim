@@ -82,3 +82,6 @@
 [submodule "tabularize"]
 	path = 1st_party/tabularize
 	url = git@github.com:somini/tabular.git
+[submodule "vim-eunuch"]
+	path = 3rd_party/vim-eunuch
+	url = git@github.com:tpope/vim-eunuch.git
