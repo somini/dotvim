@@ -446,7 +446,6 @@ let g:EasyClipUseSubstituteDefaults = 0 "Use s<motion> to replace texts
 nmap s  <Plug>SubstituteOverMotionMap
 nmap ss <Plug>SubstituteLine
 let g:EasyClipUsePasteToggleDefaults = 0 " Paste and rotate the yank ring
-nmap <C-f> <Plug>EasyClipSwapPasteForward
 nmap <C-d> <Plug>EasyClipSwapPasteBackwards
 "}}}
 " EasyMotion {{{
