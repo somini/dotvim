@@ -269,11 +269,11 @@ set mousemodel=extend "Just like xterm, everywhere
 "}}}
 
 " Help {{{
-"TODO: :Help to put the help in the ":vertical topleft"
 " <F1> for choosing help
-nnoremap <F1>      :vertical topleft help<Space>
-" Double <F1> for "Just show me the help!"
-" nnoremap <F1><F1>  :vertical topleft help<CR>
+nnoremap <F1>      :help<Space>
+" g<F1> to close the help, regardless of current buffer
+nmap g<F1> <F1><CR><F1>
+nmap <C-F1> g<F1>
 " <F1> on Insert mode does the same
 imap <F1> <C-o><F1>
 "}}}
