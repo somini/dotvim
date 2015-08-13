@@ -251,12 +251,19 @@ set nosplitbelow " New splits on top
 set ignorecase smartcase "Sane defaults
 set incsearch "Start searching right away
 " Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+" <C-l> Already clears the screen, it's just a bonus
+if maparg('<C-l>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<CR><C-l>
 endif
 " Center on search
 nnoremap n nzz
 nnoremap N Nzz
+" Don't mess with search directions, n is ALWAYS forward
+nmap # *NN
+if exists('g:loaded_visualstar') && g:loaded_visualstar == 1
+	xmap #  *NN
+	xmap g# g*NN
+endif
 " '&' to repeat last ':s', use flags too
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
