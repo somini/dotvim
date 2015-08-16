@@ -69,8 +69,10 @@ function SetToggle(option, value)
 endfunction
 " }}}
 " Command line configuration
+" Complete the longest common prefix, then use <Tab> to cycle
+" through the various matches.
 set wildmenu
-set wildmode=list:full "Traditional Vim-way
+set wildmode=longest:full,list:full
 set wildignorecase "Ignore case
 
 set autoread "Re-read files if they haven't been changed in vim
