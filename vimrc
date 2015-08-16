@@ -444,6 +444,7 @@ nmap <LocalLeader>cf <Plug>EasyClipToggleFormattedPaste
 let g:EasyClipUseCutDefaults = 0 "Cut text, don't alias marks
 nmap x  <Plug>MoveMotionPlug
 xmap x  <Plug>MoveMotionXPlug
+nmap X  <Plug>MoveMotionPlug$
 nmap xx <Plug>MoveMotionLinePlug
 " Keep the original 'x' action using Backspace
 nnoremap <BS> "_X
@@ -451,6 +452,7 @@ nnoremap <S-BS> "_x
 nmap g<BS> <S-BS>
 let g:EasyClipUseSubstituteDefaults = 0 "Use s<motion> to replace texts
 nmap s  <Plug>SubstituteOverMotionMap
+nmap S  <Plug>SubstituteOverMotionMap$
 nmap ss <Plug>SubstituteLine
 let g:EasyClipUsePasteToggleDefaults = 0 " Paste and rotate the yank ring
 nmap <C-d> <Plug>EasyClipSwapPasteBackwards
