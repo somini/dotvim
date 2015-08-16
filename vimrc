@@ -277,10 +277,10 @@ set mousemodel=extend "Just like xterm, everywhere
 
 " Help {{{
 " <F1> for choosing help
-nnoremap <F1>      :help<Space>
+nnoremap <F1> :help<Space>
 " g<F1> to close the help, regardless of current buffer
-nmap g<F1> <F1><CR><F1>
-nmap <C-F1> g<F1>
+nmap <C-F1> <F1><CR><F1>
+nmap g<F1>  <C-F1>
 " <F1> on Insert mode does the same
 imap <F1> <C-o><F1>
 "}}}

@@ -10,4 +10,4 @@ runtime scripts/less.vim
 nnoremap <buffer> <LocalLeader>f f
 
 " Search for new stuff, à lá Vimperator
-nnoremap <buffer> f :h<Space>
+nnoremap <buffer> f :help<Space>
