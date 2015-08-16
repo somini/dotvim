@@ -17,6 +17,7 @@ if has('autocmd')
 endif
 set updatetime=500 "ms
 " Timeouts and stuff, Esc is instantaneous but can also be used in mappings
+set notimeout
 set ttimeout
 set ttimeoutlen=100 "ms
 if v:version > 703 || v:version == 703 && has("patch541")
