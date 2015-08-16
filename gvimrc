@@ -17,8 +17,8 @@ set guioptions-=t "Tear-off menus are too oldskool
 "}}}
 
 " Toggle menu and toolbar {{{
-nnoremap <silent> <S-F1> :call SetToggle('guioptions','m')<CR>
-nnoremap <silent> <S-F2> :call SetToggle('guioptions','T')<CR>
+nnoremap <silent> <M-F1> :call SetToggle('guioptions','m')<CR>
+nnoremap <silent> <M-F2> :call SetToggle('guioptions','T')<CR>
 "}}}
 
 " Modeline {{{

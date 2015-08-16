@@ -164,11 +164,11 @@ endif
 if has("syntax")
 	syntax enable
 endif
-set hlsearch "Highlight searches ...
 set laststatus=2 "Always show the statusline
+set hlsearch "Highlight searches ...
 nohlsearch "but not when starting up
-set scrolloff=5
 set sidescroll=1 "Scroll 1 line at a time, horizontally
+set scrolloff=5
 set sidescrolloff=10
 "{{{ Non-Printable Characters
 set list "Show non-printable characters
@@ -250,7 +250,7 @@ set nosplitbelow " New splits on top
 " Search {{{
 set ignorecase smartcase "Sane defaults
 set incsearch "Start searching right away
-" Use <C-L> to clear the highlighting of :set hlsearch.
+" Use <C-l> to clear the highlighting of :set hlsearch.
 " <C-l> Already clears the screen, it's just a bonus
 if maparg('<C-l>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<CR><C-l>
