@@ -300,14 +300,37 @@ nmap     g<CR>  <S-CR>
 "}}}
 " Tab {{{
 set smarttab "Use 'shiftwidth' with tabs
-" Tab to indent text
+" Tab to indent text by shiftwidth columns
+" C-Tab to indent text by 1 column, using spaces
+function IndentLine(cols)
+	if a:cols > 0
+		let l:pat = '^'
+		let l:subs = repeat(' ',a:cols)
+	elseif a:cols < 0
+		" The last x spaces, where x < -a:cols
+		" If that doesn't match, just ^
+		" TODO: Remove tabs?
+		let l:pat = '\v^\s{-}\zs {1,'.-a:cols.'}\ze\S|^'
+		let l:subs = ''
+	else
+		return "Do nothing
+	endif
+	execute 'keeppatterns' 'substitute' '/'.l:pat.'/'.l:subs.'/'
+endfunction
+command -nargs=? -range IndentLine <line1>,<line2>call IndentLine(<f-args>)
 nnoremap  <Tab>    >>
 nnoremap  <S-Tab>  <<
-nmap      g<Tab>   <S-Tab>
+nmap <silent> <C-Tab>    :IndentLine  1<CR>
+nmap <silent> <C-S-Tab>  :IndentLine -1<CR>
+nmap       		g<Tab>     <C-Tab>
+nmap       		g<S-Tab>   <C-S-Tab>
 " On visual mode, keep the indented text select
 vnoremap  <Tab>    >gv
 vnoremap  <S-Tab>  <gv
-vmap      g<Tab>   <S-Tab>
+vnoremap <C-Tab>   :IndentLine  1<CR>gv
+vnoremap <C-S-Tab> :IndentLine -1<CR>gv
+vmap      g<Tab>   <C-Tab>
+vmap      g<S-Tab>   <C-S-Tab>
 "
 "}}}
 
