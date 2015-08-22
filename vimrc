@@ -259,10 +259,12 @@ if maparg('<C-l>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<CR><C-l>
 endif
 " Center on search
+nnoremap * *zz
 nnoremap n nzz
 nnoremap N Nzz
 " Don't mess with search directions, n is ALWAYS forward
-nmap # *NN
+nmap #  *NN
+nmap g# g*NN
 if exists('g:loaded_visualstar') && g:loaded_visualstar == 1
 	xmap #  *NN
 	xmap g# g*NN
