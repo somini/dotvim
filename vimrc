@@ -429,8 +429,8 @@ let g:bufferline_rotate = 1 "Keep the current buffer name visible
 "}}}
 " Git Gutter{{{
 let g:gitgutter_max_signs = 1000 "Ignore big diffs
-nmap <LocalLeader>hj <Plug>GitGutterNextHunk
-nmap <LocalLeader>hk <Plug>GitGutterPrevHunk
+nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>GitGutterNextHunk
 "}}}
 " Syntastic {{{
 " Check if there's any syntax errors
