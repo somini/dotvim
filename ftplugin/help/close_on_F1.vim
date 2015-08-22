@@ -4,4 +4,6 @@ if &buftype != 'help'
 endif
 
 " Close help with F1
-nnoremap <buffer> <nowait> <F1> :close<CR>
+nnoremap <buffer> <nowait> <F1>   :close<CR>
+nmap     <buffer> <nowait> <C-F1> <F1>
+nmap     <buffer>          g<F1>  <C-F1>
