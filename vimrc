@@ -263,12 +263,12 @@ nnoremap <silent> _ :<C-u>call SmartUnderscore()<CR>
 "}}}
 
 " Quickfix (q){{{
-nnoremap <silent> [q :cprevious<CR>
-nnoremap <silent> ]q :cnext<CR>
+nnoremap <silent> [q :cprevious<CR>zzzv
+nnoremap <silent> ]q :cnext<CR>zzzv
 "}}}
 " Location list (l){{{
-nnoremap <silent> [l :lprevious<CR>
-nnoremap <silent> ]l :lnext<CR>
+nnoremap <silent> [l :lprevious<CR>zzzv
+nnoremap <silent> ]l :lnext<CR>zzzv
 "}}}
 "}}}
 
@@ -291,9 +291,10 @@ if maparg('<C-l>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<CR><C-l>
 endif
 " Center on search
-nnoremap * *zz
-nnoremap n nzz
-nnoremap N Nzz
+" Make sure it works on folds
+nnoremap * *zvzz
+nnoremap n nzvzz
+nnoremap N Nzvzz
 " Don't mess with search directions, n is ALWAYS forward
 nmap #  *NN
 nmap g# g*NN
@@ -462,8 +463,8 @@ let g:bufferline_rotate = 1 "Keep the current buffer name visible
 "}}}
 " Git Gutter{{{
 let g:gitgutter_max_signs = 1000 "Ignore big diffs
-nmap [h <Plug>GitGutterPrevHunk
-nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunkzzzv
+nmap ]h <Plug>GitGutterNextHunkzzzv
 "}}}
 " Syntastic {{{
 " Check if there's any syntax errors
