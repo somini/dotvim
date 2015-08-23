@@ -62,8 +62,8 @@
 	path = 3rd_party/vim-speeddating
 	url = git@github.com:tpope/vim-speeddating.git
 [submodule "vim-visualstar"]
-	path = 3rd_party/vim-visualstar
-	url = git@github.com:thinca/vim-visualstar.git
+	path = 1st_party/vim-visualstar
+	url = git@github.com:somini/vim-visualstar.git
 [submodule "vim-fugitive"]
 	path = 3rd_party/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git

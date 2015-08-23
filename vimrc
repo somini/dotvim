@@ -516,6 +516,10 @@ let g:EasyMotion_keys = 'JKHLASDFGQWERZXCVTYUIOPBNM,.-1234567890' " The markers 
 " hi link EasyMotionTarget2Second MatchParen
 "}}}
 "}}}
+" Visualstar {{{
+let g:visualstar_folds = 1 "Open current fold on search
+let g:visualstar_center_screen = 1 "Center screen after searching
+"}}}
 "}}}
 
 " Modeline {{{
