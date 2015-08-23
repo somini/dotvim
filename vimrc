@@ -324,6 +324,7 @@ imap <F1> <C-o><F1>
 
 " Whitespace Management {{{
 set autoindent smartindent "Indent in smart, language-specific ways
+set shiftround "Align to the nearest "shiftwidth"
 " Enter {{{
 " On normal mode, Enter put a new line after the current one
 nnoremap <silent> <CR>   :put =''<CR>
