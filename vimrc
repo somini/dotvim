@@ -209,6 +209,11 @@ set listchars+=precedes:⇇,extends:⇉
 set listchars+=nbsp:·
 " set listchars+=eol:¶
 "}}}
+" Numbers
+set numberwidth=1 " Minimal width of the number column
+set nonumber "No line numbers by default ...
+"... but toggle them with:
+nnoremap <silent> <Leader>tn :set number!<CR>
 "}}}
 
 " Navigation {{{
