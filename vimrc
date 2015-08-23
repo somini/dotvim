@@ -78,6 +78,30 @@ set wildignorecase "Ignore case
 set autoread "Re-read files if they haven't been changed in vim
 " More information with less clicks
 nnoremap <C-g> 2<C-g>
+
+" Move lines
+" TODO: Edge cases: Top line, and anything that touches there
+"       Command calling a function with a default value
+function! MoveCurrentLine(offset)
+	if !a:offset || a:offset == 0
+		return
+	endif
+	if a:offset > 0
+		let l:offset_cmd = (a:offset == 1) ? '' : a:offset - 1.'j'
+	else
+		let l:offset_cmd = (-a:offset) + 1 .'k'
+	endif
+
+	let l:old_unnamed = @"
+
+	normal! ""dd
+	execute 'normal! '.l:offset_cmd.'""p'
+
+	let @" = l:old_unnamed
+endfunction
+command! -nargs=? MoveCurrentLine call MoveCurrentLine(<f-args>)
+nnoremap <silent> + :MoveCurrentLine 1<CR>
+nnoremap <silent> - :MoveCurrentLine -1<CR>
 " }}}
 
 " Clipboard {{{
