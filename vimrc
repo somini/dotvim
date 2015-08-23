@@ -58,7 +58,7 @@ execute pathogen#infect('1st_party/{}','3rd_party/{}')
 " Utilities {{{
 let g:user_dir=expand("<sfile>:p:h")
 "SetToggle: Toggle complex options {{{
-function SetToggle(option, value)
+function! SetToggle(option, value)
 	" Check if the option contains value
 	if stridx(getwinvar(winnr(), '&'.a:option), a:value) == -1
 		let l:operator='+='
@@ -84,7 +84,7 @@ nnoremap <C-g> 2<C-g>
 set clipboard=unnamedplus " Sync the unnamed register with the system clipboard
 
 autocmd VimEnter * call s:SetupClipboard()
-function s:SetupClipboard() "{{{
+function! s:SetupClipboard() "{{{
 " Insert mode {{{
 	" C-q does what C-v did, insert raw characters
 	inoremap <C-q> <C-v>
@@ -110,7 +110,7 @@ endfunction "}}}
 
 " Data Safety and Managing {{{
 set history=1000 " Disk space is REALLY cheap
-function CheckDir(dir) "{{{
+function! CheckDir(dir) "{{{
   if !isdirectory(a:dir)
     call mkdir(a:dir,"p")
   endif
@@ -211,7 +211,7 @@ nnoremap 0 ^
 nnoremap ^ 0
 "}}}
 " Smart Underscore "{{{
-function SmartUnderscore()
+function! SmartUnderscore()
 	let l:line = line('.')
 	let l:col  = col('.')
 
@@ -284,7 +284,7 @@ set mousemodel=extend "Just like xterm, everywhere
 " <F1> for choosing help
 nnoremap <F1> :help<Space>
 " g<F1> to close the help, regardless of current buffer
-nmap <C-F1> <F1><CR><F1>
+nmap <silent> <C-F1> :helpclose<CR>
 nmap g<F1>  <C-F1>
 " <F1> on Insert mode does the same
 imap <F1> <C-o><F1>
@@ -294,9 +294,9 @@ imap <F1> <C-o><F1>
 set autoindent smartindent "Indent in smart, language-specific ways
 " Enter {{{
 " On normal mode, Enter put a new line after the current one
-nnoremap <CR>   :put =''<CR>
+nnoremap <silent> <CR>   :put =''<CR>
 " And S-Enter puts it before
-nnoremap <S-CR> :put! =''<CR>
+nnoremap <silent> <S-CR> :put! =''<CR>
 " Synonym for terminals
 nmap     g<CR>  <S-CR>
 "}}}
@@ -304,7 +304,7 @@ nmap     g<CR>  <S-CR>
 set smarttab "Use 'shiftwidth' with tabs
 " Tab to indent text by shiftwidth columns
 " C-Tab to indent text by 1 column, using spaces
-function IndentLine(cols)
+function! IndentLine(cols)
 	if a:cols > 0
 		let l:pat = '^'
 		let l:subs = repeat(' ',a:cols)
@@ -319,11 +319,11 @@ function IndentLine(cols)
 	endif
 	execute 'keeppatterns' 'substitute' '/'.l:pat.'/'.l:subs.'/'
 endfunction
-command -nargs=? -range IndentLine <line1>,<line2>call IndentLine(<f-args>)
+command! -nargs=? -range IndentLine <line1>,<line2>call IndentLine(<f-args>)
 nnoremap  <Tab>    >>
 nnoremap  <S-Tab>  <<
-nmap <silent> <C-Tab>    :IndentLine  1<CR>
-nmap <silent> <C-S-Tab>  :IndentLine -1<CR>
+nnoremap <silent> <C-Tab>    :IndentLine  1<CR>
+nnoremap <silent> <C-S-Tab>  :IndentLine -1<CR>
 nmap       		g<Tab>     <C-Tab>
 nmap       		g<S-Tab>   <C-S-Tab>
 " On visual mode, keep the indented text select
@@ -337,7 +337,7 @@ vmap      g<S-Tab>   <C-S-Tab>
 "}}}
 
 " Tabularize on Steroids {{{
-function TabularizeThisN()
+function! TabularizeThisN()
 	if exists('g:tabular_loaded')
 		let l:cmd = ':Tabularize'
 		if exists('*TabularizeHasPattern') && TabularizeHasPattern()
