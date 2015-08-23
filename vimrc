@@ -339,7 +339,11 @@ set mousemodel=extend "Just like xterm, everywhere
 " <F1> for choosing help
 nnoremap <F1> :help<Space>
 " g<F1> to close the help, regardless of current buffer
-nmap <silent> <C-F1> :helpclose<CR>
+if exists(':helpclose') "Newer vim
+	nmap <silent> <C-F1> :helpclose<CR>
+else
+	nmap <silent> <C-F1> <F1><CR><F1>
+endif
 nmap g<F1>  <C-F1>
 " <F1> on Insert mode does the same
 imap <F1> <C-o><F1>
