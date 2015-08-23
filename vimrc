@@ -79,7 +79,7 @@ set autoread "Re-read files if they haven't been changed in vim
 " More information with less clicks
 nnoremap <C-g> 2<C-g>
 
-" Move lines
+" Move lines {{{
 " TODO: Edge cases: Top line, and anything that touches there
 "       Command calling a function with a default value
 function! MoveCurrentLine(offset)
@@ -102,6 +102,7 @@ endfunction
 command! -nargs=? MoveCurrentLine call MoveCurrentLine(<f-args>)
 nnoremap <silent> + :MoveCurrentLine 1<CR>
 nnoremap <silent> - :MoveCurrentLine -1<CR>
+"}}}
 " }}}
 
 " Clipboard {{{
@@ -390,9 +391,13 @@ nnoremap <expr> <Leader><Tab> TabularizeThisN()
 
 " 2Leader Commands{{{
 " cd: Change dir to the current file
-nnoremap <Leader><Leader>cd        :lcd %:h<CR>:pwd<CR>
+nnoremap <silent> <Leader><Leader>cd        :lcd %:h<CR>:pwd<CR>
 " b : Show a list of buffers and prompt for a number
-nnoremap <Leader><Leader>b         :buffers<CR>:buffer<Space>
+nnoremap <silent> <Leader><Leader>b         :buffers<CR>:buffer<Space>
+" ve: Edit your vimrc in a new tab
+nnoremap <silent> <Leader><Leader>ve        :tabnew $MYVIMRC<CR>
+" vs: Source your vimrc right here
+nnoremap <silent> <Leader><Leader>vs        :source $MYVIMRC<CR>
 "}}}
 
 " Plugin Configuration {{{
