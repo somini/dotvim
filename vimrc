@@ -321,6 +321,7 @@ nmap <silent> <C-F1> :helpclose<CR>
 nmap g<F1>  <C-F1>
 " <F1> on Insert mode does the same
 imap <F1> <C-o><F1>
+imap <C-F1> <C-o><C-F1>
 "}}}
 
 " Whitespace Management {{{
