@@ -48,7 +48,9 @@ if !exists('*pathogen#infect')
     silent write!
     silent tabclose
   endif
-  autocmd VimEnter * echohl ErrorMsg | exec 'echo "'.'Fix the vim folder and `rm '.s:error_marker.'`"' | echohl None
+	augroup vimrc_pathogen | autocmd!
+		autocmd VimEnter * echohl ErrorMsg | exec 'echo "'.'Fix the vim folder and `rm '.s:error_marker.'`"' | echohl None
+	augroup END
   colorscheme blue "Ugly-ass colors to hammer the point home
   finish
 endif
@@ -108,7 +110,9 @@ nnoremap <silent> - :MoveCurrentLine -1<CR>
 " Clipboard {{{
 set clipboard=unnamedplus " Sync the unnamed register with the system clipboard
 
-autocmd VimEnter * call s:SetupClipboard()
+augroup vimrc_clipboard | autocmd!
+	autocmd VimEnter * call s:SetupClipboard()
+augroup END
 function! s:SetupClipboard() "{{{
 " Insert mode {{{
 	" C-q does what C-v did, insert raw characters
