@@ -384,15 +384,15 @@ function! TabularizeThisN()
 		return l:cmd
 	endif
 endfunction
-nnoremap <expr> <LocalLeader><Tab> TabularizeThisN()
+nnoremap <expr> <Leader><Tab> TabularizeThisN()
 "}}}
 "}}}
 
 " 2Leader Commands{{{
 " cd: Change dir to the current file
-nnoremap <LocalLeader><LocalLeader>cd        :lcd %:h<CR>:pwd<CR>
+nnoremap <Leader><Leader>cd        :lcd %:h<CR>:pwd<CR>
 " b : Show a list of buffers and prompt for a number
-nnoremap <LocalLeader><LocalLeader>b         :buffers<CR>:buffer<Space>
+nnoremap <Leader><Leader>b         :buffers<CR>:buffer<Space>
 "}}}
 
 " Plugin Configuration {{{
@@ -502,7 +502,7 @@ let g:EasyClipYankHistorySize = 500 "Disk space is cheap
 let g:EasyClipPreserveCursorPositionAfterYank = 1 "Consistency with other operators be damned!
 let g:EasyClipAutoFormat = 1 "Auto-format pasted text ...
 " But press a key combination to toggle between formatted and unformatted text
-nmap <LocalLeader>cf <Plug>EasyClipToggleFormattedPaste
+nmap <Leader>cf <Plug>EasyClipToggleFormattedPaste
 "" Keybidings
 let g:EasyClipUseCutDefaults = 0 "Cut text, don't alias marks
 nmap x  <Plug>MoveMotionPlug
@@ -541,8 +541,8 @@ let g:EasyMotion_keys = 'JKHLASDFGQWERZXCVTYUIOPBNM,.-1234567890' " The markers 
 	map <C-t>          <Plug>(easymotion-bd-t)
 	map <C-j>          <Plug>(easymotion-bd-jk)
 	map <C-k>          <Plug>(easymotion-bd-jk)
-	map <LocalLeader>s <Plug>(easymotion-jumptoanywhere)
-	map <LocalLeader>S <Plug>(easymotion-s2)
+	map <Leader>s <Plug>(easymotion-jumptoanywhere)
+	map <Leader>S <Plug>(easymotion-s2)
 "}}}
 " Appearance {{{
 " hi link EasyMotionShade         Comment

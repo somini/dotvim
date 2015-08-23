@@ -7,7 +7,7 @@ endif
 runtime scripts/less.vim
 
 " Keep the old values
-nnoremap <buffer> <LocalLeader>f f
+nnoremap <buffer> <Leader>f f
 
 " Search for new stuff, à lá Vimperator
 nnoremap <buffer> f :help<Space>
