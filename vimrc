@@ -214,11 +214,28 @@ set listchars+=precedes:⇇,extends:⇉
 set listchars+=nbsp:·
 " set listchars+=eol:¶
 "}}}
-" Numbers
+" Numbers {{{
 set numberwidth=1 " Minimal width of the number column
 set nonumber "No line numbers by default ...
 "... but toggle them with:
-nnoremap <silent> <Leader>tn :set number!<CR>
+nnoremap <silent> <Leader>tn :setlocal number!<CR>
+"}}}
+" Folds {{{
+nnoremap <silent> <Leader>tf :call <SID>ToggleFolds()<CR>
+function! s:ToggleFolds()
+	let l:lvl = foldlevel('.')
+	if l:lvl + 1 > &l:foldcolumn
+		" Extent the column to the new distance
+		let &l:foldcolumn = l:lvl + 1
+	else
+		if &l:foldcolumn > 0
+			set foldcolumn=0
+		else
+			let &l:foldcolumn = foldlevel('.') + 1
+		endif
+	endif
+endfunction
+"}}}
 "}}}
 
 " Navigation {{{
