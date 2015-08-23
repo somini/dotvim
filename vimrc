@@ -130,6 +130,9 @@ function! s:SetupClipboard() "{{{
 	endif
 "}}}
 endfunction "}}}
+" yY yanks the line minus the <CR> at the end
+" just like dD from EasyClip
+nnoremap yY m`0y$``
 "}}}
 
 " Data Safety and Managing {{{
