@@ -259,6 +259,9 @@ function! s:ToggleFolds()
 	endif
 endfunction
 "}}}
+" Cursor Line {{{
+nnoremap <silent> <Leader>tc :setlocal cursorline!<CR>
+"}}}
 "}}}
 
 " Navigation {{{
@@ -489,6 +492,7 @@ let g:airline#extensions#default#layout = [
 			\ [ 'a', 'b', 'c', 'gutter' ],
 			\ [ 'functionname','x', 'y', 'z', 'warning' ]
 			\ ]
+let g:airline_section_z = '%p%%:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#'
 let g:airline_section_functionname = '%{cfi#format("%s","")}'
 	" Tabline
 let g:airline#extensions#tabline#enabled = 1 "Show a tabline
