@@ -4,4 +4,4 @@ if &buftype == 'help'
 endif
 
 " Turn off conceal, to be able to edit things more easily
-setlocal conceallevel = 0
+setlocal conceallevel=0
