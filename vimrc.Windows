@@ -6,18 +6,10 @@ let s:user_cache = s:user_temp.'/vim'
 call CheckDir(s:user_cache)
 
 " Vim Info {{{
-let s:viminfo_old = $HOME.'/_viminfo'
-if filereadable(s:viminfo_old)
-	rviminfo "Read the old viminfo file
-	"TODO: Delete old file
-endif
-let s:viminfo_new = s:user_cache.'/viminfo'
+let g:viminfo_old = $HOME.'/_viminfo'
+let g:viminfo_new = s:user_cache.'/viminfo'
 let &viminfo = &viminfo.',r'.s:user_temp
 let &viminfo = &viminfo.',n'.s:viminfo_new
-if filereadable(s:viminfo_new) "Make sure it's there
-	rviminfo "This runs after the viminfo is read, so just read it again
-endif
-wviminfo! "Merge both files
 "}}}
 " Undo {{{
 let &undodir = s:user_cache.'/undo'

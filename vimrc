@@ -159,6 +159,29 @@ set viminfo+=s50 "Don't save registers larger than this Kb
 set viminfo+=<100 "nor larger than these lines
 " set viminfo+=r$SKIP_PATH_PREFIX
 " set viminfo+=n$VIMINFO_FILENAME !must be the last one!
+augroup vimrc_viminfo | autocmd!
+	autocmd VimEnter * call s:SetupViminfo()
+augroup END
+function! s:SetupViminfo() "{{{
+	" Only if there was a setup
+	if !exists('g:viminfo_old') || !exists('g:viminfo_new')
+		return
+	endif
+
+	if filereadable(g:viminfo_old) "Make sure it's there
+		rviminfo! g:viminfo_old "Read the info in the old viminfo file
+		call delete(g:viminfo_old)
+	endif
+	if filereadable(g:viminfo_new) "Make sure it's there
+		" This runs after the viminfo is read, so just read it again
+		rviminfo
+	endif
+	wviminfo! "Merge both files
+
+	" Return to status quo
+	unlet g:viminfo_old g:viminfo_new
+endfunction
+"}}}
 " }}}
 " Undo {{{
 set undofile
