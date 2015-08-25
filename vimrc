@@ -583,7 +583,7 @@ let g:EasyMotion_use_upper = 1 " Show uppercase but type lowercase
 let g:EasyMotion_keys = 'JKHLASDFGQWERZXCVTYUIOPBNM,.-1234567890' " The markers to use
 " Mappings {{{
 	" `map` for n,x(v,s),o mode all at once
-	map <LocalLeader><LocalLeader>s <Plug>(easymotion-prefix)
+	map <Leader><Leader>s <Plug>(easymotion-prefix)
 	let g:EasyMotion_do_mapping = 1 " Map everything with a weirdo prefix, just in case
 	"             's' is f and F rolled into one, on steroids!
 	"            's2' is 's', but asking for 2 characters to narrow it down
