@@ -85,3 +85,9 @@
 [submodule "vim-eunuch"]
 	path = 3rd_party/vim-eunuch
 	url = git@github.com:tpope/vim-eunuch.git
+[submodule "3rd_party/vim-jdaddy"]
+	path = 3rd_party/vim-jdaddy
+	url = git@github.com:tpope/vim-jdaddy.git
+[submodule "3rd_party/vim-json"]
+	path = 3rd_party/vim-json
+	url = git@github.com:leshill/vim-json.git
