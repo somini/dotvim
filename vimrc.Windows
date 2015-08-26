@@ -2,14 +2,14 @@
 
 " Data Safety and Managing {{{
 let s:user_temp = $TEMP
-let s:user_cache = s:user_temp.'/vim'
+let s:user_cache = s:user_temp.'vim'
 call CheckDir(s:user_cache)
 
 " Vim Info {{{
 let g:viminfo_old = $HOME.'/_viminfo'
 let g:viminfo_new = s:user_cache.'/viminfo'
 let &viminfo = &viminfo.',r'.s:user_temp
-let &viminfo = &viminfo.',n'.s:viminfo_new
+let &viminfo = &viminfo.',n'.g:viminfo_new
 "}}}
 " Undo {{{
 let &undodir = s:user_cache.'/undo'
