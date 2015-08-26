@@ -259,8 +259,10 @@ function! s:ToggleFolds()
 	endif
 endfunction
 "}}}
-" Cursor Line {{{
+" Cursor Line and Column {{{
+set nocursorline nocursorcolumn
 nnoremap <silent> <Leader>tc :setlocal cursorline!<CR>
+nnoremap <silent> <Leader>tC :setlocal cursorcolumn!<CR>
 "}}}
 "}}}
 
