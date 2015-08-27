@@ -70,6 +70,15 @@ function! SetToggle(option, value)
 	execute 'set '.a:option.l:operator.a:value
 endfunction
 " }}}
+"IsEmptyBuffer: Check if the current buffer is empty {{{
+function! IsEmptyBuffer()
+	if line('$') == 1 && getline(1) ==# ''
+		return 1
+	else
+		return 0
+	endif
+endfunction
+"}}}
 " Command line configuration
 " Complete the longest common prefix, then use <Tab> to cycle
 " through the various matches.
@@ -449,7 +458,7 @@ nnoremap <silent> <Leader><Leader>cd        :lcd %:h<CR>:pwd<CR>
 " b : Show a list of buffers and prompt for a number
 nnoremap <silent> <Leader><Leader>b         :buffers<CR>:buffer<Space>
 " ve: Edit your vimrc in a new tab
-nnoremap <silent> <Leader><Leader>ve        :tabnew $MYVIMRC<CR>
+nnoremap <silent> <Leader><Leader>ve        :execute (IsEmptyBuffer() ? 'edit' : 'tabnew') $MYVIMRC<CR>
 " vs: Source your vimrc right here
 nnoremap <silent> <Leader><Leader>vs        :source $MYVIMRC<CR>
 "}}}
