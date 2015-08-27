@@ -169,12 +169,13 @@ function! s:SetupViminfo() "{{{
 	endif
 
 	if filereadable(g:viminfo_old) "Make sure it's there
-		rviminfo! g:viminfo_old "Read the info in the old viminfo file
+		" Read the info in the old viminfo file
+		execute 'rviminfo!' g:viminfo_old
 		call delete(g:viminfo_old)
 	endif
 	if filereadable(g:viminfo_new) "Make sure it's there
 		" This runs after the viminfo is read, so just read it again
-		rviminfo
+		execute 'rviminfo!' g:viminfo_new
 	endif
 	wviminfo! "Merge both files
 
