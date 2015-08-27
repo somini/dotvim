@@ -85,9 +85,24 @@
 [submodule "vim-eunuch"]
 	path = 3rd_party/vim-eunuch
 	url = git@github.com:tpope/vim-eunuch.git
-[submodule "3rd_party/vim-jdaddy"]
+[submodule "vim-jdaddy"]
 	path = 3rd_party/vim-jdaddy
 	url = git@github.com:tpope/vim-jdaddy.git
-[submodule "3rd_party/vim-json"]
+[submodule "vim-json"]
 	path = 3rd_party/vim-json
 	url = git@github.com:leshill/vim-json.git
+[submodule "vim-diff"]
+	path = 3rd_party/vim-diff
+	url = git@github.com:ynkdir/vim-diff.git
+[submodule "vim-diff-enhanced"]
+	path = 3rd_party/vim-diff-enhanced
+	url = git@github.com:chrisbra/vim-diff-enhanced.git
+[submodule "vim-improve-diff"]
+	path = 3rd_party/vim-improve-diff
+	url = git@github.com:lambdalisue/vim-improve-diff.git
+[submodule "linediff.vim"]
+	path = 1st_party/linediff.vim
+	url = git@github.com:somini/linediff.vim.git
+[submodule "diff-fold"]
+	path = 3rd_party/diff-fold
+	url = git@github.com:thetoast/diff-fold.git
