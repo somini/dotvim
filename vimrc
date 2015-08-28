@@ -72,7 +72,7 @@ endfunction
 " }}}
 "IsEmptyBuffer: Check if the current buffer is empty {{{
 function! IsEmptyBuffer()
-	if line('$') == 1 && getline(1) ==# ''
+	if line('$') == 1 && getline(1) ==# '' && !&modified
 		return 1
 	else
 		return 0
