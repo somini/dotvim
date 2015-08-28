@@ -626,6 +626,13 @@ let g:EasyMotion_keys = 'JKHLASDFGQWERZXCVTYUIOPBNM,.-1234567890' " The markers 
 let g:visualstar_folds = 1 "Open current fold on search
 let g:visualstar_center_screen = 1 "Center screen after searching
 "}}}
+" LineDiff "{{{
+let g:linediff_first_buffer_command  = 'rightbelow new'
+let g:linediff_second_buffer_command = 'rightbelow vertical new'
+vnoremap <silent> <Leader>d :Linediff<CR>
+autocmd User LinediffBufferReady
+			\ nnoremap <silent> <buffer> <Leader>d :LinediffReset<CR>
+"}}}
 "}}}
 
 " Modeline {{{
