@@ -89,6 +89,8 @@ set wildignorecase "Ignore case
 set autoread "Re-read files if they haven't been changed in vim
 " More information with less clicks
 nnoremap <C-g> 2<C-g>
+" Keep the cursor still when joining lines
+nnoremap J m`J``
 
 " Move lines {{{
 " TODO: Edge cases: Top line, and anything that touches there
