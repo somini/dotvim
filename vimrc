@@ -459,10 +459,37 @@ nnoremap <expr> <Leader><Tab> TabularizeThisN()
 nnoremap <silent> <Leader><Leader>cd        :lcd %:h<CR>:pwd<CR>
 " b : Show a list of buffers and prompt for a number
 nnoremap <silent> <Leader><Leader>b         :buffers<CR>:buffer<Space>
-" ve: Edit your vimrc in a new tab
-nnoremap <silent> <Leader><Leader>ve        :execute (IsEmptyBuffer() ? 'edit' : 'tabnew') $MYVIMRC<CR>
+" Vim: Yo dawg, etc {{{
+function! s:IsVimRcFile()
+	let l:cfull = fnamemodify(expand('%'),':p')
+	let l:cdir  = fnamemodify(expand('%'),':p:h')
+	let l:cname = fnamemodify(expand('%'),':t')
+	if index([expand($MYVIMRC),expand($MYGVIMRC)], l:cfull) != -1
+		return 1
+	elseif l:cdir ==# g:user_dir && l:cname =~# '\v\Cg?vimrc(\.\w+)?'
+		return 1
+	else
+		return 0
+	endif
+endfunction
+" ve: Edit your vimrc
+" vE: Edit your gvimrc
+nnoremap <silent> <Leader><Leader>ve :call <SID>vimrc_edit($MYVIMRC)<CR>
+nnoremap <silent> <Leader><Leader>vE :call <SID>vimrc_edit($MYGVIMRC)<CR>
 " vs: Source your vimrc right here
-nnoremap <silent> <Leader><Leader>vs        :source $MYVIMRC<CR>
+nnoremap <silent> <Leader><Leader>vs :call <SID>vimrc_write() <Bar> source $MYVIMRC<CR>
+function! s:vimrc_edit(vimrc)
+	if expand('%:p') ==# expand(a:vimrc)
+		return
+	endif
+	execute IsEmptyBuffer() ? 'edit' : 'tabnew' a:vimrc
+endfunction
+function! s:vimrc_write()
+	if s:IsVimRcFile()
+		silent write
+	endif
+endfunction
+"}}}
 "}}}
 
 " Plugin Configuration {{{
