@@ -21,7 +21,7 @@ set notimeout
 set ttimeout
 set ttimeoutlen=100 "ms
 if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j " Delete comment character when joining commented lines
+	set formatoptions+=j " Delete comment character when joining commented lines
 endif
 " i_C-u shouldn't delete so much
 inoremap <C-U> <C-G>u<C-U>
@@ -37,22 +37,22 @@ nnoremap Y y$
 " Pathogen {{{
 runtime 3rd_party/vim-pathogen/autoload/pathogen.vim
 if !exists('*pathogen#infect')
-  let s:error_marker = expand('<sfile>:p:h').'/.novimrc'
-  if !filereadable(s:error_marker) " Warn only the first time
-    echohl WarningMsg
-      echo "Can't load pathogen, won't change any options!"
-      echo "Try running `git submodule update` or clone the repo recursively"
-    echohl None
-    " Create the marker file
-    silent execute 'tabnew '.s:error_marker
-    silent write!
-    silent tabclose
-  endif
+	let s:error_marker = expand('<sfile>:p:h').'/.novimrc'
+	if !filereadable(s:error_marker) " Warn only the first time
+		echohl WarningMsg
+			echo "Can't load pathogen, won't change any options!"
+			echo "Try running `git submodule update` or clone the repo recursively"
+		echohl None
+		" Create the marker file
+		silent execute 'tabnew '.s:error_marker
+		silent write!
+		silent tabclose
+	endif
 	augroup vimrc_pathogen | autocmd!
 		autocmd VimEnter * echohl ErrorMsg | exec 'echo "'.'Fix the vim folder and `rm '.s:error_marker.'`"' | echohl None
 	augroup END
-  colorscheme blue "Ugly-ass colors to hammer the point home
-  finish
+	colorscheme blue "Ugly-ass colors to hammer the point home
+	finish
 endif
 execute pathogen#infect('1st_party/{}','3rd_party/{}')
 "}}}
@@ -154,9 +154,9 @@ nnoremap yY m`0y$``
 " Data Safety and Managing {{{
 set history=1000 " Disk space is REALLY cheap
 function! CheckDir(dir) "{{{
-  if !isdirectory(a:dir)
-    call mkdir(a:dir,"p")
-  endif
+	if !isdirectory(a:dir)
+		call mkdir(a:dir,"p")
+	endif
 endfunction "}}}
 set fileformats=unix,dos,mac "ALL the formats, by this order
 
@@ -280,13 +280,13 @@ nnoremap <silent> <Leader>tC :setlocal cursorcolumn!<CR>
 "}}}
 
 " Navigation {{{
-nnoremap          <Space>    <C-d>
-nnoremap          <S-Space>  <C-u>
-nmap              g<Space>   <S-Space>
-nnoremap <silent> <C-Left>   :bprevious<CR>
-nnoremap <silent> <C-Right>  :bnext<CR>
-nnoremap <silent> <S-Left>   :tabprevious<CR>
-nnoremap <silent> <S-Right>  :tabnext<CR>
+nnoremap <Space> <C-d>
+nnoremap <S-Space> <C-u>
+nmap g<Space> <S-Space>
+nnoremap <silent> <C-Left> :bprevious<CR>
+nnoremap <silent> <C-Right> :bnext<CR>
+nnoremap <silent> <S-Left> :tabprevious<CR>
+nnoremap <silent> <S-Right> :tabnext<CR>
 set hidden "Don't prompt when changing buffers
 " Alt-jk to move around
 if has('gui_running')
@@ -351,7 +351,7 @@ set incsearch "Start searching right away
 " Use <C-l> to clear the highlighting of :set hlsearch.
 " <C-l> Already clears the screen, it's just a bonus
 if maparg('<C-l>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-l>
+	nnoremap <silent> <C-L> :nohlsearch<CR><C-l>
 endif
 " Center on search
 " Make sure it works on folds
@@ -359,10 +359,10 @@ nnoremap * *zvzz
 nnoremap n nzvzz
 nnoremap N Nzvzz
 " Don't mess with search directions, n is ALWAYS forward
-nmap #  *NN
+nmap # *NN
 nmap g# g*NN
 if exists('g:loaded_visualstar') && g:loaded_visualstar == 1
-	xmap #  *NN
+	xmap # *NN
 	xmap g# g*NN
 endif
 " '&' to repeat last ':s', use flags too
@@ -385,7 +385,7 @@ if exists(':helpclose') "Newer vim
 else
 	nmap <silent> <C-F1> <F1><CR><F1>
 endif
-nmap g<F1>  <C-F1>
+nmap g<F1> <C-F1>
 " <F1> on Insert mode does the same
 imap <F1> <C-o><F1>
 imap <C-F1> <C-o><C-F1>
@@ -396,11 +396,11 @@ set autoindent smartindent "Indent in smart, language-specific ways
 set shiftround "Align to the nearest "shiftwidth"
 " Enter {{{
 " On normal mode, Enter put a new line after the current one
-nnoremap <silent> <CR>   :put =''<CR>
+nnoremap <silent> <CR> :put =''<CR>
 " And S-Enter puts it before
 nnoremap <silent> <S-CR> :put! =''<CR>
 " Synonym for terminals
-nmap     g<CR>  <S-CR>
+nmap g<CR> <S-CR>
 "}}}
 " Tab {{{
 set smarttab "Use 'shiftwidth' with tabs
@@ -422,19 +422,19 @@ function! IndentLine(cols)
 	execute 'keeppatterns' 'substitute' '/'.l:pat.'/'.l:subs.'/'
 endfunction
 command! -nargs=? -range IndentLine <line1>,<line2>call IndentLine(<f-args>)
-nnoremap  <Tab>    >>
-nnoremap  <S-Tab>  <<
-nnoremap <silent> <C-Tab>    :IndentLine  1<CR>
+nnoremap <Tab> >>
+nnoremap <S-Tab>  <<
+nnoremap <silent> <C-Tab> :IndentLine 1<CR>
 nnoremap <silent> <C-S-Tab>  :IndentLine -1<CR>
-nmap       		g<Tab>     <C-Tab>
-nmap       		g<S-Tab>   <C-S-Tab>
+nmap g<Tab> <C-Tab>
+nmap g<S-Tab> <C-S-Tab>
 " On visual mode, keep the indented text select
-vnoremap  <Tab>    >gv
-vnoremap  <S-Tab>  <gv
-vnoremap <C-Tab>   :IndentLine  1<CR>gv
+vnoremap <Tab> >gv
+vnoremap <S-Tab>  <gv
+vnoremap <C-Tab> :IndentLine 1<CR>gv
 vnoremap <C-S-Tab> :IndentLine -1<CR>gv
-vmap      g<Tab>   <C-Tab>
-vmap      g<S-Tab>   <C-S-Tab>
+vmap g<Tab> <C-Tab>
+vmap g<S-Tab> <C-S-Tab>
 "
 "}}}
 
@@ -457,9 +457,9 @@ nnoremap <expr> <Leader><Tab> TabularizeThisN()
 
 " 2Leader Commands{{{
 " cd: Change dir to the current file
-nnoremap <silent> <Leader><Leader>cd        :lcd %:h<CR>:pwd<CR>
+nnoremap <silent> <Leader><Leader>cd :lcd %:h<CR>:pwd<CR>
 " b : Show a list of buffers and prompt for a number
-nnoremap <silent> <Leader><Leader>b         :buffers<CR>:buffer<Space>
+nnoremap <silent> <Leader><Leader>b :buffers<CR>:buffer<Space>
 " Vim: Yo dawg, etc {{{
 function! s:IsVimRcFile()
 	let l:cfull = fnamemodify(expand('%'),':p')
@@ -531,9 +531,9 @@ let g:nerdtree_tabs_open_on_console_startup = 0 "EVER
 " Airline {{{
 	" Customization
 let g:airline#extensions#default#layout = [
-			\ [ 'a', 'b', 'c', 'gutter' ],
-			\ [ 'functionname','x', 'y', 'z', 'warning' ]
-			\ ]
+	\ [ 'a', 'b', 'c', 'gutter' ],
+	\ [ 'functionname','x', 'y', 'z', 'warning' ]
+	\ ]
 let g:airline_section_z = '%p%%:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#'
 let g:airline_section_functionname = '%{cfi#format("%s","")}'
 	" Tabline
@@ -628,20 +628,20 @@ let g:EasyMotion_grouping = 1 " Prioritize single-keys
 let g:EasyMotion_use_upper = 1 " Show uppercase but type lowercase
 let g:EasyMotion_keys = 'JKHLASDFGQWERZXCVTYUIOPBNM,.-1234567890' " The markers to use
 " Mappings {{{
-	" `map` for n,x(v,s),o mode all at once
-	map <Leader><Leader>s <Plug>(easymotion-prefix)
-	let g:EasyMotion_do_mapping = 1 " Map everything with a weirdo prefix, just in case
-	"             's' is f and F rolled into one, on steroids!
-	"            's2' is 's', but asking for 2 characters to narrow it down
-	"          'bd-t' is t, but bidirectional
-	"         'bd-jk' is choose the line to jump to
-	"'jumptoanywhere' is just that, customizable
-	map <C-f>          <Plug>(easymotion-s)
-	map <C-t>          <Plug>(easymotion-bd-t)
-	map <C-j>          <Plug>(easymotion-bd-jk)
-	map <C-k>          <Plug>(easymotion-bd-jk)
-	map <Leader>s <Plug>(easymotion-jumptoanywhere)
-	map <Leader>S <Plug>(easymotion-s2)
+" `map` for n,x(v,s),o mode all at once
+map <Leader><Leader>s <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 1 " Map everything with a weirdo prefix, just in case
+"             's' is f and F rolled into one, on steroids!
+"            's2' is 's', but asking for 2 characters to narrow it down
+"          'bd-t' is t, but bidirectional
+"         'bd-jk' is choose the line to jump to
+"'jumptoanywhere' is just that, customizable
+map <C-f> <Plug>(easymotion-s)
+map <C-t> <Plug>(easymotion-bd-t)
+map <C-j> <Plug>(easymotion-bd-jk)
+map <C-k> <Plug>(easymotion-bd-jk)
+map <Leader>s <Plug>(easymotion-jumptoanywhere)
+map <Leader>S <Plug>(easymotion-s2)
 "}}}
 " Appearance {{{
 " hi link EasyMotionShade         Comment
@@ -659,7 +659,7 @@ let g:linediff_first_buffer_command  = 'rightbelow new'
 let g:linediff_second_buffer_command = 'rightbelow vertical new'
 vnoremap <silent> <Leader>d :Linediff<CR>
 autocmd User LinediffBufferReady
-			\ nnoremap <silent> <buffer> <Leader>d :LinediffReset<CR>
+	\ nnoremap <silent> <buffer> <Leader>d :LinediffReset<CR>
 "}}}
 " AutoPairs @ jiangmiao "{{{
 let g:AutoPairsEnableDefault = 0 "Disable it by default
