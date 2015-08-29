@@ -661,6 +661,15 @@ vnoremap <silent> <Leader>d :Linediff<CR>
 autocmd User LinediffBufferReady
 			\ nnoremap <silent> <buffer> <Leader>d :LinediffReset<CR>
 "}}}
+" AutoPairs @ jiangmiao "{{{
+let g:AutoPairsEnableDefault = 0 "Disable it by default
+" Custom Shortcuts
+let g:AutoPairsShortcutToggle = '<Leader>tp'
+let g:AutoPairsShortcutFastWrap = ''
+let g:AutoPairsShortcutJump = ''
+let g:AutoPairsShortcutBackInsert = ''
+let g:AutoPairsCenterLine = 0 "Don't run `zz` after Enter
+"}}}
 " Indent Guides {{{
 let g:indent_guides_default_mapping = 0
 nmap <Leader>tg <Plug>IndentGuidesToggle
