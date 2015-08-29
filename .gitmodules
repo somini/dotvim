@@ -106,3 +106,6 @@
 [submodule "diff-fold"]
 	path = 3rd_party/diff-fold
 	url = git@github.com:thetoast/diff-fold.git
+[submodule "3rd_party/vim-indent-guides"]
+	path = 3rd_party/vim-indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git

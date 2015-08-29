@@ -231,6 +231,7 @@ if &t_Co >= 256 || has('gui_running') " Something nice
 else "Sensible fallback
 	colorscheme evening
 endif
+set background=dark "Again, for some reason
 if has("syntax")
 	syntax enable
 endif
@@ -659,6 +660,12 @@ let g:linediff_second_buffer_command = 'rightbelow vertical new'
 vnoremap <silent> <Leader>d :Linediff<CR>
 autocmd User LinediffBufferReady
 			\ nnoremap <silent> <buffer> <Leader>d :LinediffReset<CR>
+"}}}
+" Indent Guides {{{
+let g:indent_guides_default_mapping = 0
+nmap <Leader>tg <Plug>IndentGuidesToggle
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 0 "Fat guides
 "}}}
 "}}}
 
