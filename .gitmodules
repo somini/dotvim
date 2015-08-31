@@ -112,3 +112,6 @@
 [submodule "auto-pairs_jiangmiao"]
 	path = 1st_party/auto-pairs
 	url = git@github.com:somini/auto-pairs.git
+[submodule "vim-keyword"]
+	path = 1st_party/vim-keyword
+	url = git@github.com:somini/vim-keyword.git
