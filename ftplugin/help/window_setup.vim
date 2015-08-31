@@ -3,13 +3,12 @@ if &buftype != 'help'
 	finish
 endif
 
-" Resize the window
-execute 'vertical' 'resize' (&textwidth == 0 ? 80 : &textwidth)
-
-" Moves the window to the top-left apartment
-function! s:move_window()
+" Moves the window to the top-left location
+" Also, resize it to a proper size
+function! s:setup_window()
 	wincmd H
+	execute 'vertical' 'resize' (&textwidth == 0 ? 80 : &textwidth + 2)
 endfunction
 
-autocmd WinEnter <buffer> call <SID>move_window()
-autocmd BufEnter <buffer> call <SID>move_window()
+autocmd WinEnter <buffer> call <SID>setup_window()
+autocmd BufEnter <buffer> call <SID>setup_window()
