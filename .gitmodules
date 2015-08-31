@@ -115,3 +115,6 @@
 [submodule "vim-keyword"]
 	path = 1st_party/vim-keyword
 	url = git@github.com:somini/vim-keyword.git
+[submodule "3rd_party/vim-vertical-move"]
+	path = 3rd_party/vim-vertical-move
+	url = git@github.com:bruno-/vim-vertical-move.git
