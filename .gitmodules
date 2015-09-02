@@ -104,7 +104,7 @@
 	path = 1st_party/linediff.vim
 	url = git@github.com:somini/linediff.vim.git
 [submodule "diff-fold"]
-	path = 1rd_party/diff-fold
+	path = 1st_party/diff-fold
 	url = git@github.com:somini/diff-fold.git
 [submodule "vim-indent-guides"]
 	path = 3rd_party/vim-indent-guides
@@ -125,5 +125,5 @@
 	path = 3rd_party/nerdtree-git-plugin
 	url = git@github.com:Xuyuanp/nerdtree-git-plugin.git
 [submodule "nerdtree-fugitive"]
-	path = 3rd_party/nerdtree-fugitive
-	url = git@github.com:low-ghost/nerdtree-fugitive.git
+	path = 1st_party/nerdtree-fugitive
+	url = git@github.com:somini/nerdtree-fugitive.git
