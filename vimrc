@@ -515,6 +515,8 @@ let g:ctrlp_abbrev = {
 "}}}
 " NERDTree {{{
 nnoremap <silent> <F2> :NERDTreeFocus<CR>
+nnoremap <silent> <C-F2> :NERDTreeClose<CR>
+nmap g<F2> <C-F2>
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeHighlightCursorline = 1
 let g:NERDTreeHijackNetrw = 1 "Open secondary trees for :e $folder
@@ -678,6 +680,8 @@ let g:indent_guides_guide_size = 0 "Fat guides
 "}}}
 " Extradite {{{
 nnoremap <silent> <F3> :Extradite!<CR>
+nmap <C-F3> <Plug>ExtraditeClose
+nmap g<F3> <C-F3>
 let g:extradite_width = 100 "Characters
 let g:extradite_showhash = 1 "Abbreviate commit hashes
 "}}}
