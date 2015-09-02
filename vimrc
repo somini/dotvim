@@ -676,6 +676,11 @@ nmap <Leader>tg <Plug>IndentGuidesToggle
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 0 "Fat guides
 "}}}
+" Extradite {{{
+nnoremap <silent> <F3> :Extradite!<CR>
+let g:extradite_width = 100 "Characters
+let g:extradite_showhash = 1 "Abbreviate commit hashes
+"}}}
 "}}}
 
 " Modeline {{{
