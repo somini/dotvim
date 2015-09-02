@@ -121,3 +121,9 @@
 [submodule "vim-extradite"]
 	path = 3rd_party/vim-extradite
 	url = git@github.com:int3/vim-extradite.git
+[submodule "nerdtree-git-plugin"]
+	path = 3rd_party/nerdtree-git-plugin
+	url = git@github.com:Xuyuanp/nerdtree-git-plugin.git
+[submodule "nerdtree-fugitive"]
+	path = 3rd_party/nerdtree-fugitive
+	url = git@github.com:low-ghost/nerdtree-fugitive.git
