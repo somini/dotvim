@@ -106,7 +106,7 @@
 [submodule "diff-fold"]
 	path = 3rd_party/diff-fold
 	url = git@github.com:thetoast/diff-fold.git
-[submodule "3rd_party/vim-indent-guides"]
+[submodule "vim-indent-guides"]
 	path = 3rd_party/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
 [submodule "auto-pairs_jiangmiao"]
@@ -115,6 +115,9 @@
 [submodule "vim-keyword"]
 	path = 1st_party/vim-keyword
 	url = git@github.com:somini/vim-keyword.git
-[submodule "3rd_party/vim-vertical-move"]
+[submodule "vim-vertical-move"]
 	path = 3rd_party/vim-vertical-move
 	url = git@github.com:bruno-/vim-vertical-move.git
+[submodule "vim-extradite"]
+	path = 3rd_party/vim-extradite
+	url = git@github.com:int3/vim-extradite.git
