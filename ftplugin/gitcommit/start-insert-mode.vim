@@ -1,3 +1,6 @@
 " Go to the first line and start insert mode
-goto
-startinsert
+" Only if the first line is empty
+if getline(1) ==# ''
+	goto
+	startinsert
+endif
