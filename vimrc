@@ -666,7 +666,7 @@ autocmd User LinediffBufferReady
 " AutoPairs @ jiangmiao "{{{
 let g:AutoPairsEnableDefault = 0 "Disable it by default
 " Custom Shortcuts
-let g:AutoPairsShortcutToggle = '<Leader>tp'
+nnoremap <silent> <Leader>tp :call AutoPairsToggle()<CR>
 let g:AutoPairsShortcutFastWrap = ''
 let g:AutoPairsShortcutJump = ''
 let g:AutoPairsShortcutBackInsert = ''
