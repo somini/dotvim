@@ -604,7 +604,18 @@ let g:SignatureMarkTextHLDynamic = 1 "Integrate with vim-gitgutter
 set nrformats-=octal "Messes stuff up
 "}}}
 " EasyClip {{{
-let g:EasyClipShareYanks = 1 "Yank history across vim sessions even!
+" Setup Shared Yanks {{{
+" This must be here so that the multi OS config is kept simple
+function! s:SetupEasyClipShared()
+	"Yank history across vim sessions
+	let g:EasyClipShareYanks = 1
+	" Reload the Shared file
+	call EasyClip#Shared#Init()
+endfunction
+augroup vimrc_easyclip | autocmd!
+	autocmd VimEnter * call s:SetupEasyClipShared()
+augroup END
+"}}}
 let g:EasyClipShareYanksFile = 'EasyClip.yanks'
 " let g:EasyClipShareYanksDirectory = OS_specific
 let g:EasyClipYankHistorySize = 500 "Disk space is cheap
