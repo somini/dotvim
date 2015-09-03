@@ -532,12 +532,20 @@ let g:nerdtree_tabs_open_on_console_startup = 0 "EVER
 "}}}
 " Airline {{{
 	" Customization
-let g:airline#extensions#default#layout = [
-	\ [ 'a', 'b', 'c', 'gutter' ],
-	\ [ 'functionname','x', 'y', 'z', 'warning' ]
-	\ ]
-let g:airline_section_z = '%p%%:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#'
-let g:airline_section_functionname = '%{cfi#format("%s","")}'
+function! GetCurrentFunctionName()
+	return cfi#format("%s","")
+endfunction
+function! s:vimrc_airline_config()
+	" Funcname: Use cfi
+	call airline#parts#define_function('funcname', 'GetCurrentFunctionName')
+	call airline#parts#define_accent('funcname', 'bold')
+	" Sections: Define them
+	let g:airline_section_x = airline#section#create_right(['funcname','filetype'])
+	let g:airline_section_z = '%p%%:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#'
+endfunction
+augroup vimrc_airline | autocmd!
+	autocmd User AirlineAfterInit call s:vimrc_airline_config()
+augroup END
 	" Tabline
 let g:airline#extensions#tabline#enabled = 1 "Show a tabline
 let g:airline#extensions#tabline#show_buffers = 1 "If there's only one tab, show the buffers
