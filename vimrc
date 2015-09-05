@@ -93,28 +93,26 @@ nnoremap <C-g> 2<C-g>
 nnoremap J m`J``
 
 " Move lines {{{
-" TODO: Edge cases: Top line, and anything that touches there
-"       Command calling a function with a default value
-function! MoveCurrentLine(offset)
-	if !a:offset || a:offset == 0
+nnoremap <silent> + :move +1<CR>
+nnoremap <silent> - :move -2<CR>
+vnoremap <silent> + :call <SID>MoveCurrentBlock(1)<CR>gv
+vnoremap <silent> - :call <SID>MoveCurrentBlock(-1)<CR>gv
+function! s:MoveCurrentBlock(offset) range
+	" Only on V-Line visual mode
+	if !a:offset || a:offset == 0 || visualmode() !=# 'V'
 		return
 	endif
+	let l:range = a:lastline - a:firstline + 1
 	if a:offset > 0
-		let l:offset_cmd = (a:offset == 1) ? '' : a:offset - 1.'j'
+		let l:move = a:lastline + a:offset
 	else
-		let l:offset_cmd = (-a:offset) + 1 .'k'
+		let l:move = a:firstline + a:offset - 1
 	endif
-
-	let l:old_unnamed = @"
-
-	normal! ""dd
-	execute 'normal! '.l:offset_cmd.'""p'
-
-	let @" = l:old_unnamed
+	if l:move > line('$')
+		return
+	endif
+	execute a:firstline.','.a:lastline.'move '.l:move
 endfunction
-command! -nargs=? MoveCurrentLine call MoveCurrentLine(<f-args>)
-nnoremap <silent> + :MoveCurrentLine 1<CR>
-nnoremap <silent> - :MoveCurrentLine -1<CR>
 "}}}
 " }}}
 
