@@ -682,15 +682,6 @@ vnoremap <silent> <Leader>d :Linediff<CR>
 autocmd User LinediffBufferReady
 	\ nnoremap <silent> <buffer> <Leader>d :LinediffReset<CR>
 "}}}
-" AutoPairs @ jiangmiao "{{{
-let g:AutoPairsEnableDefault = 0 "Disable it by default
-" Custom Shortcuts
-nnoremap <silent> <Leader>tp :call AutoPairsToggle()<CR>
-let g:AutoPairsShortcutFastWrap = ''
-let g:AutoPairsShortcutJump = ''
-let g:AutoPairsShortcutBackInsert = ''
-let g:AutoPairsCenterLine = 0 "Don't run `zz` after Enter
-"}}}
 " Indent Guides {{{
 let g:indent_guides_default_mapping = 0
 nmap <Leader>tg <Plug>IndentGuidesToggle
@@ -703,6 +694,20 @@ nmap <C-F3> <Plug>ExtraditeClose
 nmap g<F3> <C-F3>
 let g:extradite_width = 100 "Characters
 let g:extradite_showhash = 1 "Abbreviate commit hashes
+"}}}
+" AutoClose @ Townk {{{
+let g:AutoClosePreserveDotReg = 0 "Don't map ESC in insert mode!
+let g:AutoCloseSmartQuote = 1 "Don't close quotes when preceeded by an odd number of '\'
+let g:AutoCloseExpandSpace = 1 "Space puts a space inbetween delimiters
+let g:AutoCloseExpandEnterOn = '{' "After this chars, put a newline between delimiters
+let g:AutoCloseSelectionWrapPrefix = '<Leader>w'
+nnoremap <silent> <Leader>tp :AutoCloseToggle<CR>
+augroup vimrc_autoclose | autocmd!
+	autocmd VimEnter * let g:AutoClosePairs = AutoClose#ParsePairs('() [] {} " '' `')
+
+	autocmd FileType vim  let b:AutoClosePairs = AutoClose#DefaultPairsModified('', '"')
+	autocmd FileType help let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |', '')
+augroup END
 "}}}
 "}}}
 

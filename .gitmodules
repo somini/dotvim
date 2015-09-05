@@ -109,9 +109,6 @@
 [submodule "vim-indent-guides"]
 	path = 3rd_party/vim-indent-guides
 	url = git://github.com/nathanaelkane/vim-indent-guides.git
-[submodule "auto-pairs_jiangmiao"]
-	path = 1st_party/auto-pairs
-	url = git@github.com:somini/auto-pairs.git
 [submodule "vim-keyword"]
 	path = 1st_party/vim-keyword
 	url = git@github.com:somini/vim-keyword.git
@@ -127,3 +124,6 @@
 [submodule "nerdtree-fugitive"]
 	path = 1st_party/nerdtree-fugitive
 	url = git@github.com:somini/nerdtree-fugitive.git
+[submodule "vim-autoclose_townk"]
+	path = 1st_party/vim-autoclose
+	url = git@github.com:somini/vim-autoclose
