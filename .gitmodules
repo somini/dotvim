@@ -30,7 +30,7 @@
 	url = git@github.com:somini/bbcode.git
 [submodule "vim-commentary"]
 	path = 3rd_party/vim-commentary
-	url = git://github.com/tpope/vim-commentary.git
+	url = git@github.com:tpope/vim-commentary.git
 [submodule "vim-surround"]
 	path = 3rd_party/vim-surround
 	url = git@github.com:tpope/vim-surround.git
@@ -108,7 +108,7 @@
 	url = git@github.com:somini/diff-fold.git
 [submodule "vim-indent-guides"]
 	path = 3rd_party/vim-indent-guides
-	url = git://github.com/nathanaelkane/vim-indent-guides.git
+	url = git@github.com:nathanaelkane/vim-indent-guides.git
 [submodule "vim-keyword"]
 	path = 1st_party/vim-keyword
 	url = git@github.com:somini/vim-keyword.git
@@ -127,3 +127,6 @@
 [submodule "vim-autoclose_townk"]
 	path = 1st_party/vim-autoclose
 	url = git@github.com:somini/vim-autoclose
+[submodule "vim-sleuth"]
+	path = 3rd_party/vim-sleuth
+	url = git@github.com:tpope/vim-sleuth.git
