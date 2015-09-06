@@ -697,7 +697,7 @@ let g:extradite_showhash = 1 "Abbreviate commit hashes
 let g:AutoClosePreserveDotReg = 0 "Don't map ESC in insert mode!
 let g:AutoCloseSmartQuote = 1 "Don't close quotes when preceeded by an odd number of '\'
 let g:AutoCloseExpandSpace = 1 "Space puts a space inbetween delimiters
-let g:AutoCloseExpandEnterOn = '{' "After this chars, put a newline between delimiters
+let g:AutoCloseExpandEnterOn = '' "Don't even map the enter key, that's for Endwise
 let g:AutoCloseSelectionWrapPrefix = '<Leader>w'
 nnoremap <silent> <Leader>tp :AutoCloseToggle<CR>
 augroup vimrc_autoclose | autocmd!
@@ -705,6 +705,9 @@ augroup vimrc_autoclose | autocmd!
 
 	autocmd FileType vim  let b:AutoClosePairs = AutoClose#DefaultPairsModified('', '"')
 	autocmd FileType help let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |', '')
+	autocmd FileType ruby let b:AutoClosePairs = AutoClose#DefaultPairsModified('|', '')
+	autocmd FileType html let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>','')
+	autocmd FileType mkd,mkd.markdown,markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('*','')
 augroup END
 "}}}
 "}}}
