@@ -417,7 +417,16 @@ function! IndentLine(cols)
 	else
 		return "Do nothing
 	endif
-	execute 'keeppatterns' 'substitute' '/'.l:pat.'/'.l:subs.'/'
+	if exists(':keeppatterns')
+		let l:keeppatterns = 'keeppatterns'
+	else
+		let l:keeppatterns = ''
+		let l:old_search = @/
+	endif
+	execute l:keeppatterns 'substitute' '/'.l:pat.'/'.l:subs.'/'
+	if empty(l:keeppatterns)
+		let @/ = l:old_search
+	endif
 endfunction
 command! -nargs=? -range IndentLine <line1>,<line2>call IndentLine(<f-args>)
 nnoremap <Tab> >>
