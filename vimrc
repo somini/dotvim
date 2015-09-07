@@ -286,7 +286,7 @@ nnoremap <silent> <C-Right> :bnext<CR>
 nnoremap <silent> <S-Left> :tabprevious<CR>
 nnoremap <silent> <S-Right> :tabnext<CR>
 set hidden "Don't prompt when changing buffers
-" Alt-jk to move around
+" Alt-jk to move around "{{{
 if has('gui_running')
 	nnoremap <A-j> <C-e>
 	nnoremap <A-k> <C-y>
@@ -294,12 +294,13 @@ else
 	nnoremap <Esc>j <C-e>
 	nnoremap <Esc>k <C-y>
 endif
+"}}}
 
-" Smart Apostrophe {{{
+" "Smart" Apostrophe {{{
 nnoremap ' `
 nnoremap ` '
 "}}}
-" Smart Zero {{{
+" "Smart" Zero {{{
 nnoremap 0 ^
 nnoremap ^ 0
 "}}}
@@ -601,7 +602,7 @@ let g:SuperTabMappingSkipTabLiteral = 1
 imap <C-Tab> <C-x><C-l>
 "}}}
 " Markdown @ plasticboy {{{
-let g:vim_markdown_math=1 "LaTeX math inside $$
+let g:vim_markdown_math = 1 "LaTeX math inside $$
 let g:vim_markdown_frontmatter = 1 "YAML frontmatter e.g Jekyll
 "}}}
 " Signature {{{
