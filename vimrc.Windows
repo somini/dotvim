@@ -26,6 +26,7 @@ let &directory = s:swap_dir.'//,'.s:user_temp.'//'.',.'
 " }}}
 " Backup Files {{{
 let s:backup_dir = s:user_cache.'/backup'
+call CheckDir(s:backup_dir)
 " Same as swap, only on a different folder
 let &backupdir = s:backup_dir.','.s:user_temp.'//'.',.'
 let &backupskip = &backupskip.','.s:user_temp.'/*'

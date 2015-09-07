@@ -295,6 +295,8 @@ else
 	nnoremap <Esc>k <C-y>
 endif
 "}}}
+"On visual-block let the cursor go to "illegal" places (Half-tabs, past the end, etc)
+set virtualedit=block
 
 " "Smart" Apostrophe {{{
 nnoremap ' `
@@ -373,6 +375,8 @@ xnoremap & :&&<CR>
 set mouse=a "Enable the mouse in all modes
 set selectmode= "But no select mode, ever
 set mousemodel=extend "Just like xterm, everywhere
+set mousefocus "Move the mouse to switch windows
+set mousehide "Hide the pointer when writing
 "}}}
 
 " Help {{{
@@ -468,6 +472,8 @@ nnoremap <expr> <Leader><Tab> TabularizeThisN()
 nnoremap <silent> <Leader><Leader>cd :lcd %:h<CR>:pwd<CR>
 " b : Show a list of buffers and prompt for a number
 nnoremap <silent> <Leader><Leader>b :buffers<CR>:buffer<Space>
+" m : Show a list of marks, and prompt for one
+nnoremap <silent> <Leader><Leader>m :marks<CR>:mark<Space>
 " Vim: Yo dawg, etc {{{
 function! s:IsVimRcFile()
 	let l:cfull = fnamemodify(expand('%'),':p')

@@ -10,6 +10,13 @@ set mousehide "Hide mouse when typing
 set mousefocus
 " }}}
 
+" Workarounds {{{
+" Don't close windows by accident
+nmap <C-w><C-c> <C-c>
+" Map ALT to whatever you want
+set winaltkeys=no
+"}}}
+
 " No menus nor toolbars {{{
 set guioptions-=m guioptions-=T
 set go-=r go-=R go-=l go-=L go-=b "No scrollbars
