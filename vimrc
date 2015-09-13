@@ -86,6 +86,12 @@ set wildmenu
 set wildmode=longest:full,list:full
 set wildignorecase "Ignore case
 
+" Insert completion configuration
+" Keep the same-ish configuration from the command line
+" The SuperTab plugin helps with the rest
+set complete=.,w,b,u,t,i
+set completeopt=menu,preview,longest
+
 set autoread "Re-read files if they haven't been changed in vim
 " More information with less clicks
 nnoremap <C-g> 2<C-g>
@@ -603,8 +609,33 @@ let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
 "}}}
 "}}}
 " SuperTab {{{
+" Smarter completion
+" Real fallback is the old regular keyword completion
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-p>'
+function! s:vimrc_supertab_configure()
+	if &omnifunc != ''
+		call SuperTabChain(&omnifunc, '<C-p>')
+		if exists('b:supertab_chain_default') && b:supertab_chain_default == 1
+			call SuperTabSetDefaultCompletionType("<C-x><C-u>")
+		endif
+	endif
+endfunction
+augroup vimrc_supertab_chain | autocmd!
+	" See supertab-completionchaining
+	" This filetypes will have omnifunc override the context completion
+	autocmd FileType css let b:supertab_chain_default = 1
+	" By default, don't override
+	autocmd FileType * call s:vimrc_supertab_configure()
+augroup END
+" Each completion is a different beast
+let g:SuperTabRetainCompletionDuration = 'completion'
+" Insert completion, write more, and Tab again to re-complete
+" But don't pre-select the first value. This works like wildmode, mostly
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabLongestHighlight = 0
 " C-Tab to do full line completion
-let g:SuperTabMappingSkipTabLiteral = 1
+let g:SuperTabSkipMappingTabLiteral = 1
 imap <C-Tab> <C-x><C-l>
 "}}}
 " Markdown @ plasticboy {{{
