@@ -133,3 +133,6 @@
 [submodule "vim-man"]
 	path = 3rd_party/vim-man
 	url = git@github.com:bruno-/vim-man.git
+[submodule "3rd_party/todo.txt-vim"]
+	path = 3rd_party/todo.txt-vim
+	url = git@github.com:freitass/todo.txt-vim.git
