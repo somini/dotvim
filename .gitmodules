@@ -130,3 +130,6 @@
 [submodule "vim-sleuth"]
 	path = 3rd_party/vim-sleuth
 	url = git@github.com:tpope/vim-sleuth.git
+[submodule "vim-man"]
+	path = 3rd_party/vim-man
+	url = git@github.com:bruno-/vim-man.git
