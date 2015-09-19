@@ -62,7 +62,9 @@ let g:ctrlp_abbrev['abbrevs'] += [
 "}}}
 "}}}
 " EasyClip {{{
-let g:EasyClipShareYanksDirectory = s:user_cache
+let s:easyclip_cache = s:user_cache.'/plugin/easyclip'
+call CheckDir(s:easyclip_cache)
+let g:EasyClipShareYanksDirectory = s:easyclip_cache
 "}}}
 "}}}
 
