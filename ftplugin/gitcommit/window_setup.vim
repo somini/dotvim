@@ -1,7 +1,7 @@
 " Moves the window to the top-left location
 " Also, resize it to a proper size
 function! s:setup_window()
-	wincmd H
+	wincmd L
 endfunction
 
 autocmd WinEnter <buffer> call <SID>setup_window()
