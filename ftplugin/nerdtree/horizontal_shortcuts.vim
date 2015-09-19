@@ -1,2 +1,2 @@
-nmap <buffer> <silent> l <CR>
-nmap <buffer> <silent> h x
+nmap <buffer> <silent> <nowait> l <CR>
+nmap <buffer> <silent> <nowait> h x
