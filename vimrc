@@ -561,7 +561,7 @@ function! s:vimrc_airline_config()
 	call airline#parts#define_accent('funcname', 'bold')
 	" Sections: Define them
 	let g:airline_section_x = airline#section#create_right(['funcname','filetype'])
-	let g:airline_section_z = '%p%%:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#'
+	let g:airline_section_z = '%P:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#'
 endfunction
 augroup vimrc_airline | autocmd!
 	autocmd User AirlineAfterInit call s:vimrc_airline_config()
