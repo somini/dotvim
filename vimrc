@@ -24,7 +24,7 @@ if v:version > 703 || v:version == 703 && has("patch541")
 	set formatoptions+=j " Delete comment character when joining commented lines
 endif
 " i_C-u shouldn't delete so much
-inoremap <C-U> <C-G>u<C-U>
+inoremap <C-u> <C-g>u<C-u>
 " Baffling default
 nnoremap Y y$
 " GUI Options {{{
@@ -137,7 +137,7 @@ function! s:SetupClipboard() "{{{
 		" Make sure EasyClip is loaded, otherwise use a fallback
 		imap <C-v> <Plug>EasyClipInsertModePaste
 	else
-		execute 'imap <script> <C-V> <C-G>u' . paste#paste_cmd['i']
+		execute 'imap <script> <C-v> <C-g>u' . paste#paste_cmd['i']
 	endif
 "}}}
 " Command mode {{{
@@ -358,7 +358,7 @@ set incsearch "Start searching right away
 " Use <C-l> to clear the highlighting of :set hlsearch.
 " <C-l> Already clears the screen, it's just a bonus
 if maparg('<C-l>', 'n') ==# ''
-	nnoremap <silent> <C-L> :nohlsearch<CR><C-l>
+	nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
 endif
 " Center on search
 " Make sure it works on folds
