@@ -635,7 +635,7 @@ endfunction
 augroup vimrc_supertab_chain | autocmd!
 	" See supertab-completionchaining
 	" This filetypes will have omnifunc override the context completion
-	autocmd FileType css let b:supertab_chain_default = 1
+	autocmd FileType css,sql let b:supertab_chain_default = 1
 	" By default, don't override
 	autocmd FileType * call s:vimrc_supertab_configure()
 augroup END
@@ -767,6 +767,9 @@ augroup vimrc_autoclose | autocmd!
 	autocmd FileType html let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>','')
 	autocmd FileType mkd,mkd.markdown,markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('*','')
 augroup END
+"}}}
+"Filetype - SQL {{{
+let g:omni_sql_no_default_maps = 1 "No <C-c> etc mappings
 "}}}
 "}}}
 
