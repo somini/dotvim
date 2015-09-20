@@ -520,6 +520,17 @@ let g:ctrlp_clear_cache_on_exit = 0 "Cache the results, F5 to purge
 let g:ctrlp_open_new_file = 'r' "Create new files in the current window
 let g:ctrlp_open_multiple_files = '1i' "Open multi files in hidden buffers
 let g:ctrlp_key_loop = 0 "Multi-byte keys (eg. tilde in PT keyboard)
+let g:ctrlp_mruf_exclude = '\v\.git(/|\\)'
+let g:ctrlp_mruf_max = 500 "files to remember
+let g:ctrlp_mruf_exclude_nomod = 0 "Only mofiable files
+let g:ctrlp_tilde_homedir = 1
+nnoremap <silent> <C-b> :CtrlPMRUFiles<CR>
+" Mappings {{{
+" F2 toggles MRU in current directory
+let g:ctrlp_prompt_mappings = {
+			\ 'ToggleMRURelative()': ['<F2>'],
+			\}
+"}}}
 " Abbreviations {{{
 let g:ctrlp_abbrev = {
 \ 'gmode': 'i',
