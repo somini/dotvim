@@ -1,1 +1,1 @@
-set nofoldenable "Open all folds by default
+setlocal foldlevel=999 "Open all folds by default
