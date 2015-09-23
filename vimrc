@@ -120,6 +120,34 @@ function! s:MoveCurrentBlock(offset) range
 	execute a:firstline.','.a:lastline.'move '.l:move
 endfunction
 "}}}
+" Keep buffer locations "{{{
+if v:version >= 700
+" Save current view settings on a per-window, per-buffer basis. "{{{
+function! s:AutoSaveWinView()
+	if !exists("w:vimrc_bufview")
+		let w:vimrc_bufview = {}
+	endif
+	let w:vimrc_bufview[bufnr("%")] = winsaveview()
+endfunction "}}}
+" Restore current view settings. "{{{
+function! s:AutoRestoreWinView()
+	let l:buf = bufnr("%")
+	if exists("w:vimrc_bufview") && has_key(w:vimrc_bufview, l:buf)
+		let l:v = winsaveview()
+		let atStartOfFile = l:v.lnum == 1 && l:v.col == 0
+		if atStartOfFile && !&diff
+			call winrestview(w:vimrc_bufview[l:buf])
+		endif
+		unlet w:vimrc_bufview[l:buf]
+	endif
+endfunction "}}}
+	augroup vimrc_winview | autocmd!
+		" When switching buffers, preserve window view.
+		autocmd BufLeave * call <SID>AutoSaveWinView()
+		autocmd BufEnter * call <SID>AutoRestoreWinView()
+	augroup END
+endif
+"}}}
 " }}}
 
 " Clipboard {{{
