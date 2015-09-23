@@ -357,8 +357,9 @@ set ignorecase smartcase "Sane defaults
 set incsearch "Start searching right away
 " Use <C-l> to clear the highlighting of :set hlsearch.
 " <C-l> Already clears the screen, it's just a bonus
+" Refresh the statusline too
 if maparg('<C-l>', 'n') ==# ''
-	nnoremap <silent> <C-l> :nohlsearch<CR><C-l>
+	nnoremap <silent> <C-l> :nohlsearch<CR>:AirlineRefresh<CR><C-l>
 endif
 " Center on search
 " Make sure it works on folds
