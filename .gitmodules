@@ -142,3 +142,6 @@
 [submodule "MatchTag"]
 	path = 3rd_party/MatchTag
 	url = git@github.com:gregsexton/MatchTag.git
+[submodule "vim-lexical"]
+	path = 3rd_party/vim-lexical
+	url = git@github.com:reedes/vim-lexical.git
