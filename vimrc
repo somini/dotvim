@@ -800,6 +800,14 @@ augroup END
 "Filetype - SQL {{{
 let g:omni_sql_no_default_maps = 1 "No <C-c> etc mappings
 "}}}
+" Lexical {{{
+let g:lexical#spelllang = ['en','pt-pt',]
+let g:lexical#spell = 0 "Disable spelling by default...
+" ... but set a group of filetypes as "text"
+augroup vimrc_lexical | autocmd!
+	autocmd FileType text,mkd,markdown,gitcommit call lexical#init({'spell':1})
+augroup END
+"}}}
 "}}}
 
 " Modeline {{{

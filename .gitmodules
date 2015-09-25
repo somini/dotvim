@@ -139,3 +139,6 @@
 [submodule "vim-filetype-sql"]
 	path = 1st_party/vim-filetype-sql
 	url = git@github.com:somini/vim-filetype-sql.git
+[submodule "vim-lexical"]
+	path = 3rd_party/vim-lexical
+	url = git@github.com:reedes/vim-lexical.git
