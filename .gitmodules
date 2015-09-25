@@ -140,8 +140,8 @@
 	path = 1st_party/vim-filetype-sql
 	url = git@github.com:somini/vim-filetype-sql.git
 [submodule "MatchTag"]
-	path = 3rd_party/MatchTag
-	url = git@github.com:gregsexton/MatchTag.git
+	path = 1st_party/MatchTag
+	url = git@github.com:somini/MatchTag.git
 [submodule "vim-lexical"]
 	path = 3rd_party/vim-lexical
 	url = git@github.com:reedes/vim-lexical.git
