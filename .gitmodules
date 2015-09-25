@@ -145,3 +145,6 @@
 [submodule "vim-lexical"]
 	path = 3rd_party/vim-lexical
 	url = git@github.com:reedes/vim-lexical.git
+[submodule "vim-ragtag"]
+	path = 3rd_party/vim-ragtag
+	url = git@github.com:tpope/vim-ragtag.git
