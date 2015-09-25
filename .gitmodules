@@ -139,3 +139,6 @@
 [submodule "vim-filetype-sql"]
 	path = 1st_party/vim-filetype-sql
 	url = git@github.com:somini/vim-filetype-sql.git
+[submodule "MatchTag"]
+	path = 3rd_party/MatchTag
+	url = git@github.com:gregsexton/MatchTag.git
