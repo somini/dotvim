@@ -429,6 +429,17 @@ imap <F1> <C-o><F1>
 imap <C-F1> <C-o><C-F1>
 "}}}
 
+" Spell {{{
+let g:spelling_filetypes = 'text,mkd,markdown,gitcommit'
+set nospell "Disable it by default
+set spelllang=en "Just a sensible default
+set spellfile= "Auto-discover
+" set spellcapcheck="[.?!]\_[\])'" \t]\+" "Check capitals on start of sentences
+set spellsuggest=best "Suggest the "best" word for English
+set spellsuggest+=25 "Show at most this suggestions
+let g:loaded_spellfile_plugin = 1 "Don't ask for downloading spellfiles
+"}}}
+
 " Whitespace Management {{{
 set autoindent smartindent "Indent in smart, language-specific ways
 set shiftround "Align to the nearest "shiftwidth"
@@ -801,11 +812,10 @@ augroup END
 let g:omni_sql_no_default_maps = 1 "No <C-c> etc mappings
 "}}}
 " Lexical {{{
-let g:lexical#spelllang = ['en','pt-pt',]
 let g:lexical#spell = 0 "Disable spelling by default...
 " ... but set a group of filetypes as "text"
 augroup vimrc_lexical | autocmd!
-	autocmd FileType text,mkd,markdown,gitcommit call lexical#init({'spell':1})
+	execute 'autocmd FileType' g:spelling_filetypes  'call lexical#init({"spell":1})'
 augroup END
 "}}}
 "}}}
