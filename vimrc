@@ -430,14 +430,22 @@ imap <C-F1> <C-o><C-F1>
 "}}}
 
 " Spell {{{
-let g:spelling_filetypes = 'text,mkd,markdown,gitcommit'
+" Toggle spell checking
+nnoremap <silent> <Leader>tS :setlocal invspell<CR>
 set nospell "Disable it by default
 set spelllang=en "Just a sensible default
 set spellfile= "Auto-discover
 " set spellcapcheck="[.?!]\_[\])'" \t]\+" "Check capitals on start of sentences
-set spellsuggest=best "Suggest the "best" word for English
+set spellsuggest=fast "Works reasonably enough, but it's really fast, especially for English
 set spellsuggest+=25 "Show at most this suggestions
 let g:loaded_spellfile_plugin = 1 "Don't ask for downloading spellfiles
+let g:spelling_filetypes = 'text,mkd,markdown,gitcommit'
+augroup vimrc_spelling | autocmd!
+	" Mark this files as "text"
+	execute 'autocmd FileType' g:spelling_filetypes 'call lexical#init({"spell": 1})'
+	" Setup the current language
+	execute 'autocmd FileType' g:spelling_filetypes 'call SpellLoop_Init()'
+augroup END
 "}}}
 
 " Whitespace Management {{{
@@ -813,10 +821,18 @@ let g:omni_sql_no_default_maps = 1 "No <C-c> etc mappings
 "}}}
 " Lexical {{{
 let g:lexical#spell = 0 "Disable spelling by default...
-" ... but set a group of filetypes as "text"
-augroup vimrc_lexical | autocmd!
-	execute 'autocmd FileType' g:spelling_filetypes  'call lexical#init({"spell":1})'
-augroup END
+" Normal mode mapping to `z=`
+let g:lexical#spell_key = '<Leader><Space>'
+"}}}
+" SpellCheck @ Ingo Karkat "{{{
+let g:SpellCheck_DefineAuxiliaryCommands = 0 "Only the :SpellCheck command
+let g:SpellCheck_OnNospell = '' "SpellCheck command fails when 'spell' is off
+"}}}
+" Spell Loop "{{{
+let g:spellloop_quiet = 1 " Don't echo a message everytime the language changes
+let g:spellloop_skip_nospell = 1 " Don't loop is 'spell' is not set
+let g:spell_list = ['en_gb','pt',]
+nnoremap <silent> <Leader>ts :call SpellLoop()<CR>
 "}}}
 "}}}
 
