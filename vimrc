@@ -614,12 +614,20 @@ let g:nerdtree_tabs_open_on_console_startup = 0 "EVER
 function! GetCurrentFunctionName()
 	return cfi#format("%s","")
 endfunction
+function! GetCurrentSpellingLanguage()
+	return toupper(''.&spelllang)
+endfunction
 function! s:vimrc_airline_config()
 	" Funcname: Use cfi
 	call airline#parts#define_function('funcname', 'GetCurrentFunctionName')
 	call airline#parts#define_accent('funcname', 'bold')
+	" Spell: As simple as possible
+	call airline#parts#define_function('spelling', 'GetCurrentSpellingLanguage')
+	call airline#parts#define_accent('spelling', 'bold')
+	call airline#parts#define_condition('spelling', '&spell')
+	"----------------------
 	" Sections: Define them
-	let g:airline_section_x = airline#section#create_right(['funcname','filetype'])
+	let g:airline_section_x = airline#section#create_right(['spelling','funcname','filetype'])
 	let g:airline_section_z = '%P:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#'
 endfunction
 augroup vimrc_airline | autocmd!
