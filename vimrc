@@ -546,7 +546,7 @@ endfunction
 nnoremap <silent> <Leader><Leader>ve :call <SID>vimrc_edit($MYVIMRC)<CR>
 nnoremap <silent> <Leader><Leader>vE :call <SID>vimrc_edit($MYGVIMRC)<CR>
 " vs: Source your vimrc right here
-nnoremap <silent> <Leader><Leader>vs :call <SID>vimrc_write() <Bar> source $MYVIMRC<CR>
+nnoremap <silent> <Leader><Leader>vs :call <SID>vimrc_write() <Bar> source $MYVIMRC<CR>:AirlineRefresh<CR>
 function! s:vimrc_edit(vimrc)
 	if expand('%:p') ==# expand(a:vimrc)
 		return
