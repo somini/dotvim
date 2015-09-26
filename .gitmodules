@@ -151,3 +151,9 @@
 [submodule "spell-loop"]
 	path = 1st_party/spell-loop
 	url = git@github.com:somini/spell-loop.git
+[submodule "ingo-library"]
+	path = 3rd_party/ingo-library
+	url = git@github.com:vim-scripts/ingo-library.git
+[submodule "SpellCheck"]
+	path = 3rd_party/SpellCheck
+	url = git@github.com:vim-scripts/SpellCheck.git
