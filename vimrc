@@ -667,9 +667,9 @@ nmap ]c <Plug>GitGutterNextHunkzzzv
 "}}}
 " Syntastic {{{
 " Check if there's any syntax errors
-nnoremap <silent> Q :Errors<CR>
+nnoremap <silent> Q :SyntasticCheck<CR>:Errors<CR>
 let g:syntastic_enable_signs = 1 "Don't put signs on lines, that's for Git Gutter
-let g:syntastic_auto_loc_list = 2 "Close id there's no errors, but don't open automatically
+let g:syntastic_auto_loc_list = 2 "Close loclist if there's no errors, but don't open automatically
 let g:syntastic_check_on_open = 1 "Check when opening and saving
 let g:syntastic_check_on_wq = 0 "Not when leaving
 let g:syntastic_loc_list_height = 5
