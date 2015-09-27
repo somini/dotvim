@@ -598,6 +598,7 @@ let g:ctrlp_abbrev = {
 nnoremap <silent> <F2> :NERDTreeFocus<CR>
 nnoremap <silent> <C-F2> :NERDTreeClose<CR>
 nmap g<F2> <C-F2>
+nnoremap <silent> <S-F2> :NERDTreeCWD<CR>
 let g:NERDTreeShowBookmarks = 1
 let g:NERDTreeHighlightCursorline = 1
 let g:NERDTreeHijackNetrw = 1 "Open secondary trees for :e $folder
