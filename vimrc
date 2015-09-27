@@ -445,6 +445,8 @@ augroup vimrc_spelling | autocmd!
 	execute 'autocmd FileType' g:spelling_filetypes 'call lexical#init({"spell": 1})'
 	" Setup the current language
 	execute 'autocmd FileType' g:spelling_filetypes 'call SpellLoop_Init()'
+	" FIXME: Integrate SpellCheck into syntastic
+	execute 'autocmd FileType' g:spelling_filetypes 'nnoremap <silent> <buffer> Q :SpellLCheck<CR>'
 augroup END
 "}}}
 
