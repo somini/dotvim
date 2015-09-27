@@ -798,7 +798,7 @@ autocmd User LinediffBufferReady
 "}}}
 " Indent Guides {{{
 let g:indent_guides_default_mapping = 0
-nmap <Leader>tg <Plug>IndentGuidesToggle
+nmap <silent> <Leader>tg <Plug>IndentGuidesToggle
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 0 "Fat guides
 "}}}
