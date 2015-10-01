@@ -443,8 +443,6 @@ let g:spelling_filetypes = 'text,mkd,markdown,gitcommit'
 augroup vimrc_spelling | autocmd!
 	" Mark this files as "text"
 	execute 'autocmd FileType' g:spelling_filetypes 'call lexical#init({"spell": 1})'
-	" Setup the current language
-	execute 'autocmd FileType' g:spelling_filetypes 'call SpellLoop_Init()'
 	" FIXME: Integrate SpellCheck into syntastic
 	execute 'autocmd FileType' g:spelling_filetypes 'nnoremap <silent> <buffer> Q :SpellLCheck<CR>'
 augroup END
@@ -843,8 +841,9 @@ let g:SpellCheck_OnNospell = '' "SpellCheck command fails when 'spell' is off
 "}}}
 " Spell Loop "{{{
 let g:spellloop_quiet = 1 " Don't echo a message everytime the language changes
-let g:spellloop_skip_nospell = 1 " Don't loop is 'spell' is not set
+let g:spellloop_skip_nospell = 1 " Don't loop if 'spell' is not set
 let g:spell_list = ['en_gb','pt',]
+let &spelllang = g:spell_list[0]
 nnoremap <silent> <Leader>ts :call SpellLoop()<CR>
 "}}}
 "}}}
