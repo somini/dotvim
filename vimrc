@@ -431,7 +431,7 @@ imap <C-F1> <C-o><C-F1>
 
 " Spell {{{
 " Toggle spell checking
-nnoremap <silent> <Leader>tS :setlocal invspell<CR>
+nnoremap <silent> <Leader>tS :call SpellLoop_ToggleSpell()<CR>
 set nospell "Disable it by default
 set spelllang=en "Just a sensible default
 set spellfile= "Auto-discover
