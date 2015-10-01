@@ -526,6 +526,8 @@ nnoremap <expr> <Leader><Tab> TabularizeThisN()
 " 2Leader Commands{{{
 " cd: Change dir to the current file
 nnoremap <silent> <Leader><Leader>cd :lcd %:h<CR>:pwd<CR>
+" CD: Change dir to current file. Works globally
+nnoremap <silent> <Leader><Leader>CD :cd %:h<CR>:pwd<CR>
 " b : Show a list of buffers and prompt for a number
 nnoremap <silent> <Leader><Leader>b :buffers<CR>:buffer<Space>
 " m : Show a list of marks, and prompt for one
