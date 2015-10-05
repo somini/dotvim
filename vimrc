@@ -443,6 +443,7 @@ let g:spelling_filetypes = 'text,mkd,markdown,gitcommit'
 augroup vimrc_spelling | autocmd!
 	" Mark this files as "text"
 	execute 'autocmd FileType' g:spelling_filetypes 'call lexical#init({"spell": 1})'
+	execute 'autocmd FileType' g:spelling_filetypes 'call SpellLoop_Init()'
 	" FIXME: Integrate SpellCheck into syntastic
 	execute 'autocmd FileType' g:spelling_filetypes 'nnoremap <silent> <buffer> Q :SpellLCheck!<CR>'
 augroup END
