@@ -832,8 +832,6 @@ let g:omni_sql_no_default_maps = 1 "No <C-c> etc mappings
 "}}}
 " Lexical {{{
 let g:lexical#spell = 0 "Disable spelling by default...
-" Normal mode mapping to `z=`
-let g:lexical#spell_key = '<Leader><Space>'
 "}}}
 " SpellCheck @ Ingo Karkat "{{{
 let g:SpellCheck_DefineAuxiliaryCommands = 0 "Only the :SpellCheck command
