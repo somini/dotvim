@@ -653,8 +653,14 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#hunks#non_zero_only = 1 "Don't show changes if there's none
 	" Whitespace
 let g:airline#extensions#whitespace#symbol = '₩'
+let g:airline#extensions#whitespace#checks = ['indent', 'trailing', 'long']
 let g:airline#extensions#whitespace#trailing_format = 'T[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = 'M[%s]'
+let g:airline#extensions#whitespace#long_format = 'L[%s]'
+" Wordcount
+  let g:airline#extensions#wordcount#enabled = 1
+	let g:airline#extensions#wordcount#filetypes = g:spelling_filetypes_regex
+	let g:airline#extensions#wordcount#format = '%sW'
 	" Appearance
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
