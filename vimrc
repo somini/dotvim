@@ -430,6 +430,13 @@ imap <C-F1> <C-o><C-F1>
 "}}}
 
 " Spell {{{
+let g:spelling_filetypes = [
+			\ 'text',
+			\ 'mkd','markdown',
+			\ 'gitcommit'
+			\]
+let g:spelling_filetypes_comma = join(g:spelling_filetypes,',')
+let g:spelling_filetypes_regex = '\V'.join(g:spelling_filetypes,'\|')
 " Toggle spell checking
 nnoremap <silent> <Leader>tS :call SpellLoop_ToggleSpell()<CR>
 set nospell "Disable it by default
@@ -439,13 +446,12 @@ set spellfile= "Auto-discover
 set spellsuggest=fast "Works reasonably enough, but it's really fast, especially for English
 set spellsuggest+=25 "Show at most this suggestions
 let g:loaded_spellfile_plugin = 1 "Don't ask for downloading spellfiles
-let g:spelling_filetypes = 'text,mkd,markdown,gitcommit'
 augroup vimrc_spelling | autocmd!
 	" Mark this files as "text"
-	execute 'autocmd FileType' g:spelling_filetypes 'call lexical#init({"spell": 1})'
-	execute 'autocmd FileType' g:spelling_filetypes 'call SpellLoop_Init()'
+	execute 'autocmd FileType' g:spelling_filetypes_comma 'call lexical#init({"spell": 1})'
+	execute 'autocmd FileType' g:spelling_filetypes_comma 'call SpellLoop_Init()'
 	" FIXME: Integrate SpellCheck into syntastic
-	execute 'autocmd FileType' g:spelling_filetypes 'nnoremap <silent> <buffer> Q :SpellLCheck!<CR>'
+	execute 'autocmd FileType' g:spelling_filetypes_comma 'nnoremap <silent> <buffer> Q :SpellLCheck!<CR>'
 augroup END
 "}}}
 
