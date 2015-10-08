@@ -411,6 +411,8 @@ set mouse=a "Enable the mouse in all modes
 set selectmode= "But no select mode, ever
 set mousemodel=extend "Just like xterm, everywhere
 set mousefocus "Move the mouse to switch windows
+" But toggle this setting, sometimes it's annoying
+nnoremap <silent> <Leader>tm :set mousefocus!<CR>
 set mousehide "Hide the pointer when writing
 "}}}
 
