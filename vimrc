@@ -637,10 +637,12 @@ function! s:vimrc_airline_config()
 	call airline#parts#define_function('spelling', 'GetCurrentSpellingLanguage')
 	call airline#parts#define_accent('spelling', 'bold')
 	call airline#parts#define_condition('spelling', '&spell')
+	" CursorLocation: Big complex and complete
+	call airline#parts#define_raw('cursorloc', '%P:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#')
 	"----------------------
 	" Sections: Define them
 	let g:airline_section_x = airline#section#create_right(['spelling','funcname','filetype'])
-	let g:airline_section_z = '%P:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#'
+	let g:airline_section_z = airline#section#create_right(['cursorloc'])
 endfunction
 augroup vimrc_airline | autocmd!
 	autocmd User AirlineAfterInit call s:vimrc_airline_config()
@@ -660,10 +662,10 @@ let g:airline#extensions#whitespace#trailing_format = 'T[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = 'M[%s]'
 let g:airline#extensions#whitespace#long_format = 'L[%s]'
 " Wordcount
-  let g:airline#extensions#wordcount#enabled = 1
-	let g:airline#extensions#wordcount#filetypes = g:spelling_filetypes_regex
-	let g:airline#extensions#wordcount#format = '%sW'
-	" Appearance
+let g:airline#extensions#wordcount#enabled = 1
+let g:airline#extensions#wordcount#filetypes = g:spelling_filetypes_regex
+let g:airline#extensions#wordcount#format = '%sW'
+" Appearance
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
