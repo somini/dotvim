@@ -642,7 +642,7 @@ function! s:vimrc_airline_config()
 	"----------------------
 	" Sections: Define them
 	let g:airline_section_x = airline#section#create_right(['spelling','funcname','filetype'])
-	let g:airline_section_z = airline#section#create_right(['cursorloc'])
+	let g:airline_section_z = airline#section#create(['wordcount','cursorloc'])
 endfunction
 augroup vimrc_airline | autocmd!
 	autocmd User AirlineAfterInit call s:vimrc_airline_config()
