@@ -435,7 +435,8 @@ imap <C-F1> <C-o><C-F1>
 let g:spelling_filetypes = [
 			\ 'text',
 			\ 'mkd','markdown',
-			\ 'gitcommit'
+			\ 'gitcommit',
+			\ 'help'
 			\]
 let g:spelling_filetypes_comma = join(g:spelling_filetypes,',')
 let g:spelling_filetypes_regex = '\V'.join(g:spelling_filetypes,'\|')
