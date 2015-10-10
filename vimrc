@@ -604,6 +604,22 @@ let g:ctrlp_abbrev = {
 \ ],
 \ }
 "}}}
+" CtrlPFunky{{{
+nnoremap <silent> <Leader>f :CtrlPFunky<CR>
+let g:ctrlp_funky_after_jump = 'zvzz' "Open folds and center on screen
+let g:ctrlp_funky_multi_buffers = 1 "Not just the current buffer
+let g:ctrlp_funky_syntax_highlight = 1 "Might not work flawlessly
+let g:ctrlp_funky_use_cache = 0 "It's fast enough, I think
+" let g:ctrlp_funky_cache_dir = OS_specific
+let g:ctrlp_funky_matchtype = 'path'
+" Filetypes "{{{
+let g:ctrlp_funky_php_requires = 1
+let g:ctrlp_funky_php_include = 1
+let g:ctrlp_funky_ruby_access = 1
+let g:ctrlp_funky_ruby_classes = 1
+let g:ctrlp_funky_ruby_modules = 1
+"}}}
+"}}}
 "}}}
 " NERDTree {{{
 nnoremap <silent> <F2> :NERDTreeFocus<CR>
