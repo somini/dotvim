@@ -92,6 +92,7 @@ set wildignorecase "Ignore case
 set complete=.,w,b,u,t,i
 set completeopt=menu,preview,longest
 
+set lazyredraw "Don't update the screen in the middle of macros, etc
 set autoread "Re-read files if they haven't been changed in vim
 " More information with less clicks
 nnoremap <C-g> 2<C-g>
