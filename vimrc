@@ -222,6 +222,7 @@ function! s:SetupViminfo() "{{{
 		execute 'rviminfo!' g:viminfo_new
 	endif
 	wviminfo "Merge both files
+	rviminfo!
 
 	" Return to status quo
 	unlet g:viminfo_old g:viminfo_new
