@@ -11,26 +11,33 @@ set clipboard=unnamed " This works as expected
 "}}}
 
 " Appearance {{{
-" TODO: Check if it's possible to have multiple fonts on Windows
-set guifont=Consolas:h11
+" Important to remove the `:cANSI` nonsense set by default
+set guifont=DejaVu_Sans_Mono_for_Powerline:h11,Consolas:h11
 "}}}
 
 " Windowing Systems {{{
-let s:dll_maximize = g:os_dir.'/maximize.dll'
-let s:dll_fullscreen = g:os_dir.'/gvimfullscreen.vim'
-function s:ToggleFullScreen()
-	call libcallnr(s:dllfile, 'ToggleFullScreen', 0)
-endfunction
-augroup gvimrc_Windows_windowing | autocmd!
-	if filereadable(s:dll_maximize)
-		" Maximize the gVim window on entering
-		autocmd GUIEnter * call libcallnr(s:dll_maximize, 'Maximize', 1)
-	endif
+" If $HOME was non-ASCII characters, copy the DLL into the $VIMRUNTIME folder
+" and change this two settings to the DLL name only, no path nor extension
+let s:dll_maximize   = expand(g:os_dir.'/maximize.dll')
+let s:dll_fullscreen = expand(g:os_dir.'/gvimfullscreen.dll')
+
+function! ToggleFullScreen()
 	if filereadable(s:dll_fullscreen)
-		" Create a <Plug> mapping to maximize windows
-		nmap <Plug>ToggleFullscreen call <SID>ToggleFullscreen
+		call libcallnr(s:dll_fullscreen, 'ToggleFullScreen', 0)
 	endif
+endfunction
+function! WindowMaximize()
+	if filereadable(s:dll_maximize)
+		call libcallnr(s:dll_maximize, 'Maximize', 1)
+	endif
+endfunction
+
+augroup gvimrc_Windows_windowing | autocmd!
+	" Maximize the gVim window on entering
+	autocmd GUIEnter * call <SID>WindowMaximize()
 augroup END
+" Create a <Plug> mapping to maximize windows
+nmap <Plug>ToggleFullscreen :<C-u>call ToggleFullscreen()<CR>
 "}}}
 
 " Modeline {{{

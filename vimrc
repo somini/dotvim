@@ -3,11 +3,9 @@
 " Legacy Stuff {{{
 set nocompatible "Vim, not vi
 " Force UTF-8 for insane systems
+set encoding=utf-8
 scriptencoding utf-8
 set fileencodings=ucs-bom,utf-8,default,latin1
-if &encoding ==# 'latin1' && has('gui_running')
-	set encoding=utf-8
-endif
 
 set backspace=indent,eol,start "Backspace works as intended
 set showcmd "Show the command line as you type
@@ -319,8 +317,7 @@ augroup vimrc_windowing | autocmd!
 augroup END
 function! s:SetupWindowing()
 	if hasmapto('<Plug>ToggleFullScreen') != ''
-		" Map this in every single mode
-		map! <silent> <F11> <Plug>ToggleFullScreen
+		nmap <silent> <F11> <Plug>ToggleFullScreen
 	endif
 endfunction
 "}}}
