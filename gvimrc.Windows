@@ -15,6 +15,24 @@ set clipboard=unnamed " This works as expected
 set guifont=Consolas:h11
 "}}}
 
+" Windowing Systems {{{
+let s:dll_maximize = g:os_dir.'/maximize.dll'
+let s:dll_fullscreen = g:os_dir.'/gvimfullscreen.vim'
+function s:ToggleFullScreen()
+	call libcallnr(s:dllfile, 'ToggleFullScreen', 0)
+endfunction
+augroup gvimrc_Windows_windowing | autocmd!
+	if filereadable(s:dll_maximize)
+		" Maximize the gVim window on entering
+		autocmd GUIEnter * call libcallnr(s:dll_maximize, 'Maximize', 1)
+	endif
+	if filereadable(s:dll_fullscreen)
+		" Create a <Plug> mapping to maximize windows
+		nmap <Plug>ToggleFullscreen call <SID>ToggleFullscreen
+	endif
+augroup END
+"}}}
+
 " Modeline {{{
 " vim:ft=vim:ts=2:sw=2:fdm=marker
 "}}}

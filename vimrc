@@ -313,6 +313,18 @@ nnoremap <silent> <Leader>tC :setlocal cursorcolumn!<CR>
 "}}}
 "}}}
 
+" Windowing Systems {{{
+augroup vimrc_windowing | autocmd!
+	autocmd VimEnter * call s:SetupWindowing()
+augroup END
+function! s:SetupWindowing()
+	if hasmapto('<Plug>ToggleFullScreen') != ''
+		" Map this in every single mode
+		map! <silent> <F11> <Plug>ToggleFullScreen
+	endif
+endfunction
+"}}}
+
 " Navigation {{{
 nnoremap <Space> <C-d>
 nnoremap <S-Space> <C-u>

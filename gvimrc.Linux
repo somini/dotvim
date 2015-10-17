@@ -4,6 +4,13 @@
 set guifont=DejaVu\ Sans\ Mono\ 10,monospace
 "}}}
 
+" Windowing Systems {{{
+augroup gvimrc_Linux_windowing | autocmd!
+	" "Maximize" the gVim window on entering
+	autocmd VimEnter * set lines=1000 columns=10000
+augroup END
+"}}}
+
 " Modeline {{{
 " vim:ft=vim:ts=2:sw=2:fdm=marker
 "}}}
