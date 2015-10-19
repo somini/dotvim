@@ -21,7 +21,7 @@ set guifont=DejaVu_Sans_Mono_for_Powerline:h11,Consolas:h11
 let s:dll_maximize   = expand(g:os_dir.'/maximize.dll')
 let s:dll_fullscreen = expand(g:os_dir.'/gvimfullscreen.dll')
 
-function! ToggleFullScreen()
+function! ToggleFullscreen()
 	if filereadable(s:dll_fullscreen)
 		call libcallnr(s:dll_fullscreen, 'ToggleFullScreen', 0)
 	endif
@@ -32,12 +32,10 @@ function! WindowMaximize()
 	endif
 endfunction
 
-augroup gvimrc_Windows_windowing | autocmd!
-	" Maximize the gVim window on entering
-	autocmd GUIEnter * call <SID>WindowMaximize()
-augroup END
+" Maximize the gVim window on entering
+call WindowMaximize()
 " Create a <Plug> mapping to maximize windows
-nmap <Plug>ToggleFullscreen :<C-u>call ToggleFullscreen()<CR>
+nnoremap <Plug>ToggleFullscreen :<C-u>call ToggleFullscreen()<CR>
 "}}}
 
 " Modeline {{{

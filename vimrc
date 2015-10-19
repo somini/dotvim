@@ -316,8 +316,8 @@ augroup vimrc_windowing | autocmd!
 	autocmd VimEnter * call s:SetupWindowing()
 augroup END
 function! s:SetupWindowing()
-	if hasmapto('<Plug>ToggleFullScreen') != ''
-		nmap <silent> <F11> <Plug>ToggleFullScreen
+	if hasmapto('<Plug>ToggleFullScreen')
+		nmap <silent> <F11> <Plug>ToggleFullscreen
 	endif
 endfunction
 "}}}
