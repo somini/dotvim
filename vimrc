@@ -538,7 +538,7 @@ function! TabularizeThisN()
 		return l:cmd
 	endif
 endfunction
-nnoremap <expr> <Leader><Tab> TabularizeThisN()
+nnoremap <silent> <expr> <Leader><Tab> TabularizeThisN()
 "}}}
 "}}}
 
