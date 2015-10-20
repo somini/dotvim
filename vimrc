@@ -889,6 +889,21 @@ let g:spell_list = ['en_gb','pt',]
 let &spelllang = g:spell_list[0]
 nnoremap <silent> <Leader>ts :call SpellLoop()<CR>
 "}}}
+" SnipMate {{{
+let g:snips_author = 'somini'
+let g:snips_no_mappings = 1 "Don't map anything
+let g:snipMate = {}
+let g:snipMate['no_match_completion_feedkeys_chars'] = '' "Don't insert nothing if there's no snippet found
+" Set <C-Space> as the de-facto snippets key
+imap <C-Space>   <Plug>snipMateNextOrTrigger
+imap <C-S-Space> <Plug>snipMateBack
+vmap <C-Space>   <Plug>snipMateVisual
+" On terminals, set <C-c> as a fallback
+" Alias leaving insert mode without triggering autocmd, should be good
+imap <C-c>      <Plug>snipMateNextOrTrigger
+imap <C-g><C-c> <Plug>snipMateBack
+vmap <C-c>      <Plug>snipMateVisual
+"}}}
 "}}}
 
 " Modeline {{{
