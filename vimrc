@@ -595,6 +595,7 @@ let g:ctrlp_mruf_exclude = '\v\.git(/|\\)'
 let g:ctrlp_mruf_max = 500 "files to remember
 let g:ctrlp_mruf_exclude_nomod = 0 "Only mofiable files
 let g:ctrlp_tilde_homedir = 1
+let g:ctrlp_reuse_window = 'startify' "buftypes to overwrite
 nnoremap <silent> <C-b> :CtrlPMRUFiles<CR>
 " Mappings {{{
 " F2 toggles MRU in current directory
@@ -903,6 +904,46 @@ vmap <C-Space>   <Plug>snipMateVisual
 imap <C-c>      <Plug>snipMateNextOrTrigger
 imap <C-g><C-c> <Plug>snipMateBack
 vmap <C-c>      <Plug>snipMateVisual
+"}}}
+" Startify {{{
+let g:startify_custom_footer =[
+			\ ''                                                      ,
+			\ '   [l]  Open marked/current files. Equivalent to <CR>' ,
+			\ '   [e]  New empty buffer, Normal mode'                 ,
+			\ '   [i]  New empty buffer, Insert mode'                 ,
+			\ '   [q]  Quit '                                         ,
+			\ ]
+let g:startify_list_order = [
+			\ ['My Bookmarks']             ,
+			\ 'bookmarks'                  ,
+			\ ['Most Recently Used files'] ,
+			\ 'files'                      ,
+			\ ['Current Directory']        ,
+			\ 'dir'                        ,
+			\ ['Sessions']                 ,
+			\ 'sessions'                   ,
+			\ ]
+let g:startify_enable_special = 0
+let g:startify_files_number = 15
+let g:startify_relative_path = 1
+" Use the EasyMotion keys as custom indices
+" Filter those already mapped by Startify (see Best Practices)
+" Also filter my own mappings
+let g:startify_custom_indices = filter(
+			\ split(tolower(g:EasyMotion_keys),'.\zs'),
+			\ 'v:val !~# "[eiqbstvjk l]"')
+function! s:vimrc_startify()
+	" It's easier to identify the file names
+	setlocal cursorline
+	" Mimic nerdtree horizontal mappings, for consitency
+	nmap <buffer> l <Plug>(startify-open-buffers)
+	" Custom highlight
+	highlight link StartifyHeader  Comment
+	highlight link StartifyFooter  Comment
+endfunction
+augroup vimrc_startify | autocmd!
+	autocmd User Startified call s:vimrc_startify()
+augroup END
 "}}}
 "}}}
 
