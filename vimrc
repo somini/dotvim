@@ -898,6 +898,7 @@ let g:snipMate['no_match_completion_feedkeys_chars'] = '' "Don't insert nothing 
 " Set <C-Space> as the de-facto snippets key
 imap <C-Space>   <Plug>snipMateNextOrTrigger
 imap <C-S-Space> <Plug>snipMateBack
+imap <C-r><Tab>  <Plug>snipMateShow
 vmap <C-Space>   <Plug>snipMateVisual
 " On terminals, set <C-c> as a fallback
 " Alias leaving insert mode without triggering autocmd, should be good
