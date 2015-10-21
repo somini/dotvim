@@ -728,10 +728,10 @@ let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
 " Smarter completion
 " Real fallback is the old regular keyword completion
 let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = '<c-p>'
+let g:SuperTabContextDefaultCompletionType = '<C-p>'
 function! s:vimrc_supertab_configure()
 	if &omnifunc != ''
-		call SuperTabChain(&omnifunc, '<C-p>')
+		call SuperTabChain(&omnifunc, g:SuperTabContextDefaultCompletionType)
 		if exists('b:supertab_chain_default') && b:supertab_chain_default == 1
 			call SuperTabSetDefaultCompletionType("<C-x><C-u>")
 		endif
@@ -740,7 +740,7 @@ endfunction
 augroup vimrc_supertab_chain | autocmd!
 	" See supertab-completionchaining
 	" This filetypes will have omnifunc override the context completion
-	autocmd FileType css,sql let b:supertab_chain_default = 1
+	autocmd FileType css,sql,php let b:supertab_chain_default = 1
 	" By default, don't override
 	autocmd FileType * call s:vimrc_supertab_configure()
 augroup END
