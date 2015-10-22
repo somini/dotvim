@@ -13,6 +13,3 @@ nnoremap <buffer> <LocalLeader>h h
 nnoremap <buffer> <LocalLeader>l l
 nnoremap <buffer> <LocalLeader>j j
 nnoremap <buffer> <LocalLeader>k k
-
-" Search for new stuff
-nnoremap <buffer> f :help<Space>
