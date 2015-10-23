@@ -386,6 +386,13 @@ nnoremap <silent> ]l :lnext<CR>zzzv
 " Diff & Splits {{{
 " Diffs {{{
 set diffopt+=iwhite "Ignore whitespace on diffs
+" After changing something in a diff, move to the next diff
+" nmap to pickup changes ]c remappings
+nmap do do]c
+nmap dp dp]c
+
+" Diff the current file
+nnoremap <silent> <Leader>d :Gdiff<CR>
 "}}}
 " Splits {{{
 set splitright " New splits to the right
