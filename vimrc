@@ -273,6 +273,8 @@ nohlsearch "but not when starting up
 set sidescroll=1 "Scroll 1 line at a time, horizontally
 set scrolloff=5
 set sidescrolloff=10
+" Toggle line wrapping
+nnoremap <silent> <Leader>tw :setlocal wrap!<CR>
 "{{{ Non-Printable Characters
 set list "Show non-printable characters
 let &listchars = 'tab:  '
