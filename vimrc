@@ -87,7 +87,7 @@ set wildignorecase "Ignore case
 " Insert completion configuration
 " Keep the same-ish configuration from the command line
 " The SuperTab plugin helps with the rest
-set complete=.,w,b,u,t,i
+set complete=.,w,b,u,U,t,i
 set completeopt=menu,preview,longest
 
 set lazyredraw "Don't update the screen in the middle of macros, etc
