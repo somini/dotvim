@@ -173,5 +173,5 @@
 	path = 3rd_party/vim-snippets
 	url = git@github.com:honza/vim-snippets.git
 [submodule "vim-startify"]
-	path = 3rd_party/vim-startify
-	url = git@github.com:mhinz/vim-startify.git
+	path = 1st_party/vim-startify
+	url = git@github.com:somini/vim-startify.git
