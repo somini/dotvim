@@ -642,8 +642,8 @@ let g:ctrlp_funky_ruby_modules = 1
 "}}}
 "}}}
 " NERDTree {{{
-nnoremap <silent> <F2> :NERDTreeFocus<CR>
-nnoremap <silent> <C-F2> :NERDTreeClose<CR>
+nnoremap <silent> <F2> :NERDTreeTabsOpen<CR>:NERDTreeFocus<CR>
+nnoremap <silent> <C-F2> :NERDTreeTabsClose<CR>
 nmap g<F2> <C-F2>
 nnoremap <silent> <S-F2> :NERDTreeCWD<CR>
 let g:NERDTreeShowBookmarks = 1
@@ -653,6 +653,7 @@ let g:NERDTreeAutoCenterThreshold = 1 "Auto-center when shifting between folder 
 let g:NERDTreeMouseMode = 3 "Single-click to open file and folders
 let g:NERDTreeMinimalUI = 1 "No help and bookmark headers
 let g:NERDTreeCascadeOpenSingleChildDir = 1
+let g:NERDTreeRespectWildIgnore = 1 "Don't repeat settings
 " let g:NERDTreeBookmarksFile = OS_specific
 " NERDTreeTabs{{{
 let g:nerdtree_tabs_open_on_gui_startup = 0 "Don't auto-open
