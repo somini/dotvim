@@ -870,9 +870,8 @@ nmap <silent> <Leader>tg <Plug>IndentGuidesToggle
 let g:indent_guides_guide_size = 0 "Fat guides
 " Enable on all filetypes ...
 let g:indent_guides_enable_on_vim_startup = 1
-" ... except
-" TODO: check 'buftype'
-let g:indent_guides_exclude_filetypes = g:nonfile_filetypes
+" ... except on "non-files"
+let g:indent_guides_exclude_buftype = 1
 "}}}
 " Extradite {{{
 nnoremap <silent> <F3> :Extradite!<CR>
