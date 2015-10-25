@@ -441,7 +441,7 @@ set mousehide "Hide the pointer when writing
 nnoremap <F1> :help<Space>
 " g<F1> to close the help, regardless of current buffer
 if exists(':helpclose') "Newer vim
-	nmap <silent> <C-F1> :helpclose<CR>
+	nnoremap <silent> <C-F1> :helpclose<CR>
 else
 	nmap <silent> <C-F1> <F1><CR><F1>
 endif
@@ -507,7 +507,7 @@ function! IndentLine(cols)
 		return "Do nothing
 	endif
 	if exists(':keeppatterns')
-		let l:keeppatterns = 'keeppatterns'
+		let l:keeppatterns = 'keeppatterns '
 	else
 		let l:keeppatterns = ''
 		let l:old_search = @/
@@ -921,7 +921,7 @@ imap <C-g><C-c> <Plug>snipMateBack
 vmap <C-c>      <Plug>snipMateVisual
 "}}}
 " Startify {{{
-let g:startify_custom_footer =[
+let g:startify_custom_footer = [
 			\ ''                                                      ,
 			\ '   [l]  Open marked/current files. Equivalent to <CR>' ,
 			\ '   [e]  New empty buffer, Normal mode'                 ,
