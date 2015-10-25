@@ -147,6 +147,13 @@ endfunction "}}}
 	augroup END
 endif
 "}}}
+
+let g:nonfile_filetypes = [
+			\ 'help',
+			\ 'nerdtree',
+			\ 'man',
+			\ 'startify',
+			\ ]
 " }}}
 
 " Clipboard {{{
@@ -860,8 +867,12 @@ autocmd User LinediffBufferReady
 " Indent Guides {{{
 let g:indent_guides_default_mapping = 0
 nmap <silent> <Leader>tg <Plug>IndentGuidesToggle
-let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 0 "Fat guides
+" Enable on all filetypes ...
+let g:indent_guides_enable_on_vim_startup = 1
+" ... except
+" TODO: check 'buftype'
+let g:indent_guides_exclude_filetypes = g:nonfile_filetypes
 "}}}
 " Extradite {{{
 nnoremap <silent> <F3> :Extradite!<CR>
