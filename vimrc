@@ -970,6 +970,9 @@ augroup vimrc_startify | autocmd!
 	autocmd User Startified call s:vimrc_startify()
 augroup END
 "}}}
+" Ragtag {{{
+let g:ragtag_global_maps = 0 "Don't imap C-v, etc
+"}}}
 "}}}
 
 " Modeline {{{
