@@ -936,7 +936,7 @@ let g:startify_custom_footer = [
 			\ '   [l]  Open marked/current files. Equivalent to <CR>' ,
 			\ '   [e]  New empty buffer, Normal mode'                 ,
 			\ '   [i]  New empty buffer, Insert mode'                 ,
-			\ '   [q]  Quit '                                         ,
+			\ '   [q]  Quit VIM'                                      ,
 			\ ]
 let g:startify_list_order = [
 			\ ['My Bookmarks']             ,
@@ -962,6 +962,10 @@ function! s:vimrc_startify()
 	setlocal cursorline
 	" Mimic nerdtree horizontal mappings, for consitency
 	nmap <buffer> l <Plug>(startify-open-buffers)
+	" Quit really quits
+	" But keep the old meaning on `Q`
+	execute 'nnoremap <buffer> Q 'maparg('q', 'n')
+	nnoremap <buffer> q ZQ
 	" Custom highlight
 	highlight link StartifyHeader  Comment
 	highlight link StartifyFooter  Comment
