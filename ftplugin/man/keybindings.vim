@@ -1,5 +1,5 @@
-" Only on help buffers, to be able to edit helpfiles
-if &buftype != 'help'
+" Only on vim-man buffers, to be able to edit helpfiles
+if &buftype != 'nofile'
 	finish
 endif
 
@@ -10,4 +10,7 @@ runtime scripts/less.vim
 nnoremap <buffer> <Leader><Leader><Leader>f f
 
 " Search for new stuff, à lá Vimperator
-nnoremap <buffer> f :help<Space>
+nnoremap <buffer> f :Man<Space>
+
+" F1 to close, why not?
+nnoremap <buffer> <F1> ZQ
