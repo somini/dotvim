@@ -675,6 +675,14 @@ endfunction
 function! GetCurrentSpellingLanguage()
 	return toupper(''.&spelllang)
 endfunction
+function! GetCurrentFiletype()
+	if !empty(&filetype)
+		return &filetype
+	else
+		" When there's no filetype, show *something*
+		return '¤'
+	endif
+endfunction
 function! s:vimrc_airline_config()
 	" Funcname: Use cfi
 	call airline#parts#define_function('funcname', 'GetCurrentFunctionName')
@@ -685,9 +693,11 @@ function! s:vimrc_airline_config()
 	call airline#parts#define_condition('spelling', '&spell')
 	" CursorLocation: Big complex and complete
 	call airline#parts#define_raw('cursorloc', '%P:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#')
+	" BetterFiletype: Don't bork the whole airline when filetype is not defined
+	call airline#parts#define_function('better_ft', 'GetCurrentFiletype')
 	"----------------------
 	" Sections: Define them
-	let g:airline_section_x = airline#section#create_right(['spelling','funcname','filetype'])
+	let g:airline_section_x = airline#section#create_right(['spelling','funcname','better_ft'])
 	let g:airline_section_z = airline#section#create(['wordcount','cursorloc'])
 endfunction
 augroup vimrc_airline | autocmd!
