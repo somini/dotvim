@@ -613,6 +613,10 @@ let g:ctrlp_mruf_exclude_nomod = 0 "Only mofiable files
 let g:ctrlp_tilde_homedir = 1
 let g:ctrlp_reuse_window = 'startify' "buftypes to overwrite
 nnoremap <silent> <C-b> :CtrlPMRUFiles<CR>
+" Ignore .gitignore files
+let g:ctrlp_user_command = [
+			\ '.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'
+			\ ]
 " Mappings {{{
 " F2 toggles MRU in current directory
 let g:ctrlp_prompt_mappings = {
