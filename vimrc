@@ -929,10 +929,12 @@ let &spelllang = g:spell_list[0]
 nnoremap <silent> <Leader>ts :call SpellLoop()<CR>
 "}}}
 " SnipMate {{{
-let g:snips_author = 'somini'
+let g:snips_author = $USER                             " Sensible defaults
+let g:snips_email  = $USER.'@users.noreply.github.com' " Sensible defaults
+let g:snips_github = 'https://github.com/'.$USER       " Sensible defaults
 let g:snips_no_mappings = 1 "Don't map anything
 let g:snipMate = {}
-let g:snipMate['no_match_completion_feedkeys_chars'] = '' "Don't insert nothing if there's no snippet found
+" Don't do anything if there's no snippet found
 " Set <C-Space> as the de-facto snippets key
 imap <C-Space>   <Plug>snipMateNextOrTrigger
 imap <C-S-Space> <Plug>snipMateBack
