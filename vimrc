@@ -147,13 +147,21 @@ endfunction "}}}
 	augroup END
 endif
 "}}}
-
-let g:nonfile_filetypes = [
+" Non-file Buffer {{{
+let g:nonfile_filetypes_standalone = [
 			\ 'help',
-			\ 'nerdtree',
 			\ 'man',
+			\ ]
+let g:nonfile_filetypes_standalone_regex = '\V'.join(g:nonfile_filetypes_standalone,'\|')
+let g:nonfile_filetypes_modal = [
+			\ 'nerdtree',
 			\ 'startify',
 			\ ]
+let g:nonfile_filetypes_modal_regex = '\V'.join(g:nonfile_filetypes_modal,'\|')
+
+let g:nonfile_filetypes = g:nonfile_filetypes_standalone + g:nonfile_filetypes_modal
+let g:nonfile_filetypes_regex = '\V'.join(g:nonfile_filetypes,'\|')
+"}}}
 " }}}
 
 " Clipboard {{{
@@ -611,7 +619,8 @@ let g:ctrlp_mruf_exclude = '\v\.git(/|\\)'
 let g:ctrlp_mruf_max = 500 "files to remember
 let g:ctrlp_mruf_exclude_nomod = 0 "Only mofiable files
 let g:ctrlp_tilde_homedir = 1
-let g:ctrlp_reuse_window = 'startify' "buftypes to overwrite
+" Filetypes/buftypes to overwrite
+let g:ctrlp_reuse_window = g:nonfile_filetypes_modal_regex
 nnoremap <silent> <C-b> :CtrlPMRUFiles<CR>
 " Ignore .gitignore files
 let g:ctrlp_user_command = [
