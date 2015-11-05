@@ -28,7 +28,11 @@ function! ToggleFullscreen()
 endfunction
 function! WindowMaximize()
 	if filereadable(s:dll_maximize)
-		call libcallnr(s:dll_maximize, 'Maximize', 1)
+		try
+			call libcallnr(s:dll_maximize, 'Maximize', 1)
+		catch " Fallback to the good old hack
+			set lines=999 columns=999
+		endtry
 	endif
 endfunction
 
