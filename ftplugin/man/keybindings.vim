@@ -1,8 +1,3 @@
-" Only on vim-man buffers, to be able to edit helpfiles
-if &buftype != 'nofile'
-	finish
-endif
-
 " Less-like
 runtime scripts/less.vim
 

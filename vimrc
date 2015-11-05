@@ -999,6 +999,11 @@ augroup vimrc_startify | autocmd!
 	autocmd User Startified call s:vimrc_startify()
 augroup END
 "}}}
+" Man {{{
+" Make it vertical
+" Should be a plugin option
+cnoreabbrev Man Vman
+"}}}
 "}}}
 
 " Modeline {{{
