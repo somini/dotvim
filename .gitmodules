@@ -175,6 +175,9 @@
 [submodule "vim-startify"]
 	path = 1st_party/vim-startify
 	url = git@github.com:somini/vim-startify.git
-[submodule "1st_party/vim-steamresource"]
+[submodule "vim-steamresource"]
 	path = 1st_party/vim-steamresource
 	url = git@github.com:somini/vim-steamresource.git
+[submodule "pydoc.vim"]
+	path = 1st_party/pydoc.vim
+	url = git@github.com:somini/pydoc.vim.git
