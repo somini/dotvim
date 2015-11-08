@@ -772,7 +772,7 @@ let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
 " Smarter completion
 " Real fallback is the old regular keyword completion
 let g:SuperTabDefaultCompletionType = 'context'
-let g:SuperTabContextDefaultCompletionType = '<C-p>'
+let g:SuperTabContextDefaultCompletionType = '<C-n>'
 function! s:vimrc_supertab_configure()
 	if &omnifunc != ''
 		call SuperTabChain(&omnifunc, g:SuperTabContextDefaultCompletionType)
