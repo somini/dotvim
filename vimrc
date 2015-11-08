@@ -1000,9 +1000,8 @@ augroup vimrc_startify | autocmd!
 augroup END
 "}}}
 " Man {{{
-" Make it vertical
-" Should be a plugin option
-cnoreabbrev Man Vman
+" Make it vertical by default
+let g:man_split_type = 'vertical'
 "}}}
 "}}}
 
