@@ -555,9 +555,9 @@ function! TabularizeThisN()
 		let l:cmd = ':Tabularize'
 		if exists('*TabularizeHasPattern') && TabularizeHasPattern()
 			" Reuse the last Tabularize command
-			let l:cmd .= "\<CR>"
+			let l:cmd .= '\<CR>'
 		else
-			let l:cmd .= "\<Space>"
+			let l:cmd .= '\<Space>'
 		endif
 		return l:cmd
 	endif
@@ -588,23 +588,23 @@ function! s:IsVimRcFile()
 		return 0
 	endif
 endfunction
-" ve: Edit your vimrc
-" vE: Edit your gvimrc
-nnoremap <silent> <Leader><Leader>ve :call <SID>vimrc_edit($MYVIMRC)<CR>
-nnoremap <silent> <Leader><Leader>vE :call <SID>vimrc_edit($MYGVIMRC)<CR>
-" vs: Source your vimrc right here
-nnoremap <silent> <Leader><Leader>vs :call <SID>vimrc_write()<CR>:source $MYVIMRC<CR>:AirlineRefresh<CR>
 function! s:vimrc_edit(vimrc)
 	if expand('%:p') ==# expand(a:vimrc)
 		return
 	endif
 	execute IsEmptyBuffer() ? 'edit' : 'tabnew' a:vimrc
 endfunction
+" ve: Edit your vimrc
+" vE: Edit your gvimrc
+nnoremap <silent> <Leader><Leader>ve :call <SID>vimrc_edit($MYVIMRC)<CR>
+nnoremap <silent> <Leader><Leader>vE :call <SID>vimrc_edit($MYGVIMRC)<CR>
 function! s:vimrc_write()
 	if s:IsVimRcFile()
 		silent write
 	endif
 endfunction
+" vs: Source your vimrc right here
+nnoremap <silent> <Leader><Leader>vs :call <SID>vimrc_write()<CR>:source $MYVIMRC<CR>:AirlineRefresh<CR>
 "}}}
 "}}}
 
@@ -624,23 +624,23 @@ let g:ctrlp_reuse_window = g:nonfile_filetypes_modal_regex
 nnoremap <silent> <C-b> :CtrlPMRUFiles<CR>
 " Ignore .gitignore files
 let g:ctrlp_user_command = [
-			\ '.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'
-			\ ]
+	\ '.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'
+	\ ]
 " Mappings {{{
 " F2 toggles MRU in current directory
 let g:ctrlp_prompt_mappings = {
-			\ 'ToggleMRURelative()': ['<F2>'],
-			\}
+	\ 'ToggleMRURelative()': ['<F2>'],
+	\}
 "}}}
 " Abbreviations {{{
 let g:ctrlp_abbrev = {
 \ 'gmode': 'i',
 \ 'abbrevs': [
-	\ {
-	\ 'pattern': '^@v',
-	\ 'expanded': '@cd '.g:user_dir,
-	\ 'mode': 'pfrz',
-	\ },
+\ {
+\ 'pattern': '^@v',
+\ 'expanded': '@cd '.g:user_dir,
+\ 'mode': 'pfrz',
+\ },
 \ ],
 \ }
 "}}}
@@ -681,42 +681,42 @@ let g:nerdtree_tabs_open_on_console_startup = 0 "EVER
 "}}}
 "}}}
 " Airline {{{
-	" Customization
+" Customization
 function! GetCurrentFunctionName()
-	return cfi#format("%s","")
+return cfi#format("%s","")
 endfunction
 function! GetCurrentSpellingLanguage()
-	return toupper(''.&spelllang)
+return toupper(''.&spelllang)
 endfunction
 function! GetCurrentFiletype()
-	if !empty(&filetype)
-		return &filetype
-	else
-		" When there's no filetype, show *something*
-		return '¤'
-	endif
+if !empty(&filetype)
+return &filetype
+else
+" When there's no filetype, show *something*
+return '¤'
+endif
 endfunction
 function! s:vimrc_airline_config()
-	" Funcname: Use cfi
-	call airline#parts#define_function('funcname', 'GetCurrentFunctionName')
-	call airline#parts#define_accent('funcname', 'bold')
-	" Spell: As simple as possible
-	call airline#parts#define_function('spelling', 'GetCurrentSpellingLanguage')
-	call airline#parts#define_accent('spelling', 'bold')
-	call airline#parts#define_condition('spelling', '&spell')
-	" CursorLocation: Big complex and complete
-	call airline#parts#define_raw('cursorloc', '%P:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#')
-	" BetterFiletype: Don't bork the whole airline when filetype is not defined
-	call airline#parts#define_function('better_ft', 'GetCurrentFiletype')
-	"----------------------
-	" Sections: Define them
-	let g:airline_section_x = airline#section#create_right(['spelling','funcname','better_ft'])
-	let g:airline_section_z = airline#section#create(['wordcount','cursorloc'])
+" Funcname: Use cfi
+call airline#parts#define_function('funcname', 'GetCurrentFunctionName')
+call airline#parts#define_accent('funcname', 'bold')
+" Spell: As simple as possible
+call airline#parts#define_function('spelling', 'GetCurrentSpellingLanguage')
+call airline#parts#define_accent('spelling', 'bold')
+call airline#parts#define_condition('spelling', '&spell')
+" CursorLocation: Big complex and complete
+call airline#parts#define_raw('cursorloc', '%P:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#')
+" BetterFiletype: Don't bork the whole airline when filetype is not defined
+call airline#parts#define_function('better_ft', 'GetCurrentFiletype')
+"----------------------
+" Sections: Define them
+let g:airline_section_x = airline#section#create_right(['spelling','funcname','better_ft'])
+let g:airline_section_z = airline#section#create(['wordcount','cursorloc'])
 endfunction
 augroup vimrc_airline | autocmd!
-	autocmd User AirlineAfterInit call s:vimrc_airline_config()
+autocmd User AirlineAfterInit call s:vimrc_airline_config()
 augroup END
-	" Tabline
+" Tabline
 let g:airline#extensions#tabline#enabled = 1 "Show a tabline
 let g:airline#extensions#tabline#show_buffers = 1 "If there's only one tab, show the buffers
 let g:airline#extensions#tabline#buffer_min_count = 2 "But only if there's more than 1
@@ -724,7 +724,7 @@ let g:airline#extensions#tabline#tab_nr_type = 1 "Show tabnumbers
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved' "Uniquify filenames
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#hunks#non_zero_only = 1 "Don't show changes if there's none
-	" Whitespace
+" Whitespace
 let g:airline#extensions#whitespace#symbol = '₩'
 let g:airline#extensions#whitespace#checks = ['indent', 'trailing', 'long']
 let g:airline#extensions#whitespace#trailing_format = 'T[%s]'
@@ -736,7 +736,7 @@ let g:airline#extensions#wordcount#filetypes = g:spelling_filetypes_regex
 let g:airline#extensions#wordcount#format = '%sW'
 " Appearance
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+let g:airline_symbols = {}
 endif
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇ '
@@ -762,9 +762,9 @@ let g:syntastic_check_on_wq = 0 "Not when leaving
 let g:syntastic_loc_list_height = 5
 " File Types {{{
 let g:syntastic_mode_map = {
-			\ 'mode': 'active',
-			\ 'active_filetypes': [],
-			\ 'passive_filetypes': ['php'] }
+	\ 'mode': 'active',
+	\ 'active_filetypes': [],
+	\ 'passive_filetypes': ['php'] }
 let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
 "}}}
 "}}}
@@ -774,19 +774,19 @@ let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<C-n>'
 function! s:vimrc_supertab_configure()
-	if &omnifunc != ''
-		call SuperTabChain(&omnifunc, g:SuperTabContextDefaultCompletionType)
-		if exists('b:supertab_chain_default') && b:supertab_chain_default == 1
-			call SuperTabSetDefaultCompletionType("<C-x><C-u>")
-		endif
-	endif
+if &omnifunc != ''
+call SuperTabChain(&omnifunc, g:SuperTabContextDefaultCompletionType)
+if exists('b:supertab_chain_default') && b:supertab_chain_default == 1
+	call SuperTabSetDefaultCompletionType("<C-x><C-u>")
+endif
+endif
 endfunction
 augroup vimrc_supertab_chain | autocmd!
-	" See supertab-completionchaining
-	" This filetypes will have omnifunc override the context completion
-	autocmd FileType css,sql,php let b:supertab_chain_default = 1
-	" By default, don't override
-	autocmd FileType * call s:vimrc_supertab_configure()
+" See supertab-completionchaining
+" This filetypes will have omnifunc override the context completion
+autocmd FileType css,sql,php let b:supertab_chain_default = 1
+" By default, don't override
+autocmd FileType * call s:vimrc_supertab_configure()
 augroup END
 " Each completion is a different beast
 let g:SuperTabRetainCompletionDuration = 'completion'
@@ -812,13 +812,13 @@ set nrformats-=octal "Messes stuff up
 " Setup Shared Yanks {{{
 " This must be here so that the multi OS config is kept simple
 function! s:SetupEasyClipShared()
-	"Yank history across vim sessions
-	let g:EasyClipShareYanks = 1
-	" Reload the Shared file
-	call EasyClip#Shared#Init()
+"Yank history across vim sessions
+let g:EasyClipShareYanks = 1
+" Reload the Shared file
+call EasyClip#Shared#Init()
 endfunction
 augroup vimrc_easyclip | autocmd!
-	autocmd VimEnter * call s:SetupEasyClipShared()
+autocmd VimEnter * call s:SetupEasyClipShared()
 augroup END
 "}}}
 let g:EasyClipShareYanksFile = 'EasyClip.yanks'
@@ -828,7 +828,7 @@ let g:EasyClipPreserveCursorPositionAfterYank = 1 "Consistency with other operat
 let g:EasyClipAutoFormat = 1 "Auto-format pasted text ...
 " But press a key combination to toggle between formatted and unformatted text
 nmap <Leader>cf <Plug>EasyClipToggleFormattedPaste
-"" Keybidings
+" Keybidings {{{
 let g:EasyClipUseCutDefaults = 0 "Cut text, don't alias marks
 nmap x  <Plug>MoveMotionPlug
 xmap x  <Plug>MoveMotionXPlug
@@ -844,6 +844,7 @@ nmap S  <Plug>SubstituteOverMotionMap$
 nmap ss <Plug>SubstituteLine
 let g:EasyClipUsePasteToggleDefaults = 0 " Paste and rotate the yank ring
 nmap <C-d> <Plug>EasyClipSwapPasteBackwards
+"}}}
 "}}}
 " EasyMotion {{{
 let g:EasyMotion_verbose = 0
@@ -885,7 +886,7 @@ let g:linediff_first_buffer_command  = 'rightbelow new'
 let g:linediff_second_buffer_command = 'rightbelow vertical new'
 vnoremap <silent> <Leader>d :Linediff<CR>
 autocmd User LinediffBufferReady
-	\ nnoremap <silent> <buffer> <Leader>d :LinediffReset<CR>
+\ nnoremap <silent> <buffer> <Leader>d :LinediffReset<CR>
 "}}}
 " Indent Guides {{{
 let g:indent_guides_default_mapping = 0
@@ -912,13 +913,13 @@ let g:AutoCloseExpandEnterOn = '' "Don't even map the enter key, that's for Endw
 let g:AutoCloseSelectionWrapPrefix = '<Leader>w'
 nnoremap <silent> <Leader>tp :AutoCloseToggle<CR>
 augroup vimrc_autoclose | autocmd!
-	autocmd VimEnter * let g:AutoClosePairs = AutoClose#ParsePairs('() [] {} " '' `')
+autocmd VimEnter * let g:AutoClosePairs = AutoClose#ParsePairs('() [] {} " '' `')
 
-	autocmd FileType vim  let b:AutoClosePairs = AutoClose#DefaultPairsModified('', '"')
-	autocmd FileType help let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |', '')
-	autocmd FileType ruby let b:AutoClosePairs = AutoClose#DefaultPairsModified('|', '')
-	autocmd FileType html let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>','')
-	autocmd FileType mkd,mkd.markdown,markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('*','')
+autocmd FileType vim  let b:AutoClosePairs = AutoClose#DefaultPairsModified('', '"')
+autocmd FileType help let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |', '')
+autocmd FileType ruby let b:AutoClosePairs = AutoClose#DefaultPairsModified('|', '')
+autocmd FileType html let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>','')
+autocmd FileType mkd,mkd.markdown,markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('*','')
 augroup END
 "}}}
 "Filetype - SQL {{{
@@ -958,22 +959,22 @@ vmap <C-c>      <Plug>snipMateVisual
 "}}}
 " Startify {{{
 let g:startify_custom_footer = [
-			\ ''                                                      ,
-			\ '   [l]  Open marked/current files. Equivalent to <CR>' ,
-			\ '   [e]  New empty buffer, Normal mode'                 ,
-			\ '   [i]  New empty buffer, Insert mode'                 ,
-			\ '   [q]  Quit VIM'                                      ,
-			\ ]
+	\ ''                                                      ,
+	\ '   [l]  Open marked/current files. Equivalent to <CR>' ,
+	\ '   [e]  New empty buffer, Normal mode'                 ,
+	\ '   [i]  New empty buffer, Insert mode'                 ,
+	\ '   [q]  Quit VIM'                                      ,
+	\ ]
 let g:startify_list_order = [
-			\ ['My Bookmarks']             ,
-			\ 'bookmarks'                  ,
-			\ ['Most Recently Used files'] ,
-			\ 'files'                      ,
-			\ ['Current Directory']        ,
-			\ 'dir'                        ,
-			\ ['Sessions']                 ,
-			\ 'sessions'                   ,
-			\ ]
+	\ ['My Bookmarks']             ,
+	\ 'bookmarks'                  ,
+	\ ['Most Recently Used files'] ,
+	\ 'files'                      ,
+	\ ['Current Directory']        ,
+	\ 'dir'                        ,
+	\ ['Sessions']                 ,
+	\ 'sessions'                   ,
+	\ ]
 let g:startify_enable_special = 0
 let g:startify_files_number = 15
 let g:startify_relative_path = 1
@@ -981,23 +982,23 @@ let g:startify_relative_path = 1
 " Filter those already mapped by Startify (see Best Practices)
 " Also filter my own mappings
 let g:startify_custom_indices = filter(
-			\ split(tolower(g:EasyMotion_keys),'.\zs'),
-			\ 'v:val !~# "[eiqbstvjk l]"')
+	\ split(tolower(g:EasyMotion_keys),'.\zs'),
+	\ 'v:val !~# "[eiqbstvjk l]"')
 function! s:vimrc_startify()
-	" It's easier to identify the file names
-	setlocal cursorline
-	" Mimic nerdtree horizontal mappings, for consitency
-	nmap <buffer> l <Plug>(startify-open-buffers)
-	" Quit really quits
-	" But keep the old meaning on `Q`
-	execute 'nnoremap <buffer> Q 'maparg('q', 'n')
-	nnoremap <buffer> q ZQ
-	" Custom highlight
-	highlight link StartifyHeader  Comment
-	highlight link StartifyFooter  Comment
+" It's easier to identify the file names
+setlocal cursorline
+" Mimic nerdtree horizontal mappings, for consitency
+nmap <buffer> l <Plug>(startify-open-buffers)
+" Quit really quits
+" But keep the old meaning on `Q`
+execute 'nnoremap <buffer> Q 'maparg('q', 'n')
+nnoremap <buffer> q ZQ
+" Custom highlight
+highlight link StartifyHeader  Comment
+highlight link StartifyFooter  Comment
 endfunction
 augroup vimrc_startify | autocmd!
-	autocmd User Startified call s:vimrc_startify()
+autocmd User Startified call s:vimrc_startify()
 augroup END
 "}}}
 " Man {{{
