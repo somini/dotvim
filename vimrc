@@ -978,7 +978,7 @@ let g:startify_list_order = [
 let g:startify_enable_special = 0
 let g:startify_files_number = 15
 let g:startify_relative_path = 1
-let g:startify_nowait_all = 1
+let g:startify_mapping_nowait = 1
 " Use the EasyMotion keys as custom indices
 " Filter those already mapped by Startify (see Best Practices)
 " Also filter my own mappings
