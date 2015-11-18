@@ -181,3 +181,6 @@
 [submodule "pydoc.vim"]
 	path = 1st_party/pydoc.vim
 	url = git@github.com:somini/pydoc.vim.git
+[submodule "vim-all"]
+	path = 3rd_party/vim-all
+	url = git@github.com:vim-utils/vim-all.git
