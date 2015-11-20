@@ -121,25 +121,25 @@ endfunction
 "}}}
 " Keep buffer locations "{{{
 if v:version >= 700
-" Save current view settings on a per-window, per-buffer basis. "{{{
-function! s:AutoSaveWinView()
-	if !exists("w:vimrc_bufview")
-		let w:vimrc_bufview = {}
-	endif
-	let w:vimrc_bufview[bufnr("%")] = winsaveview()
-endfunction "}}}
-" Restore current view settings. "{{{
-function! s:AutoRestoreWinView()
-	let l:buf = bufnr("%")
-	if exists("w:vimrc_bufview") && has_key(w:vimrc_bufview, l:buf)
-		let l:v = winsaveview()
-		let atStartOfFile = l:v.lnum == 1 && l:v.col == 0
-		if atStartOfFile && !&diff
-			call winrestview(w:vimrc_bufview[l:buf])
+	" Save current view settings on a per-window, per-buffer basis. "{{{
+	function! s:AutoSaveWinView()
+		if !exists("w:vimrc_bufview")
+			let w:vimrc_bufview = {}
 		endif
-		unlet w:vimrc_bufview[l:buf]
-	endif
-endfunction "}}}
+		let w:vimrc_bufview[bufnr("%")] = winsaveview()
+	endfunction "}}}
+	" Restore current view settings. "{{{
+	function! s:AutoRestoreWinView()
+		let l:buf = bufnr("%")
+		if exists("w:vimrc_bufview") && has_key(w:vimrc_bufview, l:buf)
+			let l:v = winsaveview()
+			let atStartOfFile = l:v.lnum == 1 && l:v.col == 0
+			if atStartOfFile && !&diff
+				call winrestview(w:vimrc_bufview[l:buf])
+			endif
+			unlet w:vimrc_bufview[l:buf]
+		endif
+	endfunction "}}}
 	augroup vimrc_winview | autocmd!
 		" When switching buffers, preserve window view.
 		autocmd BufLeave * call <SID>AutoSaveWinView()
@@ -171,7 +171,7 @@ augroup vimrc_clipboard | autocmd!
 	autocmd VimEnter * call s:SetupClipboard()
 augroup END
 function! s:SetupClipboard() "{{{
-" Insert mode {{{
+	" Insert mode {{{
 	" C-q does what C-v did, insert raw characters
 	inoremap <C-q> <C-v>
 	" C-v pastes
@@ -181,8 +181,8 @@ function! s:SetupClipboard() "{{{
 	else
 		execute 'imap <script> <C-v> <C-g>u' . paste#paste_cmd['i']
 	endif
-"}}}
-" Command mode {{{
+	"}}}
+	" Command mode {{{
 	" C-y pastes
 	if exists('g:loaded_EasyClip') && g:loaded_EasyClip
 		" Make sure EasyClip is loaded, otherwise use a fallback
@@ -190,7 +190,7 @@ function! s:SetupClipboard() "{{{
 	else
 		cnoremap <C-y> <C-r>+
 	endif
-"}}}
+	"}}}
 endfunction "}}}
 " yY yanks the line minus the <CR> at the end
 " just like dD from EasyClip
@@ -624,25 +624,25 @@ let g:ctrlp_reuse_window = g:nonfile_filetypes_modal_regex
 nnoremap <silent> <C-b> :CtrlPMRUFiles<CR>
 " Ignore .gitignore files
 let g:ctrlp_user_command = [
-	\ '.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'
-	\ ]
+			\ '.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'
+			\ ]
 " Mappings {{{
 " F2 toggles MRU in current directory
 let g:ctrlp_prompt_mappings = {
-	\ 'ToggleMRURelative()': ['<F2>'],
-	\}
+			\ 'ToggleMRURelative()': ['<F2>'],
+			\}
 "}}}
 " Abbreviations {{{
 let g:ctrlp_abbrev = {
-\ 'gmode': 'i',
-\ 'abbrevs': [
-\ {
-\ 'pattern': '^@v',
-\ 'expanded': '@cd '.g:user_dir,
-\ 'mode': 'pfrz',
-\ },
-\ ],
-\ }
+			\ 'gmode': 'i',
+			\ 'abbrevs': [
+			\ {
+			\ 'pattern': '^@v',
+			\ 'expanded': '@cd '.g:user_dir,
+			\ 'mode': 'pfrz',
+			\ },
+			\ ],
+			\ }
 "}}}
 " CtrlPFunky{{{
 nnoremap <silent> <Leader>f :CtrlPFunky<CR>
@@ -683,38 +683,38 @@ let g:nerdtree_tabs_open_on_console_startup = 0 "EVER
 " Airline {{{
 " Customization
 function! GetCurrentFunctionName()
-return cfi#format("%s","")
+	return cfi#format("%s","")
 endfunction
 function! GetCurrentSpellingLanguage()
-return toupper(''.&spelllang)
+	return toupper(''.&spelllang)
 endfunction
 function! GetCurrentFiletype()
-if !empty(&filetype)
-return &filetype
-else
-" When there's no filetype, show *something*
-return '¤'
-endif
+	if !empty(&filetype)
+		return &filetype
+	else
+		" When there's no filetype, show *something*
+		return '¤'
+	endif
 endfunction
 function! s:vimrc_airline_config()
-" Funcname: Use cfi
-call airline#parts#define_function('funcname', 'GetCurrentFunctionName')
-call airline#parts#define_accent('funcname', 'bold')
-" Spell: As simple as possible
-call airline#parts#define_function('spelling', 'GetCurrentSpellingLanguage')
-call airline#parts#define_accent('spelling', 'bold')
-call airline#parts#define_condition('spelling', '&spell')
-" CursorLocation: Big complex and complete
-call airline#parts#define_raw('cursorloc', '%P:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#')
-" BetterFiletype: Don't bork the whole airline when filetype is not defined
-call airline#parts#define_function('better_ft', 'GetCurrentFiletype')
-"----------------------
-" Sections: Define them
-let g:airline_section_x = airline#section#create_right(['spelling','funcname','better_ft'])
-let g:airline_section_z = airline#section#create(['wordcount','cursorloc'])
+	" Funcname: Use cfi
+	call airline#parts#define_function('funcname', 'GetCurrentFunctionName')
+	call airline#parts#define_accent('funcname', 'bold')
+	" Spell: As simple as possible
+	call airline#parts#define_function('spelling', 'GetCurrentSpellingLanguage')
+	call airline#parts#define_accent('spelling', 'bold')
+	call airline#parts#define_condition('spelling', '&spell')
+	" CursorLocation: Big complex and complete
+	call airline#parts#define_raw('cursorloc', '%P:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#')
+	" BetterFiletype: Don't bork the whole airline when filetype is not defined
+	call airline#parts#define_function('better_ft', 'GetCurrentFiletype')
+	"----------------------
+	" Sections: Define them
+	let g:airline_section_x = airline#section#create_right(['spelling','funcname','better_ft'])
+	let g:airline_section_z = airline#section#create(['wordcount','cursorloc'])
 endfunction
 augroup vimrc_airline | autocmd!
-autocmd User AirlineAfterInit call s:vimrc_airline_config()
+	autocmd User AirlineAfterInit call s:vimrc_airline_config()
 augroup END
 " Tabline
 let g:airline#extensions#tabline#enabled = 1 "Show a tabline
@@ -736,7 +736,7 @@ let g:airline#extensions#wordcount#filetypes = g:spelling_filetypes_regex
 let g:airline#extensions#wordcount#format = '%sW'
 " Appearance
 if !exists('g:airline_symbols')
-let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇ '
@@ -762,9 +762,9 @@ let g:syntastic_check_on_wq = 0 "Not when leaving
 let g:syntastic_loc_list_height = 5
 " File Types {{{
 let g:syntastic_mode_map = {
-	\ 'mode': 'active',
-	\ 'active_filetypes': [],
-	\ 'passive_filetypes': ['php'] }
+			\ 'mode': 'active',
+			\ 'active_filetypes': [],
+			\ 'passive_filetypes': ['php'] }
 let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
 "}}}
 "}}}
@@ -774,19 +774,19 @@ let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<C-n>'
 function! s:vimrc_supertab_configure()
-if &omnifunc != ''
-call SuperTabChain(&omnifunc, g:SuperTabContextDefaultCompletionType)
-if exists('b:supertab_chain_default') && b:supertab_chain_default == 1
-	call SuperTabSetDefaultCompletionType("<C-x><C-u>")
-endif
-endif
+	if &omnifunc != ''
+		call SuperTabChain(&omnifunc, g:SuperTabContextDefaultCompletionType)
+		if exists('b:supertab_chain_default') && b:supertab_chain_default == 1
+			call SuperTabSetDefaultCompletionType("<C-x><C-u>")
+		endif
+	endif
 endfunction
 augroup vimrc_supertab_chain | autocmd!
-" See supertab-completionchaining
-" This filetypes will have omnifunc override the context completion
-autocmd FileType css,sql,php let b:supertab_chain_default = 1
-" By default, don't override
-autocmd FileType * call s:vimrc_supertab_configure()
+	" See supertab-completionchaining
+	" This filetypes will have omnifunc override the context completion
+	autocmd FileType css,sql,php let b:supertab_chain_default = 1
+	" By default, don't override
+	autocmd FileType * call s:vimrc_supertab_configure()
 augroup END
 " Each completion is a different beast
 let g:SuperTabRetainCompletionDuration = 'completion'
@@ -812,13 +812,13 @@ set nrformats-=octal "Messes stuff up
 " Setup Shared Yanks {{{
 " This must be here so that the multi OS config is kept simple
 function! s:SetupEasyClipShared()
-"Yank history across vim sessions
-let g:EasyClipShareYanks = 1
-" Reload the Shared file
-call EasyClip#Shared#Init()
+	"Yank history across vim sessions
+	let g:EasyClipShareYanks = 1
+	" Reload the Shared file
+	call EasyClip#Shared#Init()
 endfunction
 augroup vimrc_easyclip | autocmd!
-autocmd VimEnter * call s:SetupEasyClipShared()
+	autocmd VimEnter * call s:SetupEasyClipShared()
 augroup END
 "}}}
 let g:EasyClipShareYanksFile = 'EasyClip.yanks'
@@ -886,7 +886,7 @@ let g:linediff_first_buffer_command  = 'rightbelow new'
 let g:linediff_second_buffer_command = 'rightbelow vertical new'
 vnoremap <silent> <Leader>d :Linediff<CR>
 autocmd User LinediffBufferReady
-\ nnoremap <silent> <buffer> <Leader>d :LinediffReset<CR>
+			\ nnoremap <silent> <buffer> <Leader>d :LinediffReset<CR>
 "}}}
 " Indent Guides {{{
 let g:indent_guides_default_mapping = 0
@@ -913,13 +913,13 @@ let g:AutoCloseExpandEnterOn = '' "Don't even map the enter key, that's for Endw
 let g:AutoCloseSelectionWrapPrefix = '<Leader>w'
 nnoremap <silent> <Leader>tp :AutoCloseToggle<CR>
 augroup vimrc_autoclose | autocmd!
-autocmd VimEnter * let g:AutoClosePairs = AutoClose#ParsePairs('() [] {} " '' `')
+	autocmd VimEnter * let g:AutoClosePairs = AutoClose#ParsePairs('() [] {} " '' `')
 
-autocmd FileType vim  let b:AutoClosePairs = AutoClose#DefaultPairsModified('', '"')
-autocmd FileType help let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |', '')
-autocmd FileType ruby let b:AutoClosePairs = AutoClose#DefaultPairsModified('|', '')
-autocmd FileType html let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>','')
-autocmd FileType mkd,mkd.markdown,markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('*','')
+	autocmd FileType vim  let b:AutoClosePairs = AutoClose#DefaultPairsModified('', '"')
+	autocmd FileType help let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |', '')
+	autocmd FileType ruby let b:AutoClosePairs = AutoClose#DefaultPairsModified('|', '')
+	autocmd FileType html let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>','')
+	autocmd FileType mkd,mkd.markdown,markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('*','')
 augroup END
 "}}}
 "Filetype - SQL {{{
