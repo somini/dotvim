@@ -845,6 +845,9 @@ nmap ss <Plug>SubstituteLine
 let g:EasyClipUsePasteToggleDefaults = 0 " Paste and rotate the yank ring
 nmap <C-d> <Plug>EasyClipSwapPasteBackwards
 "}}}
+" EasyClipRing {{{
+imap <C-y> <Plug>(EasyClipRing)
+"}}}
 "}}}
 " EasyMotion {{{
 let g:EasyMotion_verbose = 0
