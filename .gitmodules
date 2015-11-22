@@ -190,3 +190,6 @@
 [submodule "vim-templates"]
 	path = 1st_party/vim-templates
 	url = git@github.com:somini/vim-templates.git
+[submodule "Colorizer"]
+	path = 3rd_party/Colorizer
+	url = git@github.com:chrisbra/Colorizer.git
