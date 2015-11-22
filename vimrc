@@ -1009,6 +1009,9 @@ augroup END
 " Make it vertical by default
 let g:man_split_type = 'vertical'
 "}}}
+" Templates {{{
+let g:templates_empty_files = 0 "Don't use the templates on existing, empty files
+"}}}
 "}}}
 
 " Modeline {{{

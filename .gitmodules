@@ -187,3 +187,6 @@
 [submodule "EasyClipRing.vim"]
 	path = 3rd_party/EasyClipRing.vim
 	url = git@github.com:davidosomething/EasyClipRing.vim.git
+[submodule "vim-templates"]
+	path = 1st_party/vim-templates
+	url = git@github.com:somini/vim-templates.git
