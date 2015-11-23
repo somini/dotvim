@@ -846,7 +846,8 @@ let g:EasyClipUsePasteToggleDefaults = 0 " Paste and rotate the yank ring
 nmap <C-d> <Plug>EasyClipSwapPasteBackwards
 "}}}
 " EasyClipRing {{{
-imap <C-y> <Plug>(EasyClipRing)
+let g:loaded_EasyClipRing = 1
+" imap <C-y> <Plug>(EasyClipRing)
 "}}}
 "}}}
 " EasyMotion {{{
