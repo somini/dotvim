@@ -555,14 +555,14 @@ function! TabularizeThisN()
 		let l:cmd = ':Tabularize'
 		if exists('*TabularizeHasPattern') && TabularizeHasPattern()
 			" Reuse the last Tabularize command
-			let l:cmd .= '\<CR>'
+			let l:cmd .= "\<CR>"
 		else
-			let l:cmd .= '\<Space>'
+			let l:cmd .= "\<Space>"
 		endif
 		return l:cmd
 	endif
 endfunction
-nnoremap <silent> <expr> <Leader><Tab> TabularizeThisN()
+nnoremap <expr> <Leader><Tab> TabularizeThisN()
 "}}}
 "}}}
 
