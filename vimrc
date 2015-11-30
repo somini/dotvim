@@ -1021,6 +1021,16 @@ let g:colorizer_skip_comments = 1
 let g:colorizer_x11_names = 1
 let g:colorizer_debug = 0
 "}}}
+" Ragtag {{{
+function! s:vimrc_setup_ragtag()
+	" Remove this mappings that interfere with pasting
+	iunmap <buffer> <C-V>%
+	iunmap <buffer> <C-V>&
+endfunction
+augroup vimrc_ragtag | autocmd!
+	autocmd User Ragtag call s:vimrc_setup_ragtag()
+augroup END
+"}}}
 "}}}
 
 " Modeline {{{
