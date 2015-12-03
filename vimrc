@@ -301,9 +301,30 @@ set listchars+=nbsp:·
 "}}}
 " Numbers {{{
 set numberwidth=1 " Minimal width of the number column
-set nonumber "No line numbers by default ...
+set nonumber norelativenumber " No line numbers by default ...
 "... but toggle them with:
-nnoremap <silent> <Leader>tn :setlocal number!<CR>
+nnoremap <silent> <Leader>tn :call <SID>ToggleNumber()<CR>
+nnoremap <silent> <Leader>tN :call <SID>ToggleRelativeNumber()<CR>
+" Functions {{{
+" Let the toggle number mapping toggle all numbers, and persist the relative
+" number option with a script variable
+function! s:ToggleNumber()
+	if &number
+		let s:vimrc_relativenumber = &relativenumber
+		setlocal nonumber norelativenumber
+	else
+		setlocal number
+		let &l:relativenumber = (exists('s:vimrc_relativenumber')) ? s:vimrc_relativenumber : 0 "OFF
+	endif
+endfunction
+function! s:ToggleRelativeNumber()
+	if &number
+		setlocal relativenumber!
+	else
+		let s:vimrc_relativenumber = exists('s:vimrc_relativenumber') ? !s:vimrc_relativenumber : 1 "ON
+	endif
+endfunction
+"}}}
 "}}}
 " Folds {{{
 nnoremap <silent> <Leader>tf :call <SID>ToggleFolds()<CR>
