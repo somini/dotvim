@@ -983,6 +983,7 @@ let g:snips_github = 'https://github.com/'.$USER       " Sensible defaults
 let g:snips_no_mappings = 1 "Don't map anything
 let g:snipMate = {}
 " Don't do anything if there's no snippet found
+let g:snipMate['no_match_completion_feedkeys_chars'] = ''
 " Set <C-Space> as the de-facto snippets key
 imap <C-Space>   <Plug>snipMateNextOrTrigger
 imap <C-S-Space> <Plug>snipMateBack
