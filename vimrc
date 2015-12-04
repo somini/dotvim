@@ -984,9 +984,6 @@ let g:snips_author = $USER                             " Sensible defaults
 let g:snips_email  = $USER.'@users.noreply.github.com' " Sensible defaults
 let g:snips_github = 'https://github.com/'.$USER       " Sensible defaults
 let g:snips_no_mappings = 1 "Don't map anything
-let g:snipMate = {}
-" Don't do anything if there's no snippet found
-let g:snipMate['no_match_completion_feedkeys_chars'] = ''
 " Set <C-Space> as the de-facto snippets key
 imap <C-Space>   <Plug>snipMateNextOrTrigger
 imap <C-S-Space> <Plug>snipMateBack
@@ -997,6 +994,13 @@ vmap <C-Space>   <Plug>snipMateVisual
 imap <C-c>      <Plug>snipMateNextOrTrigger
 imap <C-g><C-c> <Plug>snipMateBack
 vmap <C-c>      <Plug>snipMateVisual
+function! s:vimrc_snipmate_configure()
+	" Don't do anything if there's no snippet found
+	let g:snipMate['no_match_completion_feedkeys_chars'] = ''
+endfunction
+augroup vimrc_snipmate | autocmd!
+	autocmd VimEnter * call s:vimrc_snipmate_configure()
+augroup END
 "}}}
 " Startify {{{
 let g:startify_custom_footer = [
