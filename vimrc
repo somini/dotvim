@@ -796,8 +796,11 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_mode_map = {
 			\ 'mode': 'active',
 			\ 'active_filetypes': [],
-			\ 'passive_filetypes': ['php'] }
-let g:syntastic_python_checkers = ["python","pylint","flake8","pep8"]
+			\ 'passive_filetypes': ['php', 'javascript'],
+			\ }
+let g:syntastic_python_checkers = ['python', 'pylint', 'flake8', 'pep8']
+let g:syntastic_javascript_checkers = ['jslint', 'jshint', 'gjslint']
+let g:syntastic_javascript_gjslint_args = '--nojsdoc --disable 1,5,110'
 "}}}
 "}}}
 " SuperTab {{{
