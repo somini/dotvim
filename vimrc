@@ -717,6 +717,12 @@ function! GetCurrentFiletype()
 		return '¤'
 	endif
 endfunction
+function! GetWatchedVariable()
+	if len(g:vimrc_airline_watch_variable) > 0
+		execute 'return &'.g:vimrc_airline_watch_variable.".'«".g:vimrc_airline_watch_variable."'"
+	else
+		return ''
+endfunction
 function! s:vimrc_airline_config()
 	" Funcname: Use cfi
 	call airline#parts#define_function('funcname', 'GetCurrentFunctionName')
@@ -729,9 +735,13 @@ function! s:vimrc_airline_config()
 	call airline#parts#define_raw('cursorloc', '%P:%L|%#__accent_bold#%-4l%{g:airline_symbols.linenr}%2v%#__restore__#')
 	" BetterFiletype: Don't bork the whole airline when filetype is not defined
 	call airline#parts#define_function('better_ft', 'GetCurrentFiletype')
+	" WatchVariable: "Debug" viml directly
+	let g:vimrc_airline_watch_variable = ''
+	call airline#parts#define_function('watchvar', 'GetWatchedVariable')
+	call airline#parts#define_condition('watchvar', "exists('g:vimrc_airline_watch_variable')")
 	"----------------------
 	" Sections: Define them
-	let g:airline_section_x = airline#section#create_right(['spelling','funcname','better_ft'])
+	let g:airline_section_x = airline#section#create_right(['watchvar','spelling','funcname','better_ft'])
 	let g:airline_section_z = airline#section#create(['wordcount','cursorloc'])
 endfunction
 augroup vimrc_airline | autocmd!
