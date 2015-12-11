@@ -358,6 +358,9 @@ function! s:SetupWindowing()
 		nmap <silent> <F11> <Plug>ToggleFullscreen
 	endif
 endfunction
+" Close the bottom windows on <C-w><C-q>. This aliases an alias for `ZQ`
+nnoremap <silent> <Plug>(vimrc-close-bwin) :lclose<CR>:cclose<CR>:pclose<CR>
+nmap <silent> <C-w><C-q> <Plug>(vimrc-close-bwin)
 "}}}
 
 " Navigation {{{
@@ -786,7 +789,8 @@ nmap ]c <Plug>GitGutterNextHunkzzzv
 " Syntastic {{{
 " Check if there's any syntax errors
 nnoremap <silent> Q :SyntasticCheck<CR>:Errors<CR>
-nnoremap <silent> <C-q> :SyntasticReset<CR>:lclose<CR>:cclose<CR>:pclose<CR>
+nnoremap <silent> <Plug>(vimrc-syntastic-reset) :SyntasticReset<CR>
+nmap <silent> <C-q> <Plug>(vimrc-syntastic-reset)<Plug>(vimrc-close-bwin)
 let g:syntastic_enable_signs = 1 "Don't put signs on lines, that's for Git Gutter
 let g:syntastic_auto_loc_list = 2 "Close loclist if there's no errors, but don't open automatically
 let g:syntastic_check_on_open = 1 "Check when opening and saving
