@@ -215,3 +215,6 @@
 [submodule "Colorizer"]
 	path = 3rd_party/Colorizer
 	url = git@github.com:chrisbra/Colorizer.git
+[submodule "vim-css"]
+	path = 3rd_party/vim-css
+	url = git@github.com:lepture/vim-css.git
