@@ -1,0 +1,42 @@
+#!/bin/bash
+if [ $# -lt 4 ]; then
+	# Something's wrong, bail
+	cat >&2 <<-EOF
+		Usage: git submodule foreach '$PWD/$0 "\$name" "\$path" "\$sha1" "\$toplevel"'
+	EOF
+	exit 1
+fi
+
+current_root="$(git rev-parse --show-toplevel)"
+parent_root="$4"
+sm_name="$1"
+sm_relative_root="$2"
+
+modules_file="$parent_root/.gitmodules"
+git_config_submodules() {
+	git config --file "$modules_file" "$@"
+}
+
+url_origin="$(git_config_submodules submodule."$sm_name".url)"
+url_upstream="$(git_config_submodules submodule."$sm_name".url-upstream)"
+branch_current="$(git rev-parse HEAD)"
+branch_master="$(git rev-parse master)"
+if [ -z "$url_upstream" ]; then
+	# This has no upstream, skip
+	exit 0
+elif [ "$branch_current" != "$branch_master" ]; then
+	# Current branch is not "master", meaning it's something too convoluted
+	# Just ask the user and bail
+	$SHELL
+	exit 0
+fi
+
+git remote remove upstream
+git remote add upstream "$url_upstream"
+git config --local branch.master.pushremote origin
+git fetch --all --quiet
+git branch --set-upstream-to="upstream/master"
+git checkout --quiet master
+git rebase
+# If you need to force push, ask the user
+git push || $SHELL

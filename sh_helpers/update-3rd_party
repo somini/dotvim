@@ -1,0 +1,40 @@
+#!/bin/bash
+repo_root="$(git rev-parse --show-toplevel)"
+
+for dir in "$repo_root/3rd_party/"*"/"; do
+	pushd "$dir" >/dev/null # Get to the directory
+	repo_dir_name="${dir%/}"
+	repo_name="${repo_dir_name##*/}"
+	echo "Processing '$repo_name'"
+	###
+	git checkout -q master
+	git fetch -q
+	# Only if there's any changes
+	if ! git diff-tree --quiet 'master' 'origin/master'; then
+		# Don't quit if there's only one "page"
+		# This forces you to review all the changes in each repo
+		LESS='-RSX' git lp -q 'master..origin/master' 2>/dev/null
+	fi
+	git pull -q --ff-only
+	###
+	echo "Done!"
+	popd >/dev/null
+done
+echo ''
+
+if git diff-index --quiet HEAD; then
+	true # The working tree is not clean, do nothing
+else
+	pushd "$repo_root" >/dev/null
+	###
+	# Refresh the helptags
+	# This will flash the terminal, I can't help it
+	vim +Helptags +q
+	# If there's nothing staged
+	read -p 'Commit changes [y/<CR>]?' prompt
+	if [ -z "$prompt" -o "$prompt" = 'y' ]; then
+		git commit -am 'Maintenance: Update 3rd Party plugins'
+	fi
+	###
+	popd >/dev/null
+fi
