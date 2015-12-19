@@ -595,8 +595,8 @@ nnoremap <expr> <Leader><Tab> TabularizeThisN()
 nnoremap <silent> <Leader><Leader>cd :lcd %:h<CR>:pwd<CR>
 " CD: Change dir to current file. Works globally
 nnoremap <silent> <Leader><Leader>CD :cd %:h<CR>:pwd<CR>
-" b : Show a list of buffers and prompt for a number
-nnoremap <silent> <Leader><Leader>b :buffers<CR>:buffer<Space>
+" b : Show a list of buffers and use CtrlP functionalities
+nnoremap <silent> <Leader><Leader>b :CtrlPBuffer<CR>
 " m : Show a list of marks, and prompt for one
 nnoremap <silent> <Leader><Leader>m :marks<CR>:mark<Space>
 " Vim: Yo dawg, etc {{{
