@@ -8,8 +8,8 @@ nnoremap <buffer> <A-h> h
 nnoremap <buffer> <A-l> l
 nnoremap <buffer> <A-j> j
 nnoremap <buffer> <A-k> k
-" or prepend LocalLeader
-nnoremap <buffer> <LocalLeader>h h
-nnoremap <buffer> <LocalLeader>l l
-nnoremap <buffer> <LocalLeader>j j
-nnoremap <buffer> <LocalLeader>k k
+" or prepend Leader
+nnoremap <buffer> <Leader>h h
+nnoremap <buffer> <Leader>l l
+nnoremap <buffer> <Leader>j j
+nnoremap <buffer> <Leader>k k

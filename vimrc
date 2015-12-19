@@ -97,6 +97,10 @@ nnoremap <C-g> 2<C-g>
 " Keep the cursor still when joining lines
 nnoremap J m`J``
 
+" Setup the leader keys
+let mapleader = '\'
+let maplocalleader = ','
+
 " Move lines {{{
 nnoremap <silent> + :move +1<CR>
 nnoremap <silent> - :move -2<CR>
