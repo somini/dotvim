@@ -218,3 +218,6 @@
 [submodule "vim-css"]
 	path = 3rd_party/vim-css
 	url = git@github.com:lepture/vim-css.git
+[submodule "django.vim"]
+	path = 3rd_party/django.vim
+	url = git@github.com:damonkelley/django.vim.git
