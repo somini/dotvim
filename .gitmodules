@@ -221,3 +221,6 @@
 [submodule "django.vim"]
 	path = 3rd_party/django.vim
 	url = git@github.com:damonkelley/django.vim.git
+[submodule "vim-rooter"]
+	path = 3rd_party/vim-rooter
+	url = git@github.com:airblade/vim-rooter.git
