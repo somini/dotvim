@@ -1022,6 +1022,8 @@ vmap <C-c>      <Plug>snipMateVisual
 function! s:vimrc_snipmate_configure()
 	" Don't do anything if there's no snippet found
 	let g:snipMate['no_match_completion_feedkeys_chars'] = ''
+	" Override snippets without prompting
+	let g:snipMate['override'] = 1
 endfunction
 augroup vimrc_snipmate | autocmd!
 	autocmd VimEnter * call s:vimrc_snipmate_configure()

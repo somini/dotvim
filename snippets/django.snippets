@@ -1,0 +1,6 @@
+snippet context generic.ListView
+	def get_context_data(self, **kwargs):
+		# Call the super function
+		context = super(self.__class__, self).get_context_data(**kwargs)
+		context['${1:other_variable}'] = ${2:value}
+		return context
