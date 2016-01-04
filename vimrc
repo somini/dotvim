@@ -747,6 +747,36 @@ function! GetWatchedVariable()
 	else
 		return ''
 endfunction
+function! GetWordcount()
+	let l:format = get(g:, 'airline#extensions#wordcount#format', '%d words')
+	if mode() =~? 's'
+		" Bail on select mode
+		return ''
+	endif
+	if &buftype != ''
+		" Bail on special buffers
+		return ''
+	endif
+	let l:old_status = v:statusmsg
+	let l:position = getpos(".")
+	exe "silent normal! g\<c-g>"
+	let l:stat = v:statusmsg
+	call setpos('.', l:position)
+	let v:statusmsg = l:old_status
+
+	let l:parts = split(l:stat)
+	let l:res = ''
+	if len(l:parts) > 11
+		let l:cnt = str2nr(split(stat)[11])
+		try
+			let l:res = printf(l:format, cnt) . g:airline_symbols.space
+		catch /^Vim\%((\a\+)\)\=:E767/
+			" printf: wrong format
+			let l:res = ''
+		endtry
+	endif
+	return l:res
+endfunction
 function! s:vimrc_airline_config()
 	" Funcname: Use cfi
 	call airline#parts#define_function('funcname', 'GetCurrentFunctionName')
@@ -763,10 +793,13 @@ function! s:vimrc_airline_config()
 	let g:vimrc_airline_watch_variable = ''
 	call airline#parts#define_function('watchvar', 'GetWatchedVariable')
 	call airline#parts#define_condition('watchvar', "exists('g:vimrc_airline_watch_variable')")
+	" MyWordcount: My improvements on the regular wordcount
+	call airline#parts#define_function('my_wordcount', 'GetWordcount')
+	call airline#parts#define_condition('my_wordcount', "(&filetype =~ '" . g:airline#extensions#wordcount#filetypes . "')")
 	"----------------------
 	" Sections: Define them
 	let g:airline_section_x = airline#section#create_right(['watchvar','spelling','funcname','better_ft'])
-	let g:airline_section_z = airline#section#create(['wordcount','cursorloc'])
+	let g:airline_section_z = airline#section#create(['my_wordcount','cursorloc'])
 endfunction
 augroup vimrc_airline | autocmd!
 	autocmd User AirlineAfterInit call s:vimrc_airline_config()
@@ -785,8 +818,8 @@ let g:airline#extensions#whitespace#checks = ['indent', 'trailing', 'long']
 let g:airline#extensions#whitespace#trailing_format = 'T[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = 'M[%s]'
 let g:airline#extensions#whitespace#long_format = 'L[%s]'
-" Wordcount
-let g:airline#extensions#wordcount#enabled = 1
+" Wordcount: Use my version above, but keep the configuration
+let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#wordcount#filetypes = g:spelling_filetypes_regex
 let g:airline#extensions#wordcount#format = '%sW'
 " Appearance
