@@ -189,6 +189,7 @@
 [submodule "vim-snipmate"]
 	path = 1st_party/vim-snipmate
 	url = git@github.com:somini/vim-snipmate.git
+	url-upstream = git@github.com:garbas/vim-snipmate.git
 [submodule "vim-snippets"]
 	path = 3rd_party/vim-snippets
 	url = git@github.com:honza/vim-snippets.git
