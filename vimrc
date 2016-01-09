@@ -166,18 +166,23 @@ let g:nonfile_filetypes_modal_regex = '\V'.join(g:nonfile_filetypes_modal,'\|')
 let g:nonfile_filetypes = g:nonfile_filetypes_standalone + g:nonfile_filetypes_modal
 let g:nonfile_filetypes_regex = '\V'.join(g:nonfile_filetypes,'\|')
 "}}}
+" Root Markers {{{
 " Account for git submodules
-let g:root_markers = [
+let g:root_markers_vcs = [
 			\ '.git',
 			\ '.git/',
 			\ '.hg/',
 			\ '.svn/',
 			\ '.bzr/',
 			\ '_darcs/',
+			\]
+let g:root_markers_other = [
 			\ 'Makefile',
 			\ 'Rakefile',
 			\ 'setup.py', 'requirements.txt',
 			\]
+let g:root_markers = g:root_markers_vcs + g:root_markers_other
+"}}}
 " }}}
 
 " Clipboard {{{
@@ -659,7 +664,7 @@ let g:ctrlp_mruf_exclude = '\v\.git(/|\\)'
 let g:ctrlp_mruf_max = 500 "files to remember
 let g:ctrlp_mruf_exclude_nomod = 0 "Only modifiable files
 let g:ctrlp_tilde_homedir = 1
-let g:ctrlp_root_markers = g:root_markers
+let g:ctrlp_root_markers = g:root_markers_vcs
 " Filetypes/buftypes to overwrite
 let g:ctrlp_reuse_window = g:nonfile_filetypes_modal_regex
 nnoremap <silent> <C-b> :CtrlPMRUFiles<CR>
