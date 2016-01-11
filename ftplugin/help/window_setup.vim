@@ -7,11 +7,14 @@ endif
 " Also, resize it to a proper size
 function! s:setup_window()
 	wincmd H
-	execute 'vertical' 'resize' (&textwidth == 0 ? 80 : &textwidth + 2)
 endfunction
 
 autocmd WinEnter <buffer> call <SID>setup_window()
 autocmd BufEnter <buffer> call <SID>setup_window()
+call <SID>setup_window() "autocmd FileType
 
 " Automatically resize the window vertically
-let b:auto_width_do = 1
+if &textwidth == 0
+	setlocal textwidth=80
+endif
+call AutoWidth()

@@ -6,7 +6,7 @@ if !exists("g:auto_width_filetypes")
 	let g:auto_width_filetypes = ['help']
 endif
 
-function <SID>vresize()
+function AutoWidth()
 	" b:auto_width_do overrrides the filetype check
 	if exists('b:auto_width_do')
 		if !b:auto_width_do
@@ -30,8 +30,8 @@ endfunction
 " Set window width to textwidth + 2
 augroup auto_width
 	autocmd!
-	autocmd VimResized  * call s:vresize()
-	autocmd BufWinEnter * call s:vresize()
+	autocmd VimResized  * call AutoWidth()
+	autocmd BufWinEnter * call AutoWidth()
 augroup END
 
 " vim: ts=2 sw=2
