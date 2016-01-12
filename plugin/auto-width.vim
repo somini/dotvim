@@ -32,6 +32,7 @@ augroup auto_width
 	autocmd!
 	autocmd VimResized  * call AutoWidth()
 	autocmd BufWinEnter * call AutoWidth()
+	autocmd BufEnter    * call AutoWidth()
 augroup END
 
 " vim: ts=2 sw=2
