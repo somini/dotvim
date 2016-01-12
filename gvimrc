@@ -1,6 +1,9 @@
 " somini.gvimrc
 
 " Appearance {{{
+" TODO: Single command that takes a number
+command! FontSizeIncrease let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)+1', '')
+command! FontSizeDecrease let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)-1', '')
 "}}}
 
 " Mouse {{{
