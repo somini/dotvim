@@ -529,12 +529,18 @@ set spellfile= "Auto-discover
 set spellsuggest=fast "Works reasonably enough, but it's really fast, especially for English
 set spellsuggest+=25 "Show at most this suggestions
 let g:loaded_spellfile_plugin = 1 "Don't ask for downloading spellfiles
+function! s:vimrc_text()
+	" Initialize the spelling plugins
+	call lexical#init({"spell": 1})
+	call SpellLoop_Init()
+	" FIXME: Integrate SpellCheck into syntastic
+	nnoremap <silent> <buffer> Q :SpellLCheck!<CR>
+	" Disable indent guides
+	IndentGuidesDisable
+endfunction
 augroup vimrc_spelling | autocmd!
 	" Mark this files as "text"
-	execute 'autocmd FileType' g:spelling_filetypes_comma 'call lexical#init({"spell": 1})'
-	execute 'autocmd FileType' g:spelling_filetypes_comma 'call SpellLoop_Init()'
-	" FIXME: Integrate SpellCheck into syntastic
-	execute 'autocmd FileType' g:spelling_filetypes_comma 'nnoremap <silent> <buffer> Q :SpellLCheck!<CR>'
+	execute 'autocmd FileType' g:spelling_filetypes_comma 'call s:vimrc_text()'
 augroup END
 "}}}
 
