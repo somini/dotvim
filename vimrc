@@ -97,6 +97,24 @@ nnoremap <C-g> 2<C-g>
 " Keep the cursor still when joining lines
 nnoremap J m`J``
 
+" Edit a register on the command line
+function! s:ChangeRegister()
+	let l:reg_regex = '[a-z]'
+	echohl Question
+	echo 'Choose register('.l:reg_regex.'): '
+	echohl None
+	let l:c = nr2char(getchar())
+	if l:c =~? l:reg_regex
+		let l:reg = tolower(l:c)
+		return ":let @".l:reg." = \<C-r>=string(getreg(".string(l:reg)."))\<CR>\<Left>"
+	else
+		echohl WarningMsg
+		echo 'Register invalid: "'.strtrans(l:c).'"'
+		echohl None
+	endif
+endfunction
+nnoremap <expr> <Leader>r <SID>ChangeRegister()
+
 " Setup the leader keys
 let mapleader = '\'
 let maplocalleader = ','
