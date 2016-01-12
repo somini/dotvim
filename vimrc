@@ -860,7 +860,7 @@ let g:airline_symbols.branch = '⎇ '
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 "}}}
-"{{{ Bufferline
+" Bufferline {{{
 let g:bufferline_echo = 0 "No echo on command line
 let g:bufferline_rotate = 1 "Keep the current buffer name visible
 "}}}
@@ -1049,7 +1049,7 @@ augroup vimrc_autoclose | autocmd!
 	autocmd FileType mkd,mkd.markdown,markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('*','')
 augroup END
 "}}}
-"Filetype - SQL {{{
+" Filetype - SQL {{{
 let g:omni_sql_no_default_maps = 1 "No <C-c> etc mappings
 "}}}
 " Lexical {{{
