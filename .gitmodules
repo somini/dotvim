@@ -226,3 +226,6 @@
 [submodule "vim-rooter"]
 	path = 3rd_party/vim-rooter
 	url = git@github.com:airblade/vim-rooter.git
+[submodule "hl_matchit.vim"]
+	path = 3rd_party/hl_matchit.vim
+	url = git@github.com:vimtaku/hl_matchit.vim.git

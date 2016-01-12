@@ -1165,6 +1165,10 @@ let g:rooter_disable_map = 1
 let g:rooter_use_lcd = 1
 let g:rooter_silent_chdir = 1
 "}}}
+" MatchIt Highlight {{{
+let g:hl_matchit_enable_on_vim_startup = 1
+let g:hl_matchit_hl_groupname = 'Underlined'
+"}}}
 "}}}
 
 " Modeline {{{
