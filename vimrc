@@ -141,16 +141,17 @@ function! s:MoveCurrentBlock(offset) range
 	execute a:firstline.','.a:lastline.'move '.l:move
 endfunction
 "}}}
-" Keep buffer locations "{{{
+" Keep buffer locations {{{
 if v:version >= 700
-	" Save current view settings on a per-window, per-buffer basis. "{{{
+	" Save current view settings on a per-window, per-buffer basis. {{{
 	function! s:AutoSaveWinView()
 		if !exists("w:vimrc_bufview")
 			let w:vimrc_bufview = {}
 		endif
 		let w:vimrc_bufview[bufnr("%")] = winsaveview()
-	endfunction "}}}
-	" Restore current view settings. "{{{
+	endfunction
+	"}}}
+	" Restore current view settings. {{{
 	function! s:AutoRestoreWinView()
 		let l:buf = bufnr("%")
 		if exists("w:vimrc_bufview") && has_key(w:vimrc_bufview, l:buf)
@@ -161,7 +162,8 @@ if v:version >= 700
 			endif
 			unlet w:vimrc_bufview[l:buf]
 		endif
-	endfunction "}}}
+	endfunction
+	"}}}
 	augroup vimrc_winview | autocmd!
 		" When switching buffers, preserve window view.
 		autocmd BufLeave * call <SID>AutoSaveWinView()
@@ -209,7 +211,8 @@ set clipboard=unnamedplus " Sync the unnamed register with the system clipboard
 augroup vimrc_clipboard | autocmd!
 	autocmd VimEnter * call s:SetupClipboard()
 augroup END
-function! s:SetupClipboard() "{{{
+" Setup the clipboard using EasyClip helpers {{{
+function! s:SetupClipboard()
 	" Insert mode {{{
 	" C-q does what C-v did, insert raw characters
 	inoremap <C-q> <C-v>
@@ -230,7 +233,8 @@ function! s:SetupClipboard() "{{{
 		cnoremap <C-y> <C-r>+
 	endif
 	"}}}
-endfunction "}}}
+endfunction
+"}}}
 " yY yanks the line minus the <CR> at the end
 " just like dD from EasyClip
 nnoremap yY m`0y$``
@@ -411,7 +415,7 @@ nnoremap <silent> <C-Right> :bnext<CR>
 nnoremap <silent> <S-Left> :tabprevious<CR>
 nnoremap <silent> <S-Right> :tabnext<CR>
 set hidden "Don't prompt when changing buffers
-" Alt-jk to move around "{{{
+" Alt-jk to move around {{{
 if has('gui_running')
 	nnoremap <A-j> <C-e>
 	nnoremap <A-k> <C-y>
@@ -431,7 +435,7 @@ nnoremap ` '
 nnoremap 0 ^
 nnoremap ^ 0
 "}}}
-" Smart Underscore "{{{
+" Smart Underscore {{{
 function! SmartUnderscore()
 	let l:line = line('.')
 	let l:col  = col('.')
@@ -451,11 +455,11 @@ endfunction
 nnoremap <silent> _ :<C-u>call SmartUnderscore()<CR>
 "}}}
 
-" Quickfix (q){{{
+" Quickfix (q) {{{
 nnoremap <silent> [q :cprevious<CR>zzzv
 nnoremap <silent> ]q :cnext<CR>zzzv
 "}}}
-" Location list (l){{{
+" Location list (l) {{{
 nnoremap <silent> [l :lprevious<CR>zzzv
 nnoremap <silent> ]l :lnext<CR>zzzv
 "}}}
@@ -465,7 +469,6 @@ nnoremap <silent> ]l :lnext<CR>zzzv
 " Diffs {{{
 set diffopt+=iwhite "Ignore whitespace on diffs
 " After changing something in a diff, move to the next diff
-" nmap to pickup changes ]c remappings
 nmap do do]c
 nmap dp dp]c
 
@@ -755,57 +758,7 @@ let g:nerdtree_tabs_open_on_console_startup = 0 "EVER
 "}}}
 "}}}
 " Airline {{{
-" Customization
-function! GetCurrentFunctionName()
-	return cfi#format("%s","")
-endfunction
-function! GetCurrentSpellingLanguage()
-	return toupper(''.&spelllang)
-endfunction
-function! GetCurrentFiletype()
-	if !empty(&filetype)
-		return &filetype
-	else
-		" When there's no filetype, show *something*
-		return '¤'
-	endif
-endfunction
-function! GetWatchedVariable()
-	if len(g:vimrc_airline_watch_variable) > 0
-		execute 'return &'.g:vimrc_airline_watch_variable.".'«".g:vimrc_airline_watch_variable."'"
-	else
-		return ''
-endfunction
-function! GetWordcount()
-	let l:format = get(g:, 'airline#extensions#wordcount#format', '%d words')
-	if mode() =~? 's'
-		" Bail on select mode
-		return ''
-	endif
-	if &buftype != ''
-		" Bail on special buffers
-		return ''
-	endif
-	let l:old_status = v:statusmsg
-	let l:position = getpos(".")
-	exe "silent normal! g\<c-g>"
-	let l:stat = v:statusmsg
-	call setpos('.', l:position)
-	let v:statusmsg = l:old_status
-
-	let l:parts = split(l:stat)
-	let l:res = ''
-	if len(l:parts) > 11
-		let l:cnt = str2nr(split(stat)[11])
-		try
-			let l:res = printf(l:format, cnt) . g:airline_symbols.space
-		catch /^Vim\%((\a\+)\)\=:E767/
-			" printf: wrong format
-			let l:res = ''
-		endtry
-	endif
-	return l:res
-endfunction
+" Configuration {{{
 function! s:vimrc_airline_config()
 	" Funcname: Use cfi
 	call airline#parts#define_function('funcname', 'GetCurrentFunctionName')
@@ -833,7 +786,9 @@ endfunction
 augroup vimrc_airline | autocmd!
 	autocmd User AirlineAfterInit call s:vimrc_airline_config()
 augroup END
-" Tabline
+"}}}
+" Extensions Configuration {{{
+" Tabline {{{
 let g:airline#extensions#tabline#enabled = 1 "Show a tabline
 let g:airline#extensions#tabline#show_buffers = 1 "If there's only one tab, show the buffers
 let g:airline#extensions#tabline#buffer_min_count = 2 "But only if there's more than 1
@@ -841,17 +796,21 @@ let g:airline#extensions#tabline#tab_nr_type = 1 "Show tabnumbers
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved' "Uniquify filenames
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#hunks#non_zero_only = 1 "Don't show changes if there's none
-" Whitespace
+"}}}
+" Whitespace {{{
 let g:airline#extensions#whitespace#symbol = '₩'
 let g:airline#extensions#whitespace#checks = ['indent', 'trailing', 'long']
 let g:airline#extensions#whitespace#trailing_format = 'T[%s]'
 let g:airline#extensions#whitespace#mixed_indent_format = 'M[%s]'
 let g:airline#extensions#whitespace#long_format = 'L[%s]'
-" Wordcount: Use my version above, but keep the configuration
+"}}}
+" Wordcount: Use my version above, but keep the configuration {{{
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#wordcount#filetypes = g:spelling_filetypes_regex
 let g:airline#extensions#wordcount#format = '%sW'
-" Appearance
+"}}}
+"}}}
+" Appearance {{{
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
@@ -860,11 +819,64 @@ let g:airline_symbols.branch = '⎇ '
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 "}}}
+" Plugin Functions {{{
+function! GetCurrentFunctionName()
+	return cfi#format("%s","")
+endfunction
+function! GetCurrentSpellingLanguage()
+	return toupper(''.&spelllang)
+endfunction
+function! GetCurrentFiletype()
+	if !empty(&filetype)
+		return &filetype
+	else
+		" When there's no filetype, show *something*
+		return '¤'
+	endif
+endfunction
+function! GetWatchedVariable()
+	if len(g:vimrc_airline_watch_variable) > 0
+		execute 'return &'.g:vimrc_airline_watch_variable.".'«".g:vimrc_airline_watch_variable."'"
+	else
+		return ''
+	endfunction
+	function! GetWordcount()
+		let l:format = get(g:, 'airline#extensions#wordcount#format', '%d words')
+		if mode() =~? 's'
+			" Bail on select mode
+			return ''
+		endif
+		if &buftype != ''
+			" Bail on special buffers
+			return ''
+		endif
+		let l:old_status = v:statusmsg
+		let l:position = getpos(".")
+		exe "silent normal! g\<c-g>"
+		let l:stat = v:statusmsg
+		call setpos('.', l:position)
+		let v:statusmsg = l:old_status
+
+		let l:parts = split(l:stat)
+		let l:res = ''
+		if len(l:parts) > 11
+			let l:cnt = str2nr(split(stat)[11])
+			try
+				let l:res = printf(l:format, cnt) . g:airline_symbols.space
+			catch /^Vim\%((\a\+)\)\=:E767/
+				" printf: wrong format
+				let l:res = ''
+			endtry
+		endif
+		return l:res
+	endfunction
+	"}}}
+"}}}
 " Bufferline {{{
 let g:bufferline_echo = 0 "No echo on command line
 let g:bufferline_rotate = 1 "Keep the current buffer name visible
 "}}}
-" Git Gutter{{{
+" Git Gutter {{{
 let g:gitgutter_max_signs = 1000 "Ignore big diffs
 nmap [c <Plug>GitGutterPrevHunkzzzv
 nmap ]c <Plug>GitGutterNextHunkzzzv
@@ -1007,7 +1019,7 @@ map <Leader>S <Plug>(easymotion-s2)
 let g:visualstar_folds = 1 "Open current fold on search
 let g:visualstar_center_screen = 1 "Center screen after searching
 "}}}
-" LineDiff "{{{
+" LineDiff {{{
 let g:linediff_first_buffer_command  = 'rightbelow new'
 let g:linediff_second_buffer_command = 'rightbelow vertical new'
 vnoremap <silent> <Leader>d :Linediff<CR>
@@ -1055,14 +1067,14 @@ let g:omni_sql_no_default_maps = 1 "No <C-c> etc mappings
 " Lexical {{{
 let g:lexical#spell = 0 "Disable spelling by default...
 "}}}
-" SpellCheck @ Ingo Karkat "{{{
+" SpellCheck @ Ingo Karkat {{{
 let g:SpellCheck_DefineAuxiliaryCommands = 0 "Only the :SpellCheck command
 let g:SpellCheck_OnNospell = '' "SpellCheck command fails when 'spell' is off
 "}}}
-" Spell Loop "{{{
+" Spell Loop {{{
 let g:spellloop_quiet = 1 " Don't echo a message everytime the language changes
 let g:spellloop_skip_nospell = 1 " Don't loop if 'spell' is not set
-let g:spell_list = ['en_gb','pt',]
+let g:spell_list = ['en_gb', 'pt', ]
 let &spelllang = g:spell_list[0]
 nnoremap <silent> <Leader>ts :call SpellLoop()<CR>
 "}}}
