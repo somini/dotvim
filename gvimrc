@@ -6,6 +6,11 @@ command! FontSizeIncrease let &guifont = substitute(&guifont, '\d\+', '\=submatc
 command! FontSizeDecrease let &guifont = substitute(&guifont, '\d\+', '\=submatch(0)-1', '')
 "}}}
 
+" Data Safety and Managing {{{
+" Only on GUI vim, on terminals <C-s> will suspend the terminal
+inoremap <silent> <C-s> <C-o>:write<CR>
+"}}}
+
 " Mouse {{{
 set mousehide "Hide mouse when typing
 " Mouse points to active window, always
