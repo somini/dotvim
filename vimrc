@@ -1047,7 +1047,7 @@ let g:extradite_showhash = 1 "Abbreviate commit hashes
 let g:AutoClosePreserveDotReg = 0 "Don't map ESC in insert mode!
 let g:AutoCloseSmartQuote = 1 "Don't close quotes when preceeded by an odd number of '\'
 let g:AutoCloseExpandSpace = 1 "Space puts a space inbetween delimiters
-let g:AutoCloseExpandEnterOn = '{[' "After this chars, put a newline between delimiters
+let g:AutoCloseExpandEnterOn = '{[(' "After this chars, put a newline between delimiters
 let g:AutoClosePreserveEnterMapping = 1 "Make an effort for <CR>
 let g:AutoCloseSelectionWrapPrefix = '<Leader>w'
 nnoremap <silent> <Leader>tp :AutoCloseToggle<CR>
