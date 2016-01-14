@@ -1181,6 +1181,10 @@ let g:rooter_silent_chdir = 1
 let g:hl_matchit_enable_on_vim_startup = 1
 let g:hl_matchit_hl_groupname = 'Underlined'
 "}}}
+" Fugitive {{{
+nnoremap <silent> <Leader>gs :Gstatus<CR>
+nnoremap <silent> <Leader>gc :Gcommit<CR>
+"}}}
 "}}}
 
 " Modeline {{{
