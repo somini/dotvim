@@ -1234,6 +1234,8 @@ let g:hl_matchit_hl_groupname = 'Underlined'
 " Fugitive {{{
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
+" Stage the current file
+nnoremap <silent> <Leader>gw :Gwrite<CR>
 "}}}
 "}}}
 
