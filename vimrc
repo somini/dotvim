@@ -240,6 +240,56 @@ endfunction
 nnoremap yY m`0y$``
 "}}}
 
+" Command Line {{{
+" EMACS/Readline compatible (mostly)
+" <C-b>: Move <1 character {{{
+cnoremap <C-b> <Left>
+cnoremap <C-x><C-b> <C-b>
+"}}}
+" <C-f>: Move >1 character {{{
+cnoremap <C-f> <Right>
+cnoremap <C-x><C-f> <C-f>
+"}}}
+" <A-f>: Move >1 word {{{
+cnoremap <A-f> <C-Right>
+"}}}
+" <A-b>: Move <1 word {{{
+cnoremap <A-b> <C-Left>
+"}}}
+" <C-a>: Start of Line {{{
+cnoremap <C-a> <Home>
+cnoremap <C-x><C-a> <C-a>
+"}}}
+"<C-e>: End of line
+" <C-d>: Delete >1 character {{{
+cnoremap <C-d> <C-r>=CommandLine_Helper_DeleteForward()<CR><Del>
+cnoremap <C-x><C-d> <C-d>
+"}}}
+" <C-k>: Delete line >cursor {{{
+cnoremap <C-k> <C-\>eCommandLine_KillForward()<CR>
+cnoremap <C-x><C-k> <C-k>
+"}}}
+"<C-u>: Delete line <cursor
+
+" Helper Functions {{{
+function! s:CommandLine_Is_End()
+	return getcmdpos() - 1 == strlen(getcmdline())
+endfunction
+function! CommandLine_Helper_DeleteForward()
+	" If the cursor is at the end of the command line,
+	" insert a character to be deleted by the <Del>
+	return s:CommandLine_Is_End() ? 'x' : ''
+endfunction
+function! CommandLine_KillForward()
+	let l:line = getcmdline()
+	let l:cur = getcmdpos()
+	let l:s_from = 0
+	let l:s_to   = l:cur - 1
+	return strpart(l:line, l:s_from, l:s_to)
+endfunction
+"}}}
+"}}}
+
 " Data Safety and Managing {{{
 set history=1000 " Disk space is REALLY cheap
 function! CheckDir(dir) "{{{
