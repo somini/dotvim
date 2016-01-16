@@ -948,7 +948,7 @@ let g:syntastic_mode_map = {
 			\ 'passive_filetypes': ['php', 'javascript'],
 			\ }
 let g:syntastic_python_checkers = ['python', 'pylint', 'flake8', 'pep8']
-let g:syntastic_javascript_checkers = ['jslint', 'jshint', 'gjslint']
+let g:syntastic_javascript_checkers = ['jshint', 'jslint', 'gjslint']
 let g:syntastic_javascript_gjslint_args = '--nojsdoc --disable 1,5,110'
 "}}}
 "}}}
