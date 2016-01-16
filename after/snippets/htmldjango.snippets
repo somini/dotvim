@@ -1,15 +1,20 @@
 snippet! for
 	{% for ${1} in ${2} %}
-		${0}
-	{% empty %}
 		${3}
+	{% empty %}
+		${4}
 	{% endfor %}
 
 snippet! a
 	<a href="{% url '${1:url}' %}">${2:text}</a>
 
-snippet blocke
-	{% block ${1} %}
+snippets!!! block
+snippet block
+	{% block ${1:blockname} %}
 		{{ block.super }}
 		${0}
-	{% endblock %}
+	{% endblock $1 %}
+snippet blocke Replace the super block
+	{% block ${1:blockname} %}
+		${0}
+	{% endblock $1 %}

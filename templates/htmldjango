@@ -1,6 +1,6 @@
-{% include 'base.html.django' %}
+{% extends 'base.html.django' %}
 
-{% block 'content' %}
+{% block content %}
 
 {% endblock %}
 # cursor: 4 del
