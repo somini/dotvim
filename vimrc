@@ -968,7 +968,7 @@ endfunction
 augroup vimrc_supertab_chain | autocmd!
 	" See supertab-completionchaining
 	" This filetypes will have omnifunc override the context completion
-	autocmd FileType css,sql,php let b:supertab_chain_default = 1
+	autocmd FileType css,sql,php,python let b:supertab_chain_default = 1
 	" By default, don't override
 	autocmd FileType * call s:vimrc_supertab_configure()
 augroup END
