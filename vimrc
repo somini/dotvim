@@ -585,7 +585,7 @@ imap <C-F1> <C-o><C-F1>
 " Spell {{{
 let g:spelling_filetypes = [
 			\ 'text',
-			\ 'mkd','markdown',
+			\ 'mkd', 'markdown',
 			\ 'gitcommit',
 			\ 'help'
 			\]
@@ -606,12 +606,12 @@ function! s:vimrc_text()
 	call SpellLoop_Init()
 	" FIXME: Integrate SpellCheck into syntastic
 	nnoremap <silent> <buffer> Q :SpellLCheck!<CR>
-	" Disable indent guides
-	IndentGuidesDisable
 endfunction
 augroup vimrc_spelling | autocmd!
 	" Mark this files as "text"
 	execute 'autocmd FileType' g:spelling_filetypes_comma 'call s:vimrc_text()'
+	" Disable indent guides
+	let g:indent_guides_exclude_filetypes = g:spelling_filetypes
 augroup END
 "}}}
 
