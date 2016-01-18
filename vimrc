@@ -1235,7 +1235,19 @@ let g:hl_matchit_hl_groupname = 'Underlined'
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
 " Stage the current file
-nnoremap <silent> <Leader>gw :Gwrite<CR>
+nnoremap <silent> <Leader>gw :call <SID>vimrc_git_stage()<CR>
+" Unstage the current file
+nnoremap <silent> <Leader>gr :call <SID>vimrc_git_unstage()<CR>
+" Helper functions {{{
+function! s:vimrc_git_stage()
+	Gwrite
+	GitGutter "Update the gutter
+endfunction
+function! s:vimrc_git_unstage()
+	execute 'silent Git reset '.shellescape(expand('%:p'))
+	GitGutter "Update the gutter
+endfunction
+"}}}
 "}}}
 "}}}
 
