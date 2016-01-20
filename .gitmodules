@@ -232,3 +232,6 @@
 [submodule "html5.vim"]
 	path = 3rd_party/html5.vim
 	url = git@github.com:othree/html5.vim.git
+[submodule "undotree.git"]
+	path = 3rd_party/undotree
+	url = git@github.com:mbbill/undotree.git
