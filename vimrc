@@ -1232,8 +1232,11 @@ let g:hl_matchit_enable_on_vim_startup = 1
 let g:hl_matchit_hl_groupname = 'Underlined'
 "}}}
 " Fugitive {{{
+" General-purpose fugitive mapping
+nnoremap <Leader>g<Space> :Git<Space>
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
+nnoremap <silent> <Leader>gA :Gcommit<Space>--amend<CR>
 " Stage the current file
 nnoremap <silent> <Leader>gw :call <SID>vimrc_git_stage()<CR>
 " Unstage the current file
