@@ -235,3 +235,6 @@
 [submodule "undotree.git"]
 	path = 3rd_party/undotree
 	url = git@github.com:mbbill/undotree.git
+[submodule "tagbar.git"]
+	path = 3rd_party/tagbar
+	url = git@github.com:majutsushi/tagbar.git
