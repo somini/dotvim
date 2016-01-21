@@ -606,6 +606,9 @@ function! s:vimrc_text()
 	call SpellLoop_Init()
 	" FIXME: Integrate SpellCheck into syntastic
 	nnoremap <silent> <buffer> Q :SpellLCheck!<CR>
+	" `==` formats the entire buffer properly, instead of indenting
+	" Keep the current location and leverage the "vim-all" plugin
+	nmap <silent> <buffer> == m`gqa<CR>'`
 endfunction
 augroup vimrc_spelling | autocmd!
 	" Mark this files as "text"
