@@ -670,6 +670,10 @@ vmap g<Tab> <C-Tab>
 vmap g<S-Tab> <C-S-Tab>
 "
 "}}}
+" Split the line at this point (replaces current char)
+" gS reshuffles the resulting lines
+nnoremap <silent> gs r<CR>
+nmap     <silent> gS gs-j
 
 " Tabularize on Steroids {{{
 function! TabularizeThisN()
