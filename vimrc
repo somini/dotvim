@@ -1275,6 +1275,12 @@ function! g:Undotree_CustomMap()
 	nmap <buffer> l <CR>
 endfunction
 "}}}
+" Surround {{{
+" After surrounding with multilines `yS`, indent with `=`
+let g:surround_indent = 1
+" <CR>: Newlines above and below
+let g:surround_13 = "\n\r\n"
+"}}}
 "}}}
 
 " Modeline {{{
