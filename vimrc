@@ -537,21 +537,28 @@ set incsearch "Start searching right away
 " Use <C-l> to clear the highlighting of :set hlsearch.
 " <C-l> Already clears the screen, it's just a bonus
 " Refresh the statusline too
-if maparg('<C-l>', 'n') ==# ''
-	nnoremap <silent> <C-l> :nohlsearch<CR>:AirlineRefresh<CR><C-l>
-endif
+nnoremap <silent> <C-l> :nohlsearch<CR>:AirlineRefresh<CR><C-l>
 " Center on search
 " Make sure it works on folds
 nnoremap * *zvzz
 nnoremap n nzvzz
 nnoremap N Nzvzz
 " Don't mess with search directions, n is ALWAYS forward
-nmap # *NN
-nmap g# g*NN
-if exists('g:loaded_visualstar') && g:loaded_visualstar == 1
-	xmap # *NN
-	xmap g# g*NN
-endif
+augroup vimrc_setup_search | autocmd!
+	autocmd VimEnter * call s:vimrc_setup_search()
+augroup end
+function s:vimrc_setup_search()
+	nmap # *NN
+	nmap g# g*NN
+	if exists('g:loaded_visualstar') && g:loaded_visualstar == 1
+		xmap # *NN
+		xmap g# g*NN
+	endif
+endfunction
+" 'g/' to start a full-file search and replace for the current pattern
+" Also works on visual mode
+nnoremap g/ :<C-u>%s@<C-r>/@@<Left>
+xnoremap g/ :s@<C-r>/@@<Left>
 " '&' to repeat last ':s', use flags too
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
