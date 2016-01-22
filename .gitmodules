@@ -238,3 +238,30 @@
 [submodule "tagbar"]
 	path = 3rd_party/tagbar
 	url = git@github.com:majutsushi/tagbar.git
+[submodule "vim-textobj-user"]
+	path = 3rd_party/vim-textobj-user
+	url = git@github.com:kana/vim-textobj-user.git
+[submodule "vim-textobj-space"]
+	path = 3rd_party/vim-textobj-space
+	url = git@github.com:saihoooooooo/vim-textobj-space.git
+[submodule "vim-textobj-entire"]
+	path = 3rd_party/vim-textobj-entire
+	url = git@github.com:kana/vim-textobj-entire.git
+[submodule "vim-textobj-underscore"]
+	path = 3rd_party/vim-textobj-underscore
+	url = git@github.com:lucapette/vim-textobj-underscore.git
+[submodule "vim-textobj-python"]
+	path = 3rd_party/vim-textobj-python
+	url = git@github.com:bps/vim-textobj-python.git
+[submodule "vim-textobj-comment"]
+	path = 3rd_party/vim-textobj-comment
+	url = git@github.com:glts/vim-textobj-comment.git
+[submodule "vim-textobj-fold"]
+	path = 3rd_party/vim-textobj-fold
+	url = git@github.com:kana/vim-textobj-fold.git
+[submodule "vim-textobj-line"]
+	path = 3rd_party/vim-textobj-line
+	url = git@github.com:kana/vim-textobj-line.git
+[submodule "vim-textobj-between"]
+	path = 3rd_party/vim-textobj-between
+	url = git@github.com:thinca/vim-textobj-between.git
