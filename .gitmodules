@@ -204,9 +204,6 @@
 	path = 1st_party/pydoc.vim
 	url = git@github.com:somini/pydoc.vim.git
 	url-upstream = https://github.com/fs111/pydoc.vim
-[submodule "vim-all"]
-	path = 3rd_party/vim-all
-	url = git@github.com:vim-utils/vim-all.git
 [submodule "EasyClipRing.vim"]
 	path = 3rd_party/EasyClipRing.vim
 	url = git@github.com:davidosomething/EasyClipRing.vim.git

@@ -614,7 +614,7 @@ function! s:vimrc_text()
 	" FIXME: Integrate SpellCheck into syntastic
 	nnoremap <silent> <buffer> Q :SpellLCheck!<CR>
 	" `==` formats the entire buffer properly, instead of indenting
-	" Keep the current location and leverage the "vim-all" plugin
+	" Keep the current location and leverage the "textobj-entire" plugin
 	nmap <silent> <buffer> == m`gqa<CR>'`
 endfunction
 augroup vimrc_spelling | autocmd!
@@ -1290,6 +1290,30 @@ endfunction
 let g:surround_indent = 1
 " <CR>: Newlines above and below
 let g:surround_13 = "\n\r\n"
+"}}}
+" Text Objects {{{
+let g:textobj_space_no_default_key_mappings = 1
+" Filetype-specific plugins
+let g:textobj_python_no_default_key_mappings = 1
+" Mappings redefinition
+augroup vimrc_textobj | autocmd!
+	autocmd VimEnter * call s:vimrc_setup_textobj()
+augroup END
+function! s:vimrc_setup_textobj()
+	call textobj#user#map('space', {
+				\   '-': {
+				\     'select-a': 'a<Space>',
+				\     'select-i': 'i<Space>',
+				\   },
+				\ })
+	" 'vim-all' has better mappings
+	call textobj#user#map('entire', {
+				\   '-': {
+				\     'select-a': 'a<CR>',
+				\     'select-i': 'i<CR>',
+				\   },
+				\ })
+endfunction
 "}}}
 "}}}
 
