@@ -1250,7 +1250,8 @@ let g:hl_matchit_hl_groupname = 'Underlined'
 nnoremap <Leader>g<Space> :Git<Space>
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
-nnoremap <silent> <Leader>gA :Gcommit<Space>--amend<CR>
+nnoremap <silent> <Leader>ga :Gcommit --amend --reset-author --no-edit<CR>
+nnoremap <silent> <Leader>gA :Gcommit --amend --reset-author<CR>
 " Stage the current file
 nnoremap <silent> <Leader>gw :call <SID>vimrc_git_stage()<CR>
 " Unstage the current file
