@@ -547,7 +547,7 @@ nnoremap N Nzvzz
 augroup vimrc_setup_search | autocmd!
 	autocmd VimEnter * call s:vimrc_setup_search()
 augroup end
-function s:vimrc_setup_search()
+function! s:vimrc_setup_search()
 	nmap # *NN
 	nmap g# g*NN
 	if exists('g:loaded_visualstar') && g:loaded_visualstar == 1
