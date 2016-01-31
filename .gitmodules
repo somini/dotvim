@@ -254,8 +254,9 @@
 	path = 3rd_party/vim-textobj-comment
 	url = git@github.com:glts/vim-textobj-comment.git
 [submodule "vim-textobj-fold"]
-	path = 3rd_party/vim-textobj-fold
-	url = git@github.com:kana/vim-textobj-fold.git
+	path = 1st_party/vim-textobj-fold
+	url = git@github.com:somini/vim-textobj-fold.git
+	url-upstream = git@github.com:kana/vim-textobj-fold.git
 [submodule "vim-textobj-line"]
 	path = 3rd_party/vim-textobj-line
 	url = git@github.com:kana/vim-textobj-line.git
