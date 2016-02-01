@@ -263,3 +263,6 @@
 [submodule "vim-textobj-between"]
 	path = 3rd_party/vim-textobj-between
 	url = git@github.com:thinca/vim-textobj-between.git
+[submodule "vim-textobj-ruby"]
+	path = 3rd_party/vim-textobj-ruby
+	url = git@github.com:rhysd/vim-textobj-ruby.git

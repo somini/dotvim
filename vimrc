@@ -1296,6 +1296,8 @@ let g:surround_13 = "\n\r\n"
 let g:textobj_space_no_default_key_mappings = 1
 " Filetype-specific plugins
 let g:textobj_python_no_default_key_mappings = 1
+let g:textobj_ruby_no_default_key_mappings = 1
+let g:textobj_ruby_more_mappings = 1
 " Mappings redefinition
 augroup vimrc_textobj | autocmd!
 	autocmd VimEnter * call s:vimrc_setup_textobj()
