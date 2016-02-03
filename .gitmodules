@@ -270,3 +270,12 @@
 [submodule "i3-vim-syntax"]
 	path = 3rd_party/i3-vim-syntax
 	url = git@github.com:PotatoesMaster/i3-vim-syntax.git
+[submodule "fugitive-gitlab.vim"]
+	path = 3rd_party/fugitive-gitlab.vim
+	url = git@github.com:shumphrey/fugitive-gitlab.vim.git
+[submodule "vim-fubitive"]
+	path = 3rd_party/vim-fubitive
+	url = git@github.com:tommcdo/vim-fubitive.git
+[submodule "vim-rhubarb"]
+	path = 3rd_party/vim-rhubarb
+	url = git@github.com:tpope/vim-rhubarb.git
