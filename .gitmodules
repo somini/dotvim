@@ -267,3 +267,6 @@
 	path = 1st_party/vim-textobj-ruby
 	url = git@github.com:somini/vim-textobj-ruby.git
 	url-upstream = git@github.com:rhysd/vim-textobj-ruby.git
+[submodule "i3-vim-syntax"]
+	path = 3rd_party/i3-vim-syntax
+	url = git@github.com:PotatoesMaster/i3-vim-syntax.git
