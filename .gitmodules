@@ -279,3 +279,6 @@
 [submodule "vim-rhubarb"]
 	path = 3rd_party/vim-rhubarb
 	url = git@github.com:tpope/vim-rhubarb.git
+[submodule "vim-asciidoc"]
+	path = 3rd_party/vim-asciidoc
+	url = git@github.com:gnperdue/vim-asciidoc.git
