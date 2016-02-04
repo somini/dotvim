@@ -1250,6 +1250,7 @@ let g:hl_matchit_hl_groupname = 'Underlined'
 nnoremap <Leader>g<Space> :Git<Space>
 nnoremap <silent> <Leader>gs :Gstatus<CR>
 nnoremap <silent> <Leader>gc :Gcommit<CR>
+nnoremap <silent> <Leader>gC :Gcommit --all<CR>
 nnoremap <silent> <Leader>ga :Gcommit --amend --reset-author --no-edit<CR>
 nnoremap <silent> <Leader>gA :Gcommit --amend --reset-author<CR>
 " Stage the current file
