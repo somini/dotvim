@@ -116,8 +116,8 @@ endfunction
 nnoremap <expr> <Leader>r <SID>ChangeRegister()
 
 " Setup the leader keys
-let mapleader = '\'
-let maplocalleader = ','
+let g:mapleader = '\'
+let g:maplocalleader = ','
 
 " Move lines {{{
 nnoremap <silent> + :move +1<CR>
