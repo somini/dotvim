@@ -518,6 +518,7 @@ nnoremap <silent> ]l :lnext<CR>zzzv
 " Diff & Splits {{{
 " Diffs {{{
 set diffopt+=iwhite "Ignore whitespace on diffs
+nnoremap <silent> du :<C-r>diffupdate<CR>
 " After changing something in a diff, move to the next diff
 nmap do do]c
 nmap dp dp]c
