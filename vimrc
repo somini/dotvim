@@ -384,6 +384,7 @@ set sidescrolloff=10
 " Toggle line wrapping
 nnoremap <silent> <Leader>tw :setlocal wrap!<CR>
 "{{{ Non-Printable Characters
+let &showbreak = ' ↪'
 set list "Show non-printable characters
 let &listchars = 'tab:  '
 "Alternate tab: ≈~
