@@ -837,7 +837,6 @@ function! s:vimrc_airline_config()
 	" BetterFiletype: Don't bork the whole airline when filetype is not defined
 	call airline#parts#define_function('better_ft', 'GetCurrentFiletype')
 	" WatchVariable: "Debug" viml directly
-	let g:vimrc_airline_watch_variable = ''
 	call airline#parts#define_function('watchvar', 'GetWatchedVariable')
 	call airline#parts#define_condition('watchvar', "exists('g:vimrc_airline_watch_variable')")
 	" MyWordcount: My improvements on the regular wordcount
