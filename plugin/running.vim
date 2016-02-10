@@ -1,5 +1,6 @@
 function! s:RunCurrentFile()
-	execute "Start -wait=always ./".shellescape('%')
+	let l:file = shellescape(expand('%:p'))
+	execute 'Start -wait=always '.l:file
 endfunction
 " r: Run current file
 nnoremap <silent> <LocalLeader>r :call <SID>RunCurrentFile()<CR>
