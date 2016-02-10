@@ -1296,6 +1296,7 @@ let g:surround_13 = "\n\r\n"
 "}}}
 " Text Objects {{{
 let g:textobj_space_no_default_key_mappings = 1
+let g:textobj_function_no_default_key_mappings = 1
 " Filetype-specific plugins
 let g:textobj_python_no_default_key_mappings = 1
 let g:textobj_ruby_no_default_key_mappings = 1
@@ -1317,6 +1318,14 @@ function! s:vimrc_setup_textobj()
 				\     'select-a': 'a<CR>',
 				\     'select-i': 'i<CR>',
 				\   },
+				\ })
+	call textobj#user#map('function', {
+				\ 	'a': {
+				\ 		'select': 'a<LocalLeader>f',
+				\ 	},
+				\ 	'i' : {
+				\ 		'select': 'i<LocalLeader>f',
+				\ 	}
 				\ })
 endfunction
 "}}}

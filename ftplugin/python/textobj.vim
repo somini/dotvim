@@ -6,8 +6,6 @@ call textobj#user#map('python', {
 			\     'move-p': '<buffer> [<LocalLeader>c',
 			\   },
 			\   'function': {
-			\     'select-a': '<buffer> a<LocalLeader>f',
-			\     'select-i': '<buffer> i<LocalLeader>f',
 			\     'move-n': '<buffer> ]<LocalLeader>f',
 			\     'move-p': '<buffer>  [<LocalLeader>f',
 			\   }

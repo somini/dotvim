@@ -285,3 +285,9 @@
 [submodule "vim-coffee-script"]
 	path = 3rd_party/vim-coffee-script
 	url = git@github.com:kchmck/vim-coffee-script.git
+[submodule "vim-textobj-function"]
+	path = 3rd_party/vim-textobj-function
+	url = git@github.com:kana/vim-textobj-function.git
+[submodule "vim-textobj-function-javascript"]
+	path = 3rd_party/vim-textobj-function-javascript
+	url = git@github.com:thinca/vim-textobj-function-javascript.git
