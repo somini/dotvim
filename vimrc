@@ -444,14 +444,14 @@ nnoremap <silent> <Leader>tC :setlocal cursorcolumn!<CR>
 "}}}
 
 " Windowing Systems {{{
-augroup vimrc_windowing | autocmd!
-	autocmd VimEnter * call s:SetupWindowing()
-augroup END
-function! s:SetupWindowing()
-	if hasmapto('<Plug>ToggleFullScreen')
-		nmap <silent> <F11> <Plug>ToggleFullscreen
-	endif
+function! s:vimrc_fullscreen()
+	echohl WarningMsg
+	echo 'Fullscreen: Needs OS specific mappings!'
+	echohl None
 endfunction
+" This should be remapped on OS specific places
+nnoremap <Plug>ToggleFullscreen :call <SID>vimrc_fullscreen()<CR>
+nmap <silent> <F11> <Plug>ToggleFullscreen
 " Close the bottom windows on <C-w><C-q>. This aliases an alias for `ZQ`
 nnoremap <silent> <Plug>(vimrc-close-bwin) :lclose<CR>:cclose<CR>:pclose<CR>
 nmap <silent> <C-w><C-q> <Plug>(vimrc-close-bwin)
