@@ -69,6 +69,8 @@ autocmd VimEnter * let $HOME = $HOMEDRIVE.$HOMEPATH " Make sure it's the correct
 map  <F15> <NOP>
 map! <F15> <NOP>
 " }}}
+" Force the windows shell
+let &shell = 'C:\Windows\System32\cmd.exe'
 " }}}
 
 " Modeline {{{
