@@ -973,9 +973,10 @@ let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 " Real fallback is the old regular keyword completion
 let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabContextDefaultCompletionType = '<C-n>'
+let g:SuperTabClosePreviewOnPopupClose = 1
 function! s:vimrc_supertab_configure()
 	if &omnifunc != ''
-		call SuperTabChain(&omnifunc, g:SuperTabContextDefaultCompletionType)
+		call SuperTabChain(&omnifunc, g:SuperTabContextDefaultCompletionType, 0)
 		if exists('b:supertab_chain_default') && b:supertab_chain_default == 1
 			call SuperTabSetDefaultCompletionType("<C-x><C-u>")
 		endif
