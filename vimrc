@@ -197,6 +197,7 @@ let g:root_markers_vcs = [
 			\ '_darcs/',
 			\]
 let g:root_markers_other = [
+			\ '.RootMarker',
 			\ 'Makefile',
 			\ 'Rakefile',
 			\ 'setup.py', 'requirements.txt',
@@ -761,10 +762,8 @@ let g:ctrlp_root_markers = g:root_markers_vcs
 " Filetypes/buftypes to overwrite
 let g:ctrlp_reuse_window = g:nonfile_filetypes_modal_regex
 nnoremap <silent> <C-b> :CtrlPMRUFiles<CR>
-" Ignore .gitignore files
-let g:ctrlp_user_command = [
-			\ '.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'
-			\ ]
+" " Fallback to vim's globpath
+let g:ctrlp_user_command = ''
 " Mappings {{{
 " F2 toggles MRU in current directory
 " <C-y> pastes

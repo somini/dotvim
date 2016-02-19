@@ -62,6 +62,15 @@ let g:ctrlp_abbrev['abbrevs'] += [
 "}}}
 let g:ctrlp_funky_cache_dir = s:ctrlp_cache.'/funky'
 call CheckDir(g:ctrlp_funky_cache_dir)
+" Fallback to find, that's everywhere
+unlet g:ctrlp_user_command
+let g:ctrlp_user_command = {
+			\ 'types': {
+			\   1: ['.git', 'cd %s && git ls-files -oc'],
+			\   2: ['.hg', 'hg --cwd %s locate -I .'],
+			\ },
+			\ 'fallback': 'find %s -type f'
+			\ }
 "}}}
 " EasyClip {{{
 let s:easyclip_cache = s:user_cache.'/plugin/easyclip'

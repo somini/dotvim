@@ -55,6 +55,9 @@ let g:ctrlp_abbrev['abbrevs'] += [
 "}}}
 let g:ctrlp_funky_cache_dir = s:ctrlp_cache.'/funky'
 call CheckDir(g:ctrlp_funky_cache_dir)
+" Fallback to dir
+unlet g:ctrlp_user_command
+let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
 "}}}
 " EasyClip {{{
 let s:easyclip_cache = s:user_cache.'/plugin/easyclip'
