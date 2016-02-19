@@ -291,3 +291,12 @@
 [submodule "vim-textobj-function-javascript"]
 	path = 3rd_party/vim-textobj-function-javascript
 	url = git@github.com:thinca/vim-textobj-function-javascript.git
+[submodule "omnisharp-vim"]
+	; Install the submodules (and Mono on Linux) for full features
+	; fetchRecurseSubmodules = true
+	path = 1st_party/omnisharp-vim
+	url = git@github.com:somini/omnisharp-vim.git
+	url-upstream = git@github.com:OmniSharp/omnisharp-vim.git
+[submodule "vim-csharp"]
+	path = 3rd_party/vim-csharp
+	url = git@github.com:OrangeT/vim-csharp.git

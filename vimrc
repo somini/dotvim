@@ -965,6 +965,7 @@ let g:syntastic_mode_map = {
 let g:syntastic_python_checkers = ['python', 'pylint', 'flake8', 'pep8']
 let g:syntastic_javascript_checkers = ['jshint', 'jslint', 'gjslint']
 let g:syntastic_javascript_gjslint_args = '--nojsdoc --disable 1,5,110'
+let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 "}}}
 "}}}
 " SuperTab {{{
@@ -983,7 +984,7 @@ endfunction
 augroup vimrc_supertab_chain | autocmd!
 	" See supertab-completionchaining
 	" This filetypes will have omnifunc override the context completion
-	autocmd FileType css,sql,php,python let b:supertab_chain_default = 1
+	autocmd FileType css,sql,php,python,cs let b:supertab_chain_default = 1
 	" By default, don't override
 	autocmd FileType * call s:vimrc_supertab_configure()
 augroup END
@@ -1328,6 +1329,18 @@ function! s:vimrc_setup_textobj()
 				\ 	}
 				\ })
 endfunction
+"}}}
+" OmniSharp {{{
+let s:OmniSharp_host = $OMNISHARP_HOST
+if !empty(s:OmniSharp_host)
+	" Manual server management (Remote)
+	let g:Omnisharp_host = s:Omnisharp_host
+	let g:Omnisharp_start_server = 0
+	let g:Omnisharp_stop_server = 0
+endif
+let g:OmniSharp_timeout = 3 "seconds
+let g:omnicomplete_fetch_documentation = 1 "Docs for everything
+let g:OmniSharp_selector_ui = 'ctrlp'
 "}}}
 "}}}
 

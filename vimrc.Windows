@@ -61,6 +61,10 @@ let s:easyclip_cache = s:user_cache.'/plugin/easyclip'
 call CheckDir(s:easyclip_cache)
 let g:EasyClipShareYanksDirectory = s:easyclip_cache
 "}}}
+" OmniSharp {{{
+" Disable it by default on Windows, it needs Python
+let g:OmniSharp_loaded = 1
+"}}}
 "}}}
 
 " Workarounds {{{
