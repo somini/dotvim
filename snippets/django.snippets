@@ -4,3 +4,15 @@ snippet context generic.ListView
 		context = super(self.__class__, self).get_context_data(**kwargs)
 		context['${1:other_variable}'] = ${2:value}
 		return context
+
+snippet admin-model
+	@admin.register(${1:model})
+	class $1Admin(admin.ModelAdmin):
+		pass
+
+snippet view
+	def ${1:title}(request):
+		context = {
+			${0}
+		}
+		return render(request, '${2:view}', context)
