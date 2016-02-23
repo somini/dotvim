@@ -300,3 +300,6 @@
 [submodule "vim-csharp"]
 	path = 3rd_party/vim-csharp
 	url = git@github.com:OrangeT/vim-csharp.git
+[submodule "vim-django-support"]
+	path = 3rd_party/vim-django-support
+	url = git@github.com:lambdalisue/vim-django-support.git
