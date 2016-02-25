@@ -1,0 +1,46 @@
+#!/bin/bash
+current_root="$(git rev-parse --show-toplevel)"
+modules_file="$current_root/.gitmodules"
+git_config_submodules() {
+	git config --file "$modules_file" "$@"
+}
+
+if [ $# -lt 2 ]; then
+	cat >&2 <<-EOF
+	Usage: $0 local_dir remote_new
+	EOF
+	exit 1
+fi
+
+local_dir="${1%%/}"  # Remove trailing slash
+if [ "${local_dir%%/*}" != "3rd_party"  ]; then
+	cat >&2 <<-EOF
+	Can't move stuff that isn't a 3rd Party plugin!
+	Local Dir: $local_dir
+	EOF
+	exit 2
+fi
+local_repo="${local_dir##*/}"
+echo "Processing '$local_repo'"
+new_dir="1st_party/$local_repo"
+
+submodule_config="submodule.${local_repo}.url"
+remote_old="$(git_config_submodules $submodule_config)"
+remote_new="$2"
+
+pushd "$repo_root" >/dev/null
+###
+git mv "$local_dir" "$new_dir"
+git_config_submodules "$submodule_config" "$remote_new"
+git_config_submodules "${submodule_config}-upstream" "$remote_old"
+git add .gitmodules
+# Refresh the helptags
+# This will flash the terminal, I can't help it
+vim +Helptags +q
+# If there's nothing staged
+read -p 'Commit changes [y/<CR>]?' prompt
+if [ -z "$prompt" -o "$prompt" = 'y' ]; then
+	git commit -am "Integrate Plugin: $local_repo"
+fi
+###
+popd >/dev/null
