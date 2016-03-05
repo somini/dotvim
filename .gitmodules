@@ -304,3 +304,6 @@
 	path = 1st_party/vim-django-support
 	url = git@github.com:somini/vim-django-support.git
 	url-upstream = git@github.com:lambdalisue/vim-django-support.git
+[submodule "vim-racket"]
+	path = 3rd_party/vim-racket
+	url = git@github.com:wlangstroth/vim-racket.git
