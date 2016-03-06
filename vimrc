@@ -854,12 +854,27 @@ augroup END
 " Extensions Configuration {{{
 " Tabline {{{
 let g:airline#extensions#tabline#enabled = 1 "Show a tabline
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_tabs = 1 "Show tabs
+let g:airline#extensions#tabline#show_tab_nr = 1 "Show a number on each tab
+let g:airline#extensions#tabline#tab_nr_type = 1 "The tab number
+let g:airline#extensions#tabline#show_splits = 1 "Show the splits for each tab
+let g:airline#extensions#tabline#buffers_label = 'Buffers'
 let g:airline#extensions#tabline#show_buffers = 1 "If there's only one tab, show the buffers
 let g:airline#extensions#tabline#buffer_min_count = 2 "But only if there's more than 1
-let g:airline#extensions#tabline#tab_nr_type = 1 "Show tabnumbers
+let g:airline#extensions#tabline#exclude_preview = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved' "Uniquify filenames
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#hunks#non_zero_only = 1 "Don't show changes if there's none
+nmap <A-1> <Plug>AirlineSelectTab1
+nmap <A-2> <Plug>AirlineSelectTab2
+nmap <A-3> <Plug>AirlineSelectTab3
+nmap <A-4> <Plug>AirlineSelectTab4
+nmap <A-5> <Plug>AirlineSelectTab5
+nmap <A-6> <Plug>AirlineSelectTab6
+nmap <A-7> <Plug>AirlineSelectTab7
+nmap <A-8> <Plug>AirlineSelectTab8
+nmap <A-9> <Plug>AirlineSelectTab9
+nmap <A-h> <Plug>AirlineSelectPrevTab
+nmap <A-l> <Plug>AirlineSelectNextTab
 "}}}
 " Whitespace {{{
 let g:airline#extensions#whitespace#symbol = '₩'
@@ -873,6 +888,7 @@ let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#wordcount#filetypes = g:spelling_filetypes_regex
 let g:airline#extensions#wordcount#format = '%sW'
 "}}}
+let g:airline#extensions#hunks#non_zero_only = 1 "Don't show changes if there's none
 "}}}
 " Appearance {{{
 if !exists('g:airline_symbols')
