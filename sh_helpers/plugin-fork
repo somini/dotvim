@@ -40,7 +40,7 @@ vim +Helptags +q
 # If there's nothing staged
 read -p 'Commit changes [y/<CR>]?' prompt
 if [ -z "$prompt" -o "$prompt" = 'y' ]; then
-	git commit -am "Integrate Plugin: $local_repo"
+	git commit -m "Integrate Plugin: $local_repo"
 fi
 ###
 popd >/dev/null
