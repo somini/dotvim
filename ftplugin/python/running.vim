@@ -1,11 +1,22 @@
-function! s:RunCurrentFileInteractive()
-	let l:cmd = 'python' "Sane default
+function! s:RunCurrentFile(interactive)
+	"Sane defaults
+	let l:cmd = 'python'
+	let l:start_opt = ''
+
 	if getline(1) =~# '\V\^#!'
 		" Use the shebang
 		let l:cmd = getline(1)[2:]
 	endif
-	let l:cmd .= ' -i '
-	execute 'Start ' . l:cmd . shellescape('%')
+	if a:interactive
+		let l:cmd .= ' -i '
+		let l:start_opt .= ' -wait=never '
+	else
+		let l:cmd .= ' '
+		let l:start_opt .= ' -wait=always '
+	endif
+	execute 'Start' . l:start_opt . l:cmd . shellescape('%')
 endfunction
+" r: Run current file (works even when there's no shebang)
 " R: Run current file, interactively
-nnoremap <silent> <LocalLeader>R :call <SID>RunCurrentFileInteractive()<CR>
+nnoremap <silent> <buffer> <LocalLeader>r :call <SID>RunCurrentFile(0)<CR>
+nnoremap <silent> <buffer> <LocalLeader>R :call <SID>RunCurrentFile(1)<CR>

@@ -18,6 +18,6 @@ function! s:RunCurrentFile(interactive)
 endfunction
 " r: Run current file (works even when there's no shebang)
 " R: Run current file, with a XREPL
-nnoremap <silent> <LocalLeader>r :call <SID>RunCurrentFile(0)<CR>
-nnoremap <silent> <LocalLeader>R :call <SID>RunCurrentFile(1)<CR>
+nnoremap <silent> <buffer> <LocalLeader>r :call <SID>RunCurrentFile(0)<CR>
+nnoremap <silent> <buffer> <LocalLeader>R :call <SID>RunCurrentFile(1)<CR>
 
