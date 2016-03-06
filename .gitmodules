@@ -308,5 +308,6 @@
 	path = 3rd_party/vim-racket
 	url = git@github.com:wlangstroth/vim-racket.git
 [submodule "vim-git"]
-	path = 3rd_party/vim-git
-	url = git@github.com:tpope/vim-git.git
+	path = 1st_party/vim-git
+	url = git@github.com:somini/vim-git.git
+	url-upstream = git@github.com:tpope/vim-git.git
