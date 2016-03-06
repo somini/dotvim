@@ -762,7 +762,11 @@ let g:ctrlp_root_markers = g:root_markers_vcs
 " Filetypes/buftypes to overwrite
 let g:ctrlp_reuse_window = g:nonfile_filetypes_modal_regex
 nnoremap <silent> <C-b> :CtrlPMRUFiles<CR>
-" " Fallback to vim's globpath
+if exists('g:ctrlp_user_command')
+	" Unlet this so that there's no type mismatch when re-sourcing the vimrc
+	unlet g:ctrlp_user_command
+endif
+" Fallback to vim's globpath
 let g:ctrlp_user_command = ''
 " Mappings {{{
 " F2 toggles MRU in current directory
