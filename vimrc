@@ -875,7 +875,6 @@ let g:airline#extensions#tabline#show_buffers = 1 "If there's only one tab, show
 let g:airline#extensions#tabline#buffer_min_count = 2 "But only if there's more than 1
 let g:airline#extensions#tabline#exclude_preview = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved' "Uniquify filenames
-let g:airline#extensions#tabline#disable_refresh = 1 "Workaround on Fugitive buffers
 nmap <A-1> <Plug>AirlineSelectTab1
 nmap <A-2> <Plug>AirlineSelectTab2
 nmap <A-3> <Plug>AirlineSelectTab3
