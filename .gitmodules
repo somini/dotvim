@@ -311,3 +311,6 @@
 	path = 1st_party/vim-git
 	url = git@github.com:somini/vim-git.git
 	url-upstream = git@github.com:tpope/vim-git.git
+[submodule "taboo.vim"]
+	path = 3rd_party/taboo.vim
+	url = git@github.com:gcmt/taboo.vim.git

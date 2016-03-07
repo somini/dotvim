@@ -119,6 +119,9 @@ nnoremap <expr> <Leader>r <SID>ChangeRegister()
 let g:mapleader = '\'
 let g:maplocalleader = ','
 
+" Nice unicode modified character
+let s:modified_glyph = '☢'
+
 " Move lines {{{
 nnoremap <silent> + :move +1<CR>
 nnoremap <silent> - :move -2<CR>
@@ -846,8 +849,11 @@ function! s:vimrc_airline_config()
 	" MyWordcount: My improvements on the regular wordcount
 	call airline#parts#define_function('my_wordcount', 'GetWordcount')
 	call airline#parts#define_condition('my_wordcount', "(&filetype =~ '" . g:airline#extensions#wordcount#filetypes . "')")
+	" BetterFile: Using the custom modified flag
+	call airline#parts#define_function('better_file', 'Airline_GetModified')
 	"----------------------
 	" Sections: Define them
+	let g:airline_section_c = airline#section#create(['%<', 'better_file', g:airline_symbols.space, 'readonly'])
 	let g:airline_section_x = airline#section#create_right(['watchvar','spelling','funcname','better_ft'])
 	let g:airline_section_z = airline#section#create(['my_wordcount','cursorloc'])
 endfunction
@@ -856,11 +862,12 @@ augroup vimrc_airline | autocmd!
 augroup END
 "}}}
 " Extensions Configuration {{{
+let g:airline#extensions#taboo#enabled = 1
 " Tabline {{{
 let g:airline#extensions#tabline#enabled = 1 "Show a tabline
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#show_tabs = 1 "Show tabs
-let g:airline#extensions#tabline#show_tab_nr = 1 "Show a number on each tab
+let g:airline#extensions#tabline#show_tab_nr = 0 "Show a number on each tab. Let Taboo take care of it
 let g:airline#extensions#tabline#tab_nr_type = 1 "The tab number
 let g:airline#extensions#tabline#show_splits = 1 "Show the splits for each tab
 let g:airline#extensions#tabline#buffers_label = 'Buffers'
@@ -954,6 +961,9 @@ function! GetWatchedVariable()
 			endtry
 		endif
 		return l:res
+	endfunction
+	function! Airline_GetModified()
+		return expand('%f') . (&modified ? g:airline_symbols.space . s:modified_glyph : '')
 	endfunction
 	"}}}
 "}}}
@@ -1089,7 +1099,7 @@ let g:EasyMotion_do_mapping = 1 " Map everything with a weirdo prefix, just in c
 "         'bd-jk' is choose the line to jump to
 "'jumptoanywhere' is just that, customizable
 map <C-f> <Plug>(easymotion-s)
-map <C-t> <Plug>(easymotion-bd-t)
+" map <C-t> <Plug>(easymotion-bd-t) " This is mostly redundant with <C-f>
 map <C-j> <Plug>(easymotion-bd-jk)
 map <C-k> <Plug>(easymotion-bd-jk)
 map <Leader>s <Plug>(easymotion-jumptoanywhere)
@@ -1366,6 +1376,23 @@ endif
 let g:OmniSharp_timeout = 3 "seconds
 let g:omnicomplete_fetch_documentation = 1 "Docs for everything
 let g:OmniSharp_selector_ui = 'ctrlp'
+"}}}
+" Taboo {{{
+let g:taboo_tabline = 0
+let g:taboo_modified_tab_flag = s:modified_glyph
+let g:taboo_tab_format = '%N%U%m %f'
+let g:taboo_renamed_tab_format = '%N%U%m »%l'
+function! TabooMoveToTab()
+	let l:tab_name = TabooTabName(tabpagenr())
+	if empty(l:tab_name)
+		" No name yet, rename current tab
+		return ":TabooRename\<Space>"
+	else
+		" This tab is already named, create a new one
+		return ":TabooOpen\<Space>"
+	endif
+endfunction
+nnoremap <expr> <C-t> TabooMoveToTab()
 "}}}
 "}}}
 
