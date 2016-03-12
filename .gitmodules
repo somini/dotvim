@@ -63,8 +63,9 @@
 	path = 3rd_party/vim-repeat
 	url = git@github.com:tpope/vim-repeat.git
 [submodule "vim-signature"]
-	path = 3rd_party/vim-signature
-	url = git@github.com:kshenoy/vim-signature.git
+	path = 1st_party/vim-signature
+	url = git@github.com:somini/vim-signature.git
+	url-upstream = git@github.com:kshenoy/vim-signature.git
 [submodule "vim-speeddating"]
 	path = 3rd_party/vim-speeddating
 	url = git@github.com:tpope/vim-speeddating.git
