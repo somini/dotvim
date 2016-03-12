@@ -1034,6 +1034,7 @@ let g:vim_markdown_frontmatter = 1 "YAML frontmatter e.g Jekyll
 "}}}
 " Signature {{{
 let g:SignatureMarkTextHLDynamic = 1 "Integrate with vim-gitgutter
+let g:SignatureMarkerTextHLDynamic = 1 "Integrate with vim-gitgutter
 "}}}
 " Speed Dating {{{
 set nrformats-=octal "Messes stuff up
