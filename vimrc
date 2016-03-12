@@ -1186,14 +1186,14 @@ let g:snips_github = 'https://github.com/'.$USER       " Sensible defaults
 let g:snips_no_mappings = 1 "Don't map anything
 " Set <C-Space> as the de-facto snippets key
 imap <C-Space>   <Plug>snipMateNextOrTrigger
+smap <C-Space>   <Plug>snipMateNextOrTrigger
 imap <C-S-Space> <Plug>snipMateBack
 imap <C-r><Tab>  <Plug>snipMateShow
-vmap <C-Space>   <Plug>snipMateVisual
 " On terminals, set <C-c> as a fallback
 " Alias leaving insert mode without triggering autocmd, should be good
 imap <C-c>      <Plug>snipMateNextOrTrigger
+smap <C-c>      <Plug>snipMateNextOrTrigger
 imap <C-g><C-c> <Plug>snipMateBack
-vmap <C-c>      <Plug>snipMateVisual
 function! s:vimrc_snipmate_configure()
 	" Don't do anything if there's no snippet found
 	let g:snipMate['no_match_completion_feedkeys_chars'] = ''
