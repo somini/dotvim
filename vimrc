@@ -1151,14 +1151,13 @@ nnoremap <silent> <Leader>tp :AutoCloseToggle<CR>
 augroup vimrc_autoclose | autocmd!
 	autocmd VimEnter * let g:AutoClosePairs = AutoClose#ParsePairs('() [] {} " '' `')
 
-	" Align: Tab /\zs let b\| = \|, \|)/l0l0l0
+	" Align: Tabularize /\zs let b\| = \|, \|)/l0l0l0
 	" AutoClose#DefaultPairsModified(pairsToAdd,openersToRemove)
 	autocmd FileType vim      let b:AutoClosePairs = AutoClose#DefaultPairsModified(''   , '"')
 	autocmd FileType help     let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |', '' )
-	autocmd FileType python   let b:AutoClosePairs = AutoClose#DefaultPairsModified("'"  , '' )
 	autocmd FileType ruby     let b:AutoClosePairs = AutoClose#DefaultPairsModified('|'  , '' )
 	autocmd FileType html     let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>' , '' )
-	autocmd FileType markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('*'  , '' )
+	autocmd FileType markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('* _', '' )
 	autocmd FileType racket   let b:AutoClosePairs = AutoClose#DefaultPairsModified(''   , "'")
 augroup END
 "}}}
