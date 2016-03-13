@@ -318,3 +318,6 @@
 [submodule "vim-javascript"]
 	path = 3rd_party/vim-javascript
 	url = git@github.com:pangloss/vim-javascript.git
+[submodule "vim-jsx"]
+	path = 3rd_party/vim-jsx
+	url = git@github.com:mxw/vim-jsx.git
