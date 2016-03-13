@@ -1395,7 +1395,14 @@ endfunction
 nnoremap <expr> <C-t> TabooMoveToTab()
 "}}}
 " Current Function Info {{{
-let g:cfi_javascript_show_only_fname = 1
+let g:cfi_javascript_show = {
+			\   'assignment': 0,
+			\   'variable_name': 0,
+			\   'function_type': 0,
+			\   'function_name': 1,
+			\   'function_arguments': 0,
+			\   'function_body': 0,
+			\ }
 "}}}
 "}}}
 
