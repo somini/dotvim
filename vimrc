@@ -1266,8 +1266,11 @@ let g:colorizer_debug = 0
 " Ragtag {{{
 function! s:vimrc_setup_ragtag()
 	" Remove this mappings that interfere with pasting
-	iunmap <buffer> <C-V>%
-	iunmap <buffer> <C-V>&
+	for m in ['<C-v>%', '<C-v>&']
+		if !empty(maparg(m, 'i'))
+			execute 'iunmap <buffer> '.m
+		endif
+	endfor
 endfunction
 augroup vimrc_ragtag | autocmd!
 	autocmd User Ragtag call s:vimrc_setup_ragtag()
