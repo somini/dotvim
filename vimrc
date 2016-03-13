@@ -1394,6 +1394,9 @@ function! TabooMoveToTab()
 endfunction
 nnoremap <expr> <C-t> TabooMoveToTab()
 "}}}
+" Current Function Info {{{
+let g:cfi_javascript_show_only_fname = 1
+"}}}
 "}}}
 
 " Modeline {{{
