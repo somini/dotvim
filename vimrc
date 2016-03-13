@@ -735,6 +735,7 @@ function! s:vimrc_edit(vimrc)
 		return
 	endif
 	execute IsEmptyBuffer() ? 'edit' : 'tabnew' a:vimrc
+	tabmove 0 "Move the tab to the leftmost position
 endfunction
 " ve: Edit your vimrc
 " vE: Edit your gvimrc
