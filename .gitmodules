@@ -315,3 +315,6 @@
 [submodule "taboo.vim"]
 	path = 3rd_party/taboo.vim
 	url = git@github.com:gcmt/taboo.vim.git
+[submodule "vim-javascript"]
+	path = 3rd_party/vim-javascript
+	url = git@github.com:pangloss/vim-javascript.git
