@@ -1159,6 +1159,7 @@ augroup vimrc_autoclose | autocmd!
 	autocmd FileType html     let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>' , '' )
 	autocmd FileType markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('* _', '' )
 	autocmd FileType racket   let b:AutoClosePairs = AutoClose#DefaultPairsModified(''   , "'")
+	autocmd FileType jsx      let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>' , '' )
 augroup END
 "}}}
 " Filetype - SQL {{{
