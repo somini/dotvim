@@ -57,7 +57,13 @@ let g:ctrlp_funky_cache_dir = s:ctrlp_cache.'/funky'
 call CheckDir(g:ctrlp_funky_cache_dir)
 " Fallback to dir
 unlet g:ctrlp_user_command
-let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
+let g:ctrlp_user_command = {
+			\ 'types': {
+			\   1: ['.git', 'cd %s && git ls-files -oc --exclude-standard'],
+			\   2: ['.hg', 'hg --cwd %s locate -I .'],
+			\ },
+			\ 'fallback': 'dir %s /-n /b /s /a-d'
+			\ }
 "}}}
 " GitGutter {{{
 " Don't slow everything down
