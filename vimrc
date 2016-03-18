@@ -509,6 +509,11 @@ endif
 "}}}
 "On visual-block let the cursor go to "illegal" places (Half-tabs, past the end, etc)
 set virtualedit=block
+" Jumps {{{
+" <C-o>: Go back to
+" The opposite of <C-o>, aliased by SuperTab
+nnoremap g. <C-i>
+"}}}
 
 " "Smart" Apostrophe {{{
 nnoremap ' `
