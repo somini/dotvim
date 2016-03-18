@@ -52,6 +52,22 @@ if !exists('*pathogen#infect')
 	colorscheme blue "Ugly-ass colors to hammer the point home
 	finish
 endif
+" Plugin Blacklist {{{
+" The big one, commited into git and the host-specific one
+let s:plugin_blacklist = expand(expand('<sfile>:p:h').'/plugin_blacklist')
+" The host-specific one is defined as a function of the big one
+let s:plugin_blacklist_host = s:plugin_blacklist . '_host'
+let s:blacklist = []
+for f in [s:plugin_blacklist, s:plugin_blacklist_host]
+	if filereadable(f)
+		let s:blacklist += readfile(f)
+	endif
+endfor
+unlet f
+if !empty(s:blacklist)
+	let g:pathogen_blacklist = s:blacklist
+endif
+"}}}
 execute pathogen#infect('1st_party/{}','3rd_party/{}')
 "}}}
 
