@@ -483,8 +483,20 @@ nnoremap <S-Space> <C-u>
 nmap g<Space> <S-Space>
 nnoremap <silent> <C-Left> :bprevious<CR>
 nnoremap <silent> <C-Right> :bnext<CR>
-nnoremap <silent> <S-Left> :tabprevious<CR>
-nnoremap <silent> <S-Right> :tabnext<CR>
+" Tabs {{{
+nmap <A-h> <Plug>AirlineSelectPrevTab
+nmap <A-l> <Plug>AirlineSelectNextTab
+nmap <A-1> <Plug>AirlineSelectTab1
+nmap <A-2> <Plug>AirlineSelectTab2
+nmap <A-3> <Plug>AirlineSelectTab3
+nmap <A-4> <Plug>AirlineSelectTab4
+nmap <A-5> <Plug>AirlineSelectTab5
+nmap <A-6> <Plug>AirlineSelectTab6
+nmap <A-7> <Plug>AirlineSelectTab7
+nmap <A-8> <Plug>AirlineSelectTab8
+nmap <A-9> <Plug>AirlineSelectTab9
+nnoremap <A-q> :tabclose<CR>
+"}}}
 set hidden "Don't prompt when changing buffers
 " Alt-jk to move around {{{
 if has('gui_running')
@@ -892,17 +904,6 @@ let g:airline#extensions#tabline#show_buffers = 1 "If there's only one tab, show
 let g:airline#extensions#tabline#buffer_min_count = 2 "But only if there's more than 1
 let g:airline#extensions#tabline#exclude_preview = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved' "Uniquify filenames
-nmap <A-1> <Plug>AirlineSelectTab1
-nmap <A-2> <Plug>AirlineSelectTab2
-nmap <A-3> <Plug>AirlineSelectTab3
-nmap <A-4> <Plug>AirlineSelectTab4
-nmap <A-5> <Plug>AirlineSelectTab5
-nmap <A-6> <Plug>AirlineSelectTab6
-nmap <A-7> <Plug>AirlineSelectTab7
-nmap <A-8> <Plug>AirlineSelectTab8
-nmap <A-9> <Plug>AirlineSelectTab9
-nmap <A-h> <Plug>AirlineSelectPrevTab
-nmap <A-l> <Plug>AirlineSelectNextTab
 "}}}
 " Whitespace {{{
 let g:airline#extensions#whitespace#symbol = '₩'
