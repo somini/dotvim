@@ -59,6 +59,11 @@ call CheckDir(g:ctrlp_funky_cache_dir)
 unlet g:ctrlp_user_command
 let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
 "}}}
+" GitGutter {{{
+" Don't slow everything down
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+"}}}
 " EasyClip {{{
 let s:easyclip_cache = s:user_cache.'/plugin/easyclip'
 call CheckDir(s:easyclip_cache)
