@@ -39,8 +39,9 @@
 	path = 3rd_party/vim-surround
 	url = git@github.com:tpope/vim-surround.git
 [submodule "vim-endwise"]
-	path = 3rd_party/vim-endwise
-	url = git@github.com:tpope/vim-endwise.git
+	path = 1st_party/vim-endwise
+	url = git@github.com:somini/vim-endwise.git
+	url-upstream = git@github.com:tpope/vim-endwise.git
 [submodule "vim-dispatch"]
 	path = 3rd_party/vim-dispatch
 	url = git@github.com:tpope/vim-dispatch.git
