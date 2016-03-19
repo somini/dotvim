@@ -322,3 +322,6 @@
 [submodule "vim-jsx"]
 	path = 3rd_party/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
+[submodule "rust.vim"]
+	path = 3rd_party/rust.vim
+	url = git@github.com:rust-lang/rust.vim
