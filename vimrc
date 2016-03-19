@@ -1169,7 +1169,7 @@ let g:AutoCloseSmartQuote = 1 "Don't close quotes when preceeded by an odd numbe
 let g:AutoCloseExpandSpace = 1 "Space puts a space inbetween delimiters
 let g:AutoCloseExpandEnterOn = '{[(' "After this chars, put a newline between delimiters
 let g:AutoClosePreserveEnterMapping = 1 "Make an effort for <CR>
-let g:AutoCloseSelectionWrapPrefix = '<Leader>w'
+let g:AutoCloseSelectionWrapPrefix = '' "Disable this feature, surround.vim already does it better
 nnoremap <silent> <Leader>tp :AutoCloseToggle<CR>
 augroup vimrc_autoclose | autocmd!
 	autocmd VimEnter * let g:AutoClosePairs = AutoClose#ParsePairs('() [] {} " '' `')
