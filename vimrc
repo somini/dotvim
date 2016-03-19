@@ -1316,6 +1316,8 @@ nnoremap <silent> <Leader>gc :Gcommit<CR>
 nnoremap <silent> <Leader>gC :Gcommit --all<CR>
 nnoremap <silent> <Leader>ga :Gcommit --amend --reset-author --no-edit<CR>
 nnoremap <silent> <Leader>gA :Gcommit --amend --reset-author<CR>
+nnoremap <silent> <Leader>gj :Gpull<CR>
+nnoremap <silent> <Leader>gk :Gpush<CR>
 " Stage the current file
 nnoremap <silent> <Leader>gw :call <SID>vimrc_git_stage()<CR>
 " Unstage the current file
