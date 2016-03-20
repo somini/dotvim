@@ -1,4 +1,4 @@
-{% extends 'base.html.django' %}
+{% extends "base.django.html" %}
 
 {% block content %}
 
