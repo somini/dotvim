@@ -77,6 +77,9 @@ let s:easyclip_cache = s:user_cache.'/plugin/easyclip'
 call CheckDir(s:easyclip_cache)
 let g:EasyClipShareYanksDirectory = s:easyclip_cache
 "}}}
+" Rust {{{
+let g:rust_doc#downloaded_rust_doc_dir = '/usr/local/share/doc/rust/html'
+"}}}
 "}}}
 
 " Workarounds {{{

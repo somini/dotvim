@@ -26,8 +26,9 @@ inoremap <expr> <Plug>InsertSemicolon <SID>InsertKey(';')
 
 " Filetype-specific configuration
 let g:semicolon_ft_javascript = ['javaScriptStringS', 'javaScriptStringD', 'javaScriptLineComment']
+"TODO: Disable for Rust inside []
 
 " The all-important mapping
 augroup semicolon | autocmd!
-	autocmd FileType javascript imap <buffer> ; <Plug>InsertSemicolon
+	autocmd FileType javascript,rust imap <buffer> ; <Plug>InsertSemicolon
 augroup END

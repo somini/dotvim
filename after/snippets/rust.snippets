@@ -1,0 +1,34 @@
+# General snippets
+snippet extern
+	extern crate ${1};
+snippet use
+	use ${1:std}::${2:crate};
+snippet print
+	println!("${1}");
+snippet! let
+snippet let
+	let ${1:mut }${2:name} = ${3};
+snippet printa
+	println!("${1}", ${2:args});
+
+snippet f
+	fn ${1:name}(${2:args}) -> ${3:return} {
+		${4}
+	}
+snippet struct
+	#[derive(Copy,Clone)]
+	struct ${1:name} {
+		${2}
+	}
+# Traits
+snippet! impl
+snippet impl
+	impl ${2:trait for }${1:what} {
+		${3}
+	}
+snippet PartialEq
+	impl PartialEq for ${1:what} {
+		fn eq(&self, other: &$1) -> bool {
+			${2}
+		}
+	}

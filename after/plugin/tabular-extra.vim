@@ -14,6 +14,7 @@ AddTabularPattern! single_space         /\ /
 AddTabularPattern! commas               /,/l0l1
 AddTabularPattern! string_double_quotes /".*"/l0l1l0
 AddTabularPattern! first_fslash         /^[^\/]*\zs\//l1l0l0
+AddTabularPattern! hashrocket           /=>/l1l1l0
 
 AddTabularPattern! words_first_1        /^\s\+\zs\S\+\ze/
 AddTabularPattern! words_first_2        /^\s\+\(\S\+\s\+\)\?\zs\S\+\ze/

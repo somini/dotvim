@@ -1012,7 +1012,7 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_mode_map = {
 			\ 'mode': 'active',
 			\ 'active_filetypes': [],
-			\ 'passive_filetypes': ['php', 'javascript'],
+			\ 'passive_filetypes': ['php', 'javascript', 'rust'],
 			\ }
 let g:syntastic_python_checkers = ['python', 'pylint', 'flake8', 'pep8']
 let g:syntastic_javascript_checkers = ['jshint', 'jslint', 'gjslint']
@@ -1176,13 +1176,14 @@ augroup vimrc_autoclose | autocmd!
 
 	" Align: Tabularize /\zs let b\| = \|, \|)/l0l0l0
 	" AutoClose#DefaultPairsModified(pairsToAdd,openersToRemove)
-	autocmd FileType vim      let b:AutoClosePairs = AutoClose#DefaultPairsModified(''   , '"')
-	autocmd FileType help     let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |', '' )
-	autocmd FileType ruby     let b:AutoClosePairs = AutoClose#DefaultPairsModified('|'  , '' )
-	autocmd FileType html     let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>' , '' )
-	autocmd FileType markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('* _', '' )
-	autocmd FileType racket   let b:AutoClosePairs = AutoClose#DefaultPairsModified(''   , "'")
-	autocmd FileType jsx      let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>' , '' )
+	autocmd FileType vim      let b:AutoClosePairs = AutoClose#DefaultPairsModified(''    , '"')
+	autocmd FileType help     let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |' , '' )
+	autocmd FileType ruby     let b:AutoClosePairs = AutoClose#DefaultPairsModified('|'   , '' )
+	autocmd FileType html     let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>'  , '' )
+	autocmd FileType markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('* _' , '' )
+	autocmd FileType racket   let b:AutoClosePairs = AutoClose#DefaultPairsModified(''    , "'")
+	autocmd FileType jsx      let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>'  , '' )
+	autocmd FileType rust     let b:AutoClosePairs = AutoClose#DefaultPairsModified('<> |', "'")
 augroup END
 "}}}
 " Filetype - SQL {{{
@@ -1431,6 +1432,10 @@ let g:cfi_javascript_show = {
 			\   'function_arguments': 0,
 			\   'function_body': 0,
 			\ }
+"}}}
+" Rust {{{
+let g:rust_fold = 1 "Folding, open by default
+" let g:rust_doc#downloaded_rust_doc_dir = OS_specific
 "}}}
 "}}}
 
