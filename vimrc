@@ -1436,6 +1436,7 @@ let g:cfi_javascript_show = {
 " Rust {{{
 let g:rust_fold = 1 "Folding, open by default
 " let g:rust_doc#downloaded_rust_doc_dir = OS_specific
+let g:rustc_syntax_only = 0 " Expensive check
 "}}}
 "}}}
 
