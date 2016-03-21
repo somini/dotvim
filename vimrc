@@ -1229,6 +1229,7 @@ augroup vimrc_snipmate | autocmd!
 augroup END
 "}}}
 " Startify {{{
+let g:startify_custom_header = []
 let g:startify_custom_footer = [
 			\ ''                                                      ,
 			\ '   [l]  Open marked/current files. Equivalent to <CR>' ,
@@ -1250,6 +1251,7 @@ let g:startify_enable_special = 0
 let g:startify_files_number = 15
 let g:startify_relative_path = 1
 let g:startify_mapping_nowait = 1
+let g:startify_update_oldfiles = 1 "Update the MRU on the fly
 " Use the EasyMotion keys as custom indices
 " Filter those already mapped by Startify (see Best Practices)
 " Also filter my own mappings
