@@ -61,4 +61,5 @@ git branch --set-upstream-to="upstream/master"
 git checkout --quiet master
 git rebase
 # If you need to force push, ask the user
-git push || $SHELL
+# But ignore if the shell exists with an error
+git push || $SHELL || true
