@@ -25,7 +25,8 @@ endfunction
 inoremap <expr> <Plug>InsertSemicolon <SID>InsertKey(';')
 
 " Filetype-specific configuration
-let g:semicolon_ft_javascript = ['javaScriptStringS', 'javaScriptStringD', 'javaScriptLineComment']
+let g:semicolon_ft_javascript = ['javaScriptStringS', 'javaScriptStringD', 'javaScriptLineComment',
+			\ 'jsStringD', 'jsStringS']
 "TODO: Disable for Rust inside []
 
 " The all-important mapping
