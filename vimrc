@@ -1177,14 +1177,14 @@ augroup vimrc_autoclose | autocmd!
 
 	" Align: Tabularize /\zs let b\| = \|, \|)/l0l0l0
 	" AutoClose#DefaultPairsModified(pairsToAdd,openersToRemove)
-	autocmd FileType vim      let b:AutoClosePairs = AutoClose#DefaultPairsModified(''    , '"')
-	autocmd FileType help     let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |' , '' )
-	autocmd FileType ruby     let b:AutoClosePairs = AutoClose#DefaultPairsModified('|'   , '' )
-	autocmd FileType html     let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>'  , '' )
-	autocmd FileType markdown let b:AutoClosePairs = AutoClose#DefaultPairsModified('* _' , '' )
-	autocmd FileType racket   let b:AutoClosePairs = AutoClose#DefaultPairsModified(''    , "'")
-	autocmd FileType jsx      let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>'  , '' )
-	autocmd FileType rust     let b:AutoClosePairs = AutoClose#DefaultPairsModified('<> |', "'")
+	autocmd FileType vim            let b:AutoClosePairs = AutoClose#DefaultPairsModified(''    , '"')
+	autocmd FileType help           let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |' , '' )
+	autocmd FileType ruby           let b:AutoClosePairs = AutoClose#DefaultPairsModified('|'   , '' )
+	autocmd FileType html           let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>'  , '' )
+	autocmd FileType markdown       let b:AutoClosePairs = AutoClose#DefaultPairsModified('* _' , '' )
+	autocmd FileType racket         let b:AutoClosePairs = AutoClose#DefaultPairsModified(''    , "'")
+	autocmd FileType javascript.jsx let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>'  , '' )
+	autocmd FileType rust           let b:AutoClosePairs = AutoClose#DefaultPairsModified('<> |', "'")
 augroup END
 "}}}
 " Filetype - SQL {{{

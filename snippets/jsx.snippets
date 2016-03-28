@@ -6,3 +6,11 @@ snippet component
 			)
 		}
 	});
+snippet .
+	className="${1}"
+snippet route
+	<Route path='${1}' component={${2:Component}} />
+snippet tag
+	<${1:Component}
+		${0}
+	/>
