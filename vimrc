@@ -1329,7 +1329,6 @@ nnoremap <silent> <Leader>gr :call <SID>vimrc_git_unstage()<CR>
 " Helper functions {{{
 function! s:vimrc_git_stage()
 	Gwrite
-	GitGutter "Update the gutter
 endfunction
 function! s:vimrc_git_unstage()
 	execute 'silent Git reset '.shellescape(expand('%:p'))
