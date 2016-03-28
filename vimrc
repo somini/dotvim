@@ -1440,6 +1440,20 @@ let g:rust_fold = 1 "Folding, open by default
 " let g:rust_doc#downloaded_rust_doc_dir = OS_specific
 let g:rustc_syntax_only = 0 " Expensive check
 "}}}
+"Signify {{{
+" GitGutter takes care of the elephant in the room
+" This picks up the stragglers
+let g:signify_vcs_list = ['tfs', 'perforce']
+let g:signify_sign_show_count = 0 "Simple signs, gitgutter-style
+" Don't update that often, since this also writes the file
+let g:signify_update_on_bufenter = 0
+let g:signify_cursorhold_normal = 0
+let g:signify_cursorhold_insert = 0
+" Can't believe it's not GitGutter
+highlight link SignifySignAdd    GitGutterAdd
+highlight link SignifySignChange GitGutterChange
+highlight link SignifySignDelete GitGutterDelete
+"}}}
 "}}}
 
 " Modeline {{{
