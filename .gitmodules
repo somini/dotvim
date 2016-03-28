@@ -329,3 +329,6 @@
 [submodule "rust-doc.vim"]
 	path = 3rd_party/rust-doc.vim
 	url = git@github.com:rhysd/rust-doc.vim
+[submodule "vim-signify"]
+	path = 3rd_party/vim-signify
+	url = git@github.com:mhinz/vim-signify.git
