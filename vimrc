@@ -1299,6 +1299,8 @@ function! s:vimrc_setup_ragtag()
 			execute 'iunmap <buffer> '.m
 		endif
 	endfor
+	" Space with attributes
+	imap <buffer> <C-x><C-Space> <C-x><Space><Left><Space>
 endfunction
 augroup vimrc_ragtag | autocmd!
 	autocmd User Ragtag call s:vimrc_setup_ragtag()
