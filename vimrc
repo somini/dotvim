@@ -896,6 +896,7 @@ augroup vimrc_airline | autocmd!
 augroup END
 "}}}
 " Extensions Configuration {{{
+let g:airline_detect_spell = 0 "Redundant, I have my version
 let g:airline#extensions#taboo#enabled = 1
 " Tabline {{{
 let g:airline#extensions#tabline#enabled = 1 "Show a tabline
