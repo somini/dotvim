@@ -556,6 +556,26 @@ nnoremap <silent> ]l :lnext<CR>zzzv
 " Diff & Splits {{{
 " Diffs {{{
 set diffopt+=iwhite "Ignore whitespace on diffs
+" Jump to the next hunk, but choose how
+nnoremap ]c :call <SID>HunkMoveTo(1)<CR>
+nnoremap [c :call <SID>HunkMoveTo(0)<CR>
+function! s:HunkMoveTo(next)
+	let l:cmd = ''
+	if &diff
+		execute 'normal! '.(a:next ? ']c' : '[c')
+		return
+	endif
+	if exists('b:sy') && b:sy.active == 1
+		" Use Signify
+		let l:cmd = "\<Plug>".'(signify-'. (a:next ? 'next' : 'prev') .'-hunk)'
+	elseif exists('b:gitgutter_tracked')
+		" Use GitGutter
+		let l:cmd = "\<Plug>".'GitGutter'. (a:next ? 'Next' : 'Prev') .'Hunk'
+	endif
+	" Center and open folds
+	let l:cmd .= 'zzzv'
+	execute 'normal ' . l:cmd
+endfunction
 nnoremap <silent> du :<C-r>diffupdate<CR>
 " After changing something in a diff, move to the next diff
 nmap do do]c
@@ -996,8 +1016,6 @@ let g:bufferline_rotate = 1 "Keep the current buffer name visible
 "}}}
 " Git Gutter {{{
 let g:gitgutter_max_signs = 1000 "Ignore big diffs
-nmap [c <Plug>GitGutterPrevHunkzzzv
-nmap ]c <Plug>GitGutterNextHunkzzzv
 "}}}
 " Syntastic {{{
 " Check if there's any syntax errors
