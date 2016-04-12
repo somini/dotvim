@@ -543,11 +543,46 @@ endfunction
 nnoremap <silent> _ :<C-u>call SmartUnderscore()<CR>
 "}}}
 
-" Quickfix (q) {{{
+" Quickfix and Location List {{{
+autocmd FileType qf call s:vimrc_listings()
+function! s:vimrc_listings()
+	redir => buf
+	silent file
+	redir END
+	if match(buf, '\cQuickfix') > -1
+		" Quickfix
+		nnoremap <silent> <buffer> q    :cclose<CR>
+		nnoremap <silent> <buffer> <CR> <CR>
+		nnoremap <silent> <buffer> l <CR>:cclose<CR>
+		nnoremap <silent> <buffer> L <CR>:wincmd w<CR>
+		nnoremap <silent> <buffer> gg :crewind<CR>:wincmd w<CR>
+		nnoremap <silent> <buffer> j :cnext<CR>
+		nnoremap <silent> <buffer> J :cnext<CR>:wincmd w<CR>
+		nnoremap <silent> <buffer> <A-j> j
+		nnoremap <silent> <buffer> k :cprevious<CR>
+		nnoremap <silent> <buffer> K :cprevious<CR>:wincmd w<CR>
+		nnoremap <silent> <buffer> <A-k> k
+		nnoremap <silent> <buffer> G :clast<CR>:wincmd w<CR>
+	else
+		" Location List
+		nnoremap <silent> <buffer> q    :lclose<CR>
+		nnoremap <silent> <buffer> <CR> <CR>
+		nnoremap <silent> <buffer> l <CR>:lclose<CR>
+		nnoremap <silent> <buffer> L <CR>:wincmd w<CR>
+		nnoremap <silent> <buffer> gg :lrewind<CR>:wincmd w<CR>
+		nnoremap <silent> <buffer> j :lnext<CR>
+		nnoremap <silent> <buffer> J :lnext<CR>:wincmd w<CR>
+		nnoremap <silent> <buffer> <A-j> j
+		nnoremap <silent> <buffer> k :lprevious<CR>
+		nnoremap <silent> <buffer> K :lprevious<CR>:wincmd w<CR>
+		nnoremap <silent> <buffer> <A-k> k
+		nnoremap <silent> <buffer> G :llast<CR>:wincmd w<CR>
+	endif
+endfunction
+" Quickfix Manipulation
 nnoremap <silent> [q :cprevious<CR>zzzv
 nnoremap <silent> ]q :cnext<CR>zzzv
-"}}}
-" Location list (l) {{{
+" Location List Manipulation
 nnoremap <silent> [l :lprevious<CR>zzzv
 nnoremap <silent> ]l :lnext<CR>zzzv
 "}}}
