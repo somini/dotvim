@@ -513,6 +513,24 @@ set virtualedit=block
 " <C-o>: Go back to
 " The opposite of <C-o>, aliased by SuperTab
 nnoremap g. <C-i>
+nnoremap <silent> g: :call <SID>goto_jump()<CR>
+function! s:goto_jump()
+	" http://vim.wikia.com/wiki/Jumping_to_previously_visited_locations
+	jumps
+	let j = input('Jump to: ')
+	if j != ''
+		let pattern = '\v\c^\+'
+		let l:cmd = 'normal! '
+		if j =~ pattern
+			let j = substitute(j, pattern, '', 'g')
+			let l:cmd .= j . "\<C-i>"
+		else
+			let l:cmd .= j . "\<C-o>"
+		endif
+		let l:cmd .= 'zzzv'
+		execute l:cmd
+	endif
+endfunction
 "}}}
 
 " "Smart" Apostrophe {{{
