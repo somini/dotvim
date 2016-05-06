@@ -1564,6 +1564,8 @@ let g:rustc_syntax_only = 0 " Expensive check
 "Signify {{{
 " GitGutter takes care of the elephant in the room
 " This picks up the stragglers
+" TFS is completely unuseable on a (virtual) machine with no SSD
+let g:signify_disable_by_default = 1
 let g:signify_vcs_list = ['tfs', 'perforce']
 let g:signify_sign_show_count = 0 "Simple signs, gitgutter-style
 " Don't update that often, since this also writes the file
