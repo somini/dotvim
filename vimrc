@@ -661,7 +661,19 @@ nmap do do]c
 nmap dp dp]c
 
 " Diff the current file
+" TODO: Do something similar for signify
 nnoremap <silent> <Leader>d :Gdiff<CR>
+" One-shot diff of the current file
+" This is plugin-specific
+nnoremap <silent> <Leader>D :call DiffOneShot()<CR>
+function! DiffOneShot()
+	" Git Gutter
+	if exists('g:gitgutter_enabled') && g:gitgutter_enabled == 0
+		call s:DiffOneShot_GitGutter()
+	elseif exists('b:sy') && b:sy.active == 0
+		call s:DiffOneShot_Signify()
+	endif
+endfunction
 "}}}
 " Splits {{{
 set splitright " New splits to the right
@@ -1096,6 +1108,12 @@ let g:bufferline_rotate = 1 "Keep the current buffer name visible
 "}}}
 " Git Gutter {{{
 let g:gitgutter_max_signs = 1000 "Ignore big diffs
+function! s:DiffOneShot_GitGutter()
+	let l:status = g:gitgutter_enabled
+	let g:gitgutter_enabled = 1
+	GitGutter
+	let g:gitgutter_enabled = l:status
+endfunction
 "}}}
 " Syntastic {{{
 " Check if there's any syntax errors
@@ -1556,6 +1574,13 @@ let g:signify_cursorhold_insert = 0
 highlight link SignifySignAdd    GitGutterAdd
 highlight link SignifySignChange GitGutterChange
 highlight link SignifySignDelete GitGutterDelete
+" One-shot "diff"
+function! s:DiffOneShot_Signify()
+	let l:status = b:sy.active
+	let b:sy.active = 1
+	call sy#start() "Do ya'thang
+	let b:sy.active = l:status
+endfunction
 "}}}
 "}}}
 
