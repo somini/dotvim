@@ -336,6 +336,7 @@ endfunction
 "}}}
 
 " Data Safety and Managing {{{
+nnoremap <silent> <Leader>w :write<CR>
 set history=1000 " Disk space is REALLY cheap
 function! CheckDir(dir) "{{{
 	if !isdirectory(a:dir)
