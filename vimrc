@@ -636,8 +636,8 @@ nnoremap <silent> ]l :lnext<CR>zzzv
 " Diffs {{{
 set diffopt+=iwhite "Ignore whitespace on diffs
 " Jump to the next hunk, but choose how
-nnoremap ]c :call <SID>HunkMoveTo(1)<CR>
-nnoremap [c :call <SID>HunkMoveTo(0)<CR>
+nnoremap <silent> ]c :call <SID>HunkMoveTo(1)<CR>
+nnoremap <silent> [c :call <SID>HunkMoveTo(0)<CR>
 function! s:HunkMoveTo(next)
 	let l:cmd = ''
 	if &diff
