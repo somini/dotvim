@@ -223,6 +223,31 @@ let g:root_markers_other = [
 			\]
 let g:root_markers = g:root_markers_vcs + g:root_markers_other
 "}}}
+" Change Indentation {{{
+nnoremap <silent> <Leader>ci :call <SID>stab()<CR>
+function! s:stab()
+	let l:in = input('Indentation Value: ')
+	if l:in =~# '\v[\+\-]?\d*'
+		" Do it!
+		let l:tabs = l:in =~# '^-' "ExpandTab, unless you say not to
+		let l:value = abs(l:in)
+		call s:stab_change(l:value, l:tabs)
+	else
+		echohl WarningMsg
+		echo 'Pattern not a match'
+		echohl None
+	endif
+endfunction
+function! s:stab_change(value, tabs)
+	let &l:expandtab = a:tabs
+	let &l:tabstop = a:value
+	let &l:shiftwidth = a:value
+	" Refresh the indent guides
+	IndentGuidesToggle
+	IndentGuidesToggle
+	setlocal expandtab? tabstop? shiftwidth?
+endfunction
+"}}}
 " }}}
 
 " Clipboard {{{
