@@ -969,6 +969,7 @@ let g:NERDTreeMouseMode = 3 "Single-click to open file and folders
 let g:NERDTreeMinimalUI = 1 "No help and bookmark headers
 let g:NERDTreeCascadeOpenSingleChildDir = 1
 let g:NERDTreeRespectWildIgnore = 1 "Don't repeat settings
+let g:NERDTreeCreatePrefix='silent keepalt keepjumps' "Ignore the NERDTree for jumps (<C-o> works)
 " let g:NERDTreeBookmarksFile = OS_specific
 " NERDTreeTabs{{{
 let g:nerdtree_tabs_open_on_gui_startup = 0 "Don't auto-open
