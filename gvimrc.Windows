@@ -17,22 +17,40 @@ set guifont=DejaVu_Sans_Mono_for_Powerline:h11,Consolas:h11
 
 " Windowing Systems {{{
 " If $HOME was non-ASCII characters, copy the DLL into the $VIMRUNTIME folder
-" and change this two settings to the DLL name only, no path nor extension
-let s:dll_maximize   = expand(g:os_dir.'/maximize.dll')
-let s:dll_fullscreen = expand(g:os_dir.'/gvimfullscreen.dll')
+let s:search_list = [g:os_dir, $VIMRUNTIME]
+if exists('g:os_dir_extra')
+	call insert(s:search_list, g:os_dir_extra,0)
+endif
+let s:search_path = join(s:search_list, ',')
+let s:dll_maximize   = findfile('maximize.dll', s:search_path)
+let s:dll_fullscreen = findfile('gvimfullscreen.dll', s:search_path)
 
 function! ToggleFullscreen()
 	if filereadable(s:dll_fullscreen)
-		call libcallnr(s:dll_fullscreen, 'ToggleFullScreen', 0)
+		try
+			call libcallnr(s:dll_fullscreen, 'ToggleFullScreen', 0)
+		catch
+			echom 'Error in the Fullscreen DLL'
+		endtry
 	endif
 endfunction
 function! WindowMaximize()
 	if filereadable(s:dll_maximize)
 		try
 			call libcallnr(s:dll_maximize, 'Maximize', 1)
-		catch " Fallback to the good old hack
-			set lines=999 columns=999
+		catch
+			call s:WindowMaximizeHack()
 		endtry
+	else
+		call s:WindowMaximizeHack()
+	endif
+endfunction
+function! s:WindowMaximizeHack()
+	if g:os == 'Windows'
+		simalt ~x
+	else
+		" Fallback to the good old hack
+		set lines=999 columns=999
 	endif
 endfunction
 
