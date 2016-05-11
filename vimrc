@@ -1585,6 +1585,13 @@ function! s:DiffOneShot_Signify()
 	let b:sy.active = l:status
 endfunction
 "}}}
+" TComment {{{
+let g:tcommentMaps = 1 "Select just a few mappings
+let g:tcommentMapLeader1 = ''
+let g:tcommentMapLeader2 = ''
+"Start a comment
+imap <silent> <C-g><C-g> <Plug>TComment_<c-_>i
+"}}}
 "}}}
 
 " Modeline {{{

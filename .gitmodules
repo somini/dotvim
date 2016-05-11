@@ -32,9 +32,6 @@
 	path = 1st_party/bbcode
 	url = git@github.com:somini/bbcode.git
 	url-upstream = git@github.com:vim-scripts/bbcode.git
-[submodule "vim-commentary"]
-	path = 3rd_party/vim-commentary
-	url = git@github.com:tpope/vim-commentary.git
 [submodule "vim-surround"]
 	path = 3rd_party/vim-surround
 	url = git@github.com:tpope/vim-surround.git
@@ -332,3 +329,6 @@
 [submodule "vim-signify"]
 	path = 3rd_party/vim-signify
 	url = git@github.com:mhinz/vim-signify.git
+[submodule "tcomment_vim"]
+	path = 3rd_party/tcomment_vim
+	url = git@github.com:tomtom/tcomment_vim
