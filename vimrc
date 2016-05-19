@@ -644,7 +644,7 @@ function! s:HunkMoveTo(next)
 		execute 'normal! '.(a:next ? ']c' : '[c')
 		return
 	endif
-	if exists('b:sy') && b:sy.active == 1
+	if exists('b:sy') && len(b:sy.hunks) > 0
 		" Use Signify
 		let l:cmd = "\<Plug>".'(signify-'. (a:next ? 'next' : 'prev') .'-hunk)'
 	elseif exists('b:gitgutter_tracked')
