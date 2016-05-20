@@ -1,5 +1,15 @@
 # Global snippets
+version 1
+#
+## Modeline
+### Depends on https://github.com/tomtom/tlib_vim
+### Should work on most filetypes, set &commentstring otherwise
+snippet modeline
+	`tlib#string#Strip(split(&commentstring, '%s')[0])` vim: ${1:opt:opt=val:}`' '.tlib#string#Strip(split(&commentstring, '%s')[1])`
+## Fold, with VISUAL support
+### Use snipMateVisual to turn wrap a visual selection with a fold
+### Depends on https://github.com/tomtom/tlib_vim
+### Should work on most filetypes, set &commentstring otherwise
 snippet fold
-	" ${1:Title} `split(&foldmarker, ',')[0]`
-	${0}
-	"`split(&foldmarker, ',')[1]`
+	`tlib#string#Strip(split(&commentstring, '%s')[0])` ${1:Title} `split(&foldmarker, ',')[0]``' '.tlib#string#Strip(split(&commentstring, '%s')[1])`
+	$VISUAL`tlib#string#Strip(split(&commentstring, '%s')[0])` `split(&foldmarker, ',')[1]``' '.tlib#string#Strip(split(&commentstring, '%s')[1])`
