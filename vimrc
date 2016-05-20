@@ -1338,6 +1338,7 @@ imap <C-r><Tab>  <Plug>snipMateShow
 imap <C-c>      <Plug>snipMateNextOrTrigger
 smap <C-c>      <Plug>snipMateNextOrTrigger
 imap <C-g><C-c> <Plug>snipMateBack
+vmap <C-Space>   <Plug>snipMateVisual
 function! s:vimrc_snipmate_configure()
 	" Don't do anything if there's no snippet found
 	let g:snipMate['no_match_completion_feedkeys_chars'] = ''
