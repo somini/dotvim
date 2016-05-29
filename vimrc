@@ -1592,6 +1592,7 @@ let g:tcommentMapLeader1 = ''
 let g:tcommentMapLeader2 = ''
 "Start a comment
 imap <silent> <C-g><C-g> <Plug>TComment_<c-_>i
+imap <silent> <C-g><C-b> <Plug>TComment_<c-_>b
 "}}}
 "}}}
 
