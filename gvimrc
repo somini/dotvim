@@ -13,9 +13,6 @@ inoremap <silent> <C-s> <C-o>:write<CR>
 
 " Mouse {{{
 set mousehide "Hide mouse when typing
-" Mouse points to active window, always
-" Still smart enough not to inadvertent selects
-set mousefocus
 " }}}
 
 " Workarounds {{{
