@@ -1067,41 +1067,42 @@ function! GetWatchedVariable()
 		execute 'return &'.g:vimrc_airline_watch_variable.".'«".g:vimrc_airline_watch_variable."'"
 	else
 		return ''
-	endfunction
-	function! GetWordcount()
-		let l:format = get(g:, 'airline#extensions#wordcount#format', '%d words')
-		if mode() =~? 's'
-			" Bail on select mode
-			return ''
-		endif
-		if &buftype != ''
-			" Bail on special buffers
-			return ''
-		endif
-		let l:old_status = v:statusmsg
-		let l:position = getpos(".")
-		exe "silent normal! g\<c-g>"
-		let l:stat = v:statusmsg
-		call setpos('.', l:position)
-		let v:statusmsg = l:old_status
+	endif
+endfunction
+function! GetWordcount()
+	let l:format = get(g:, 'airline#extensions#wordcount#format', '%d words')
+	if mode() =~? 's'
+		" Bail on select mode
+		return ''
+	endif
+	if &buftype != ''
+		" Bail on special buffers
+		return ''
+	endif
+	let l:old_status = v:statusmsg
+	let l:position = getpos(".")
+	exe "silent normal! g\<c-g>"
+	let l:stat = v:statusmsg
+	call setpos('.', l:position)
+	let v:statusmsg = l:old_status
 
-		let l:parts = split(l:stat)
-		let l:res = ''
-		if len(l:parts) > 11
-			let l:cnt = str2nr(split(stat)[11])
-			try
-				let l:res = printf(l:format, cnt) . g:airline_symbols.space
-			catch /^Vim\%((\a\+)\)\=:E767/
-				" printf: wrong format
-				let l:res = ''
-			endtry
-		endif
-		return l:res
-	endfunction
-	function! Airline_GetModified()
-		return expand('%f') . (&modified ? g:airline_symbols.space . s:modified_glyph : '')
-	endfunction
-	"}}}
+	let l:parts = split(l:stat)
+	let l:res = ''
+	if len(l:parts) > 11
+		let l:cnt = str2nr(split(stat)[11])
+		try
+			let l:res = printf(l:format, cnt) . g:airline_symbols.space
+		catch /^Vim\%((\a\+)\)\=:E767/
+			" printf: wrong format
+			let l:res = ''
+		endtry
+	endif
+	return l:res
+endfunction
+function! Airline_GetModified()
+	return expand('%f') . (&modified ? g:airline_symbols.space . s:modified_glyph : '')
+endfunction
+"}}}
 "}}}
 " Bufferline {{{
 let g:bufferline_echo = 0 "No echo on command line
