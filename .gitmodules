@@ -332,3 +332,6 @@
 [submodule "tcomment_vim"]
 	path = 3rd_party/tcomment_vim
 	url = git@github.com:tomtom/tcomment_vim
+[submodule "vim-grepper"]
+	path = 3rd_party/vim-grepper
+	url = git@github.com:mhinz/vim-grepper.git

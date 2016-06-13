@@ -1594,6 +1594,16 @@ let g:tcommentMapLeader2 = ''
 imap <silent> <C-g><C-g> <Plug>TComment_<c-_>i
 imap <silent> <C-g><C-b> <Plug>TComment_<c-_>b
 "}}}
+" Grepper {{{
+nmap <Leader>* :Grepper -noprompt -cword<CR>
+nmap <Leader><Leader>* :Grepper<CR>
+let g:grepper = {
+			\ 'tools': ['ag', 'ack', 'git', 'grep', 'findstr'],
+			\ 'highlight': 1,
+			\ 'open': 1,
+			\ 'jump': 0,
+			\ }
+"}}}
 "}}}
 
 " Modeline {{{
