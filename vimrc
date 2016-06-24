@@ -30,6 +30,11 @@ nnoremap Y y$
 " set guioptions-=M "Don't load $VIMRUNTIME/menu.vim
 " set guioptions-=f "Don't fork from the shell
 " }}}
+autocmd VimEnter * call s:SetupLegacy()
+function! s:SetupLegacy()
+	" Matchit
+	sunmap a%
+endfunction
 " }}}
 
 " Pathogen {{{
@@ -1353,11 +1358,15 @@ augroup END
 " Startify {{{
 let g:startify_custom_header = []
 let g:startify_custom_footer = [
-			\ ''                                                      ,
-			\ '   [l]  Open marked/current files. Equivalent to <CR>' ,
-			\ '   [e]  New empty buffer, Normal mode'                 ,
-			\ '   [i]  New empty buffer, Insert mode'                 ,
-			\ '   [q]  Quit VIM'                                      ,
+			\ ''                                                       ,
+			\ '   [o]  Open a new file by path. Uses the command line' ,
+			\ '   [l]  Open marked/current files. Equivalent to <CR>'  ,
+			\ '   [e]  New empty buffer, Normal mode'                  ,
+			\ '   [i]  New empty buffer, Insert mode'                  ,
+			\ '   [q]  Quit VIM'                                       ,
+			\ ]
+let g:startify_commands = [
+			\ ['Startify Help', 'help startify']
 			\ ]
 let g:startify_list_order = [
 			\ ['My Bookmarks']             ,
@@ -1379,12 +1388,14 @@ let g:startify_update_oldfiles = 1 "Update the MRU on the fly
 " Also filter my own mappings
 let g:startify_custom_indices = filter(
 			\ split(tolower(g:EasyMotion_keys),'.\zs'),
-			\ 'v:val !~# "[eiqbstvjk l]"')
+			\ 'v:val !~# "[eiqbstvjk lo]"')
 function! s:vimrc_startify()
 	" It's easier to identify the file names
 	setlocal cursorline
 	" Mimic nerdtree horizontal mappings, for consitency
 	nmap <buffer> l <Plug>(startify-open-buffers)
+	" Open a new file by path
+	nnoremap <buffer> o :edit<Space>
 	" Quit really quits
 	" But keep the old meaning on `Q`
 	execute 'nnoremap <buffer> Q 'maparg('q', 'n')
