@@ -177,8 +177,9 @@
 	path = 3rd_party/SpellCheck
 	url = git@github.com:vim-scripts/SpellCheck.git
 [submodule "ctrlp-funky"]
-	path = 3rd_party/ctrlp-funky
-	url = git@github.com:tacahiroy/ctrlp-funky.git
+	path = 1st_party/ctrlp-funky
+	url = git@github.com:somini/ctrlp-funky.git
+	url-upstream = git@github.com:tacahiroy/ctrlp-funky.git
 [submodule "tlib_vim"]
 	path = 3rd_party/tlib_vim
 	url = git@github.com:tomtom/tlib_vim.git
