@@ -517,6 +517,8 @@ nnoremap <silent> <C-Right> :bnext<CR>
 " Tabs {{{
 nmap <A-h> <Plug>AirlineSelectPrevTab
 nmap <A-l> <Plug>AirlineSelectNextTab
+nmap <silent> <A-S-h> :tabmove -1<CR>
+nmap <silent> <A-S-l> :tabmove +1<CR>
 nmap <A-1> <Plug>AirlineSelectTab1
 nmap <A-2> <Plug>AirlineSelectTab2
 nmap <A-3> <Plug>AirlineSelectTab3
