@@ -748,6 +748,8 @@ imap <C-F1> <C-o><C-F1>
 let g:spelling_filetypes = [
 			\ 'text',
 			\ 'mkd', 'markdown',
+			\ 'rst',
+			\ 'asciidoc',
 			\ 'gitcommit',
 			\ 'help'
 			\]
@@ -1326,7 +1328,7 @@ let g:SpellCheck_OnNospell = '' "SpellCheck command fails when 'spell' is off
 " Spell Loop {{{
 let g:spellloop_quiet = 1 " Don't echo a message everytime the language changes
 let g:spellloop_skip_nospell = 1 " Don't loop if 'spell' is not set
-let g:spell_list = ['en_gb', 'pt', ]
+let g:spell_list = ['en_gb', 'pt', 'ptao']
 let &spelllang = g:spell_list[0]
 nnoremap <silent> <Leader>ts :call SpellLoop()<CR>
 "}}}

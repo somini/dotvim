@@ -1,0 +1,81 @@
+#!/bin/bash
+url_scowl_rss='https://sourceforge.net/projects/wordlist/rss?path=/SCOWL/'
+url_scowl='https://sourceforge.net/projects/wordlist/files/SCOWL/2016.01.19/scowl-2016.01.19.tar.gz/download'
+url_natura='http://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/LATEST/wordlist-preao-latest.txt.xz'
+url_natura_ao='http://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/LATEST/wordlist-ao-latest.txt.xz'
+spell_level=70
+iconv_opt="-f iso8859-1 -t utf8"
+vim_folder="${VIMFOLDER:-$HOME/.vim/}"
+
+basedir="$(mktemp -d)"
+pushd "$basedir" >/dev/null
+#{{{ Download Data
+#{{{ English
+# Parse the RSS for the project and get the latest version
+# Get the first link with "tar.gz/download"
+url="$(curl -s "$url_scowl_rss" | xpath -q -e '/rss/channel/item[contains(./link/text(),"tar.gz/download")][1]/link/text()')"
+if [[ -z $url ]]; then
+	# Fallback
+	url="$url_scowl"
+fi
+if [[ $url != $url_scowl ]]; then
+	echo "New SCOWL version! URL: $url" >&2
+fi
+file="scowl.tar.gz"
+echo "Downloading '$url' to '$file'" >&2
+curl -Ls "$url" >"$file"
+tar xfz "$file"
+folder_en="$(tar tzf "$file" | cut -d'/' -f1 | sort -u | head -1 | xargs readlink -e)"
+#}}}
+#{{{ Portuguese - Português
+folder_pt="$(readlink -m natura_pt)"
+mkdir -p "$folder_pt" && pushd "$folder_pt" >/dev/null
+echo "Downloading '$url_natura'" >&2
+curl -s "$url_natura" | xz -d | iconv $iconv_opt | sort -u >"wordlist.pt-PREAO"
+curl -s "$url_natura_ao" | xz -d | iconv $iconv_opt | sort -u >"wordlist.pt-AO"
+popd >/dev/null
+#}}}
+#}}}
+
+#{{{ Make Dictionaries
+#{{{ English
+pushd "$folder_en" >/dev/null
+
+# British Wordlist
+./mk-list british $spell_level | iconv $iconv_opt | sort -u >wordlist.en_gb
+# American Wordlist
+./mk-list american $spell_level | iconv $iconv_opt | sort -u >wordlist.en_us
+
+# Write the headers
+(echo '/regions=gb'  ; cat wordlist.en_gb) >wl.vim.en_gb
+(echo '/regions=us'  ; cat wordlist.en_us) >wl.vim.en_us
+
+# Write the spellfile
+vim --cmd 'mkspell! en wl.vim.en_gb wl.vim.en_us' --cmd 'quit' >&2
+
+# Copy the results to the right places
+version="$(basename "$folder_en" | tr -cd '[:digit:]')"
+cp -f wordlist.en_gb "$vim_folder/spell/dictionaries/scowl.$version.en_GB"
+cp -f wordlist.en_us "$vim_folder/spell/dictionaries/scowl.$version.en_US"
+cp -f "en.utf-8.spl" "$vim_folder/spell/en.utf-8.spl"
+
+popd >/dev/null
+#}}}
+#{{{ Portuguese - Português
+pushd "$folder_pt" >/dev/null
+
+# Write the spellfiles
+vim --cmd 'mkspell! ptao wordlist.pt-AO' --cmd 'quit' >&2
+vim --cmd 'mkspell! pt   wordlist.pt-PREAO' --cmd 'quit' >&2
+
+# Copy the results to the right places
+version="$(curl -sI  "$url_natura" | grep -E '^ETag:' | cut -d'"' -f2)"
+cp -f wordlist.pt-PREAO "$vim_folder/spell/dictionaries/natura.$version.pt"
+cp -f wordlist.pt-AO    "$vim_folder/spell/dictionaries/natura.$version.ptao"
+cp -f "pt.utf-8.spl"    "$vim_folder/spell/pt.utf-8.spl"
+cp -f "ptao.utf-8.spl"  "$vim_folder/spell/ptao.utf-8.spl"
+popd >/dev/null
+#}}}
+#}}}
+popd >/dev/null
+# vim: fdm=marker:foldlevel=1
