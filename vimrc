@@ -504,7 +504,7 @@ endfunction
 nnoremap <Plug>ToggleFullscreen :call <SID>vimrc_fullscreen()<CR>
 nmap <silent> <F11> <Plug>ToggleFullscreen
 " Close the bottom windows on <C-w><C-q>. This aliases an alias for `ZQ`
-nnoremap <silent> <Plug>(vimrc-close-bwin) :lclose<CR>:cclose<CR>:pclose<CR>
+nnoremap <silent> <Plug>(vimrc-close-bwin) :lclose<CR>:cclose<CR>:pclose<CR>:UndotreeHide<CR>
 nmap <silent> <C-w><C-q> <Plug>(vimrc-close-bwin)
 "}}}
 
