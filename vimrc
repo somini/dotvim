@@ -341,7 +341,19 @@ endfunction
 "}}}
 
 " Data Safety and Managing {{{
-nnoremap <silent> <Leader>w :write<CR>
+nnoremap <silent> <Leader>w :call <SID>WriteCurrentBuffer()<CR>
+function! s:WriteCurrentBuffer()
+	let l:dir = expand('%:h:p')
+	if !isdirectory(l:dir)
+		echom 'Making directory: '.l:dir
+		call mkdir(l:dir, 'p')
+	endif
+	if &readonly
+		SudoWrite
+	else
+		write
+	endif
+endfunction
 set history=1000 " Disk space is REALLY cheap
 function! CheckDir(dir) "{{{
 	if !isdirectory(a:dir)
