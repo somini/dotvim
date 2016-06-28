@@ -1626,8 +1626,16 @@ imap <silent> <C-g><C-b> <Plug>TComment_<c-_>b
 " Grepper {{{
 nmap <Leader>* :Grepper -noprompt -cword<CR>
 nmap <Leader><Leader>* :Grepper<CR>
+" Generic tools work everywhere
+let g:grepper_tools_generic  = ['ag', 'ack', 'pt']
+" Path-dependent tools don't work on all paths (e.g. VCS)
+let g:grepper_tools_pathd    = ['git']
+" This are just fallbacks
+let g:grepper_tools_fallback = ['grep', 'findstr']
+" Don't use path-dependent tools if you can avoid it
+let g:grepper_tools = g:grepper_tools_generic + g:grepper_tools_fallback + g:grepper_tools_pathd
 let g:grepper = {
-			\ 'tools': ['ag', 'ack', 'git', 'grep', 'findstr'],
+			\ 'tools': g:grepper_tools,
 			\ 'highlight': 1,
 			\ 'open': 1,
 			\ 'jump': 0,
