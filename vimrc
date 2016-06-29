@@ -1620,7 +1620,9 @@ let g:tcommentMaps = 1 "Select just a few mappings
 let g:tcommentMapLeader1 = ''
 let g:tcommentMapLeader2 = ''
 "Start a comment, and indent the line right after
-imap <silent> <C-g><C-g> <Plug>TComment_<c-_>i<C-o>==
+"This reindent mess makes sure the cursor stays put
+inoremap <silent> <Plug>(vimrc_reindent_line) <C-\><C-o>m`<C-\><C-o>==<C-\><C-o>``<C-o>a
+imap <silent> <C-g><C-g> <Plug>TComment_<c-_>i<Plug>(vimrc_reindent_line)
 imap <silent> <C-g><C-b> <Plug>TComment_<c-_>b
 "}}}
 " Grepper {{{
