@@ -968,7 +968,7 @@ let g:ctrlp_funky_syntax_highlight = 1 "Might not work flawlessly
 let g:ctrlp_funky_use_cache = 0 "It's fast enough, I think
 " let g:ctrlp_funky_cache_dir = OS_specific
 let g:ctrlp_funky_matchtype = 'path'
-let g:ctrlp_funky_nudist_mode = 1 "Just the function names
+let g:ctrlp_funky_nudists = 1 "Just the function names
 " Filetypes "{{{
 let g:ctrlp_funky_php_requires = 1
 let g:ctrlp_funky_php_include = 1
