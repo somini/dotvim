@@ -2,6 +2,7 @@
 <!-- HTML5 -->
 <html>
 	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<title>FIXME</title>
 		<link rel="stylesheet" type="text/css" href="FIXME">
 		<script type="text/javascript" src="FIXME"></script>
@@ -12,4 +13,4 @@
 
 	</body>
 </html>
-# cursor: 11 del
+# cursor: 13 del
