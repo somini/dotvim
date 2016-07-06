@@ -962,6 +962,7 @@ let g:ctrlp_abbrev = {
 "}}}
 " CtrlPFunky{{{
 nnoremap <silent> <Leader>f :CtrlPFunky<CR>
+nnoremap <silent> <Leader>F :call ctrlp#funky#funky(expand('<cword>'))<CR>
 let g:ctrlp_funky_after_jump = 'zvzz' "Open folds and center on screen
 let g:ctrlp_funky_multi_buffers = 1 "Not just the current buffer
 let g:ctrlp_funky_syntax_highlight = 1 "Might not work flawlessly
