@@ -48,29 +48,37 @@ call CheckDir(s:ctrlp_cache)
 let g:ctrlp_cache_dir = s:ctrlp_cache
 " Abbreviations {{{
 let g:ctrlp_abbrev['abbrevs'] += [
-	\ {
-	\ 'pattern': '^@h',
-	\ 'expanded': '@cd $HOME',
-	\ 'mode': 'pfrz',
-	\ },
-	\ {
-	\ 'pattern': '^@r',
-	\ 'expanded': '@cd /',
-	\ 'mode': 'pfrz',
-	\ },
-\ ]
+			\ {
+			\   'pattern': '^@h',
+			\   'expanded': '@cd $HOME',
+			\   'mode': 'pfrz',
+			\ },
+			\ {
+			\   'pattern': '^@r',
+			\   'expanded': '@cd /',
+			\   'mode': 'pfrz',
+			\ },
+			\ ]
 "}}}
 let g:ctrlp_funky_cache_dir = s:ctrlp_cache.'/funky'
 call CheckDir(g:ctrlp_funky_cache_dir)
 " Fallback to find, that's everywhere
 unlet g:ctrlp_user_command
 let g:ctrlp_user_command = {
-			\ 'types': {
-			\   1: ['.git', 'cd %s && git ls-files -oc --exclude-standard'],
-			\   2: ['.hg', 'hg --cwd %s locate -I .'],
-			\ },
-			\ 'fallback': 'find %s -type f'
+			\   'types': {
+			\     1: ['.git', 'cd %s && git ls-files -oc --exclude-standard'],
+			\     2: ['.hg', 'hg --cwd %s locate -I .'],
+			\   },
 			\ }
+if executable('ag')
+	let g:ctrlp_user_command['fallback'] = 'cd %s && ag --nocolor -g ""'
+elseif executable('ack')
+	let g:ctrlp_user_command['fallback'] = 'cd %s && ack --nocolor -g ""'
+elseif executable('pt')
+	let g:ctrlp_user_command['fallback'] = 'cd %s && pt --nocolor -g ""'
+else
+	let g:ctrlp_user_command['fallback'] = 'cd %s && find . -type f | cut --complement -c -2'
+endif
 "}}}
 " EasyClip {{{
 let s:easyclip_cache = s:user_cache.'/plugin/easyclip'

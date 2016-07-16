@@ -41,17 +41,17 @@ call CheckDir(s:ctrlp_cache)
 let g:ctrlp_cache_dir = s:ctrlp_cache
 " Abbreviations {{{
 let g:ctrlp_abbrev['abbrevs'] += [
-	\ {
-	\ 'pattern': '^@h',
-	\ 'expanded': '@cd $HOMEDRIVE$HOMEPATH',
-	\ 'mode': 'pfrz',
-	\ },
-	\ {
-	\ 'pattern': '^@r',
-	\ 'expanded': '@cd $HOMEDRIVE',
-	\ 'mode': 'pfrz',
-	\ },
-\ ]
+			\ {
+			\   'pattern': '^@h',
+			\   'expanded': '@cd $HOMEDRIVE$HOMEPATH',
+			\   'mode': 'pfrz',
+			\ },
+			\ {
+			\   'pattern': '^@r',
+			\   'expanded': '@cd $HOMEDRIVE',
+			\   'mode': 'pfrz',
+			\ },
+			\ ]
 "}}}
 let g:ctrlp_funky_cache_dir = s:ctrlp_cache.'/funky'
 call CheckDir(g:ctrlp_funky_cache_dir)
