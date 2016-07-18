@@ -858,10 +858,10 @@ nnoremap <silent> gs r<CR>
 nmap     <silent> gS gs-j
 
 " Tabularize on Steroids {{{
-function! TabularizeThisN()
+function! TabularizeThisN(ask)
 	if exists('g:tabular_loaded')
 		let l:cmd = ':Tabularize'
-		if exists('*TabularizeHasPattern') && TabularizeHasPattern()
+		if a:ask != 1 && exists('*TabularizeHasPattern') && TabularizeHasPattern()
 			" Reuse the last Tabularize command
 			let l:cmd .= "\<CR>"
 		else
@@ -870,7 +870,9 @@ function! TabularizeThisN()
 		return l:cmd
 	endif
 endfunction
-nnoremap <expr> <Leader><Tab> TabularizeThisN()
+" Double leader to always ask for a new pattern
+nnoremap <expr> <Leader><Tab> TabularizeThisN(0)
+nnoremap <expr> <Leader><Leader><Tab> TabularizeThisN(1)
 "}}}
 "}}}
 
