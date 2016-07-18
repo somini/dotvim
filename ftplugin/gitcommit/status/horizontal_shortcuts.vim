@@ -1,6 +1,8 @@
 " Alias the movement commands for usual operations
+nmap <buffer> <silent> gg ggj
 nmap <buffer> <silent> <nowait> j <C-n>
 nmap <buffer> <silent> <nowait> k <C-p>
+nmap <buffer> <silent> G Gk
 " h to stage/reset
 nmap <buffer> <silent> <nowait> h -
 " l to open file and close the status buffer
