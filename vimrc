@@ -288,6 +288,10 @@ endfunction
 " yY yanks the line minus the <CR> at the end
 " just like dD from EasyClip
 nnoremap yY m`0y$``
+" Duplicate lines, upwards and downwards
+" TODO: A count should create X copies
+nnoremap yp :copy +0<CR>
+nnoremap yP :copy -1<CR>
 "}}}
 
 " Command Line {{{
