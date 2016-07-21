@@ -1155,7 +1155,13 @@ let g:syntastic_enable_signs = 1 "Don't put signs on lines, that's for Git Gutte
 let g:syntastic_auto_loc_list = 2 "Close loclist if there's no errors, but don't open automatically
 let g:syntastic_check_on_open = 1 "Check when opening and saving
 let g:syntastic_check_on_wq = 0 "Not when leaving
-let g:syntastic_loc_list_height = 5
+" Set a maximum size for the loc list
+let g:syntastic_max_loc_list_height = 5
+function! SyntasticCheckHook(errors)
+	if !empty(a:errors)
+		let g:syntastic_loc_list_height = min([len(a:errors), g:syntastic_max_loc_list_height])
+	endif
+endfunction
 " File Types {{{
 let g:syntastic_mode_map = {
 			\ 'mode': 'active',
