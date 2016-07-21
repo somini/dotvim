@@ -1499,19 +1499,24 @@ endfunction
 nnoremap <silent> <Leader>u :UndotreeShow<CR>
 "TODO: Close on <C-q>
 let g:undotree_WindowLayout = 3 " Right-side
-let g:undotree_SplitWidth = 50
+let g:undotree_ShortIndicators = 1
 " Diff is a bit broken, see Extradite
 let g:undotree_DiffAutoOpen = 0
 let g:undotree_DiffpanelHeight = 30
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_TreeNodeShape = '•'
 function! g:Undotree_CustomMap()
-	if getline(1) =~# '\V\^" Press ? for help'
-		normal ?
-	endif
 	nmap <buffer> <Leader>u q
 	" l to revert to current node
 	nmap <buffer> l <CR>
+	" TODO: This runs before the Update function
+	" autocmd BufEnter <buffer> call <SID>vimrc_undotree()
+	" call <SID>vimrc_undotree()
+endfunction
+function! s:vimrc_undotree()
+	if getline(1) !~# '\V\^" Press ? for help'
+		normal ?
+	endif
 endfunction
 "}}}
 " Surround {{{
