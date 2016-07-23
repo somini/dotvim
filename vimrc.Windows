@@ -2,21 +2,21 @@
 
 " Data Safety and Managing {{{
 let s:user_temp = $TEMP
-let s:user_cache = s:user_temp.'vim'
+let s:user_cache = s:user_temp.'\vim'
 call CheckDir(s:user_cache)
 
 " Vim Info {{{
 let g:viminfo_old = $HOME.'/_viminfo'
-let g:viminfo_new = s:user_cache.'/viminfo'
+let g:viminfo_new = expand(s:user_cache.'/viminfo')
 let &viminfo = &viminfo.',r'.s:user_temp
 let &viminfo = &viminfo.',n'.g:viminfo_new
 "}}}
 " Undo {{{
-let &undodir = s:user_cache.'/undo'
+let &undodir = expand(s:user_cache.'/undo')
 call CheckDir(&undodir)
 " }}}
 " Views {{{
-let &viewdir = s:user_cache.'/views'
+let &viewdir = expand(s:user_cache.'/views')
 call CheckDir(&viewdir)
 "}}}
 " Swap Files {{{
@@ -31,12 +31,12 @@ call CheckDir(s:backup_dir)
 let &backupdir = s:backup_dir.','.s:user_temp.'//'.',.'
 let &backupskip = &backupskip.','.s:user_temp.'/*'
 " }}}
-let g:NERDTreeBookmarksFile = s:user_cache.'/NERDTree_Bookmarks'
+let g:NERDTreeBookmarksFile = expand(s:user_cache.'/NERDTree_Bookmarks')
 " }}}
 
 " Plugin Configuration {{{
 " CtrlP {{{
-let s:ctrlp_cache = s:user_cache.'/plugin/ctrlp'
+let s:ctrlp_cache = expand(s:user_cache.'/plugin/ctrlp')
 call CheckDir(s:ctrlp_cache)
 let g:ctrlp_cache_dir = s:ctrlp_cache
 " Abbreviations {{{
@@ -53,7 +53,7 @@ let g:ctrlp_abbrev['abbrevs'] += [
 			\ },
 			\ ]
 "}}}
-let g:ctrlp_funky_cache_dir = s:ctrlp_cache.'/funky'
+let g:ctrlp_funky_cache_dir = expand(s:ctrlp_cache.'/funky')
 call CheckDir(g:ctrlp_funky_cache_dir)
 " Fallback to dir
 unlet g:ctrlp_user_command
@@ -71,7 +71,7 @@ let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 "}}}
 " EasyClip {{{
-let s:easyclip_cache = s:user_cache.'/plugin/easyclip'
+let s:easyclip_cache = expand(s:user_cache.'/plugin/easyclip')
 call CheckDir(s:easyclip_cache)
 let g:EasyClipShareYanksDirectory = s:easyclip_cache
 "}}}
