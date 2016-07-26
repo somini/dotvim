@@ -290,8 +290,8 @@ endfunction
 nnoremap yY m`0y$``
 " Duplicate lines, upwards and downwards
 " TODO: A count should create X copies
-nnoremap yp :copy +0<CR>
-nnoremap yP :copy -1<CR>
+nnoremap <silent> yp :copy +0<CR>
+nnoremap <silent> yP :copy -1<CR>
 "}}}
 
 " Command Line {{{
