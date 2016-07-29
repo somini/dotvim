@@ -1661,6 +1661,11 @@ let g:grepper = {
 			\ 'jump': 0,
 			\ }
 "}}}
+" Expand Region {{{
+nmap <C-m> <Plug>(expand_region_expand)
+vmap <C-m> <Plug>(expand_region_expand)
+vmap g<C-m> <Plug>(expand_region_shrink)
+" }}}
 "}}}
 
 " Modeline {{{

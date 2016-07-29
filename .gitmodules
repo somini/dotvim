@@ -336,3 +336,6 @@
 [submodule "vim-grepper"]
 	path = 3rd_party/vim-grepper
 	url = git@github.com:mhinz/vim-grepper.git
+[submodule "vim-expand-region"]
+	path = 3rd_party/vim-expand-region
+	url = git@github.com:terryma/vim-expand-region.git
