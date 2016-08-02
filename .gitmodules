@@ -339,3 +339,6 @@
 [submodule "vim-expand-region"]
 	path = 3rd_party/vim-expand-region
 	url = git@github.com:terryma/vim-expand-region.git
+[submodule "vim-elixir"]
+	path = 3rd_party/vim-elixir
+	url = git@github.com:elixir-lang/vim-elixir.git
