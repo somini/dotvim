@@ -342,3 +342,6 @@
 [submodule "vim-elixir"]
 	path = 3rd_party/vim-elixir
 	url = git@github.com:elixir-lang/vim-elixir.git
+[submodule "vim-plugin-AnsiEsc"]
+	path = 3rd_party/vim-plugin-AnsiEsc
+	url = git@github.com:powerman/vim-plugin-AnsiEsc
