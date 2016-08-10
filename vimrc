@@ -1664,9 +1664,9 @@ let g:grepper = {
 			\ }
 "}}}
 " Expand Region {{{
-nmap <C-m> <Plug>(expand_region_expand)
-vmap <C-m> <Plug>(expand_region_expand)
-vmap g<C-m> <Plug>(expand_region_shrink)
+nmap <C-n> <Plug>(expand_region_expand)
+vmap <C-n> <Plug>(expand_region_expand)
+vmap g<C-n> <Plug>(expand_region_shrink)
 " }}}
 "}}}
 
