@@ -1166,13 +1166,15 @@ endfunction
 let g:syntastic_mode_map = {
 			\ 'mode': 'active',
 			\ 'active_filetypes': [],
-			\ 'passive_filetypes': ['php', 'javascript', 'rust'],
+			\ 'passive_filetypes': ['php', 'javascript', 'rust', 'elixir'],
 			\ }
 let g:syntastic_python_checkers = ['python', 'pylint', 'flake8', 'pep8']
 let g:syntastic_javascript_checkers = ['jshint', 'jslint', 'gjslint']
 let g:syntastic_javascript_jsxhint_exec = 'jsx-jshint-wrapper' "https://github.com/jaxbot/syntastic-react
 let g:syntastic_javascript_gjslint_args = '--nojsdoc --disable 1,5,110'
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+let g:syntastic_elixir_checkers = ['elixir']
+let g:syntastic_enable_elixir_checker = 1 "Executes code, keep passive
 "}}}
 "}}}
 " SuperTab {{{
