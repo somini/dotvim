@@ -5,6 +5,8 @@ endif
 
 " Less-like
 runtime scripts/less.vim
+nunmap <buffer> <A-h>
+nunmap <buffer> <A-l>
 
 " Keep the old values
 nnoremap <buffer> <Leader><Leader><Leader>f f
