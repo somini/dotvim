@@ -1337,7 +1337,7 @@ augroup vimrc_autoclose | autocmd!
 	autocmd FileType vim            let b:AutoClosePairs = AutoClose#DefaultPairsModified(''    , '"')
 	autocmd FileType help           let b:AutoClosePairs = AutoClose#DefaultPairsModified('* |' , '' )
 	autocmd FileType ruby           let b:AutoClosePairs = AutoClose#DefaultPairsModified('|'   , '' )
-	autocmd FileType html           let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>'  , '' )
+	autocmd FileType html,elixir    let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>'  , '' )
 	autocmd FileType markdown       let b:AutoClosePairs = AutoClose#DefaultPairsModified('* _' , '' )
 	autocmd FileType racket         let b:AutoClosePairs = AutoClose#DefaultPairsModified(''    , "'")
 	autocmd FileType javascript.jsx let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>'  , '' )
