@@ -35,6 +35,7 @@ let g:NERDTreeBookmarksFile = expand(s:user_cache.'/NERDTree_Bookmarks')
 " }}}
 
 " Plugin Configuration {{{
+let g:signify_disable_by_default = 1 "Disable Signify by default, enable on a per-host basis
 " CtrlP {{{
 let s:ctrlp_cache = expand(s:user_cache.'/plugin/ctrlp')
 call CheckDir(s:ctrlp_cache)
