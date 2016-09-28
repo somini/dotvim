@@ -1342,6 +1342,7 @@ augroup vimrc_autoclose | autocmd!
 	autocmd FileType racket         let b:AutoClosePairs = AutoClose#DefaultPairsModified(''    , "'")
 	autocmd FileType javascript.jsx let b:AutoClosePairs = AutoClose#DefaultPairsModified('<>'  , '' )
 	autocmd FileType rust           let b:AutoClosePairs = AutoClose#DefaultPairsModified('<> |', "'")
+	autocmd FileType skill          let b:AutoClosePairs = AutoClose#DefaultPairsModified(''    , "'")
 augroup END
 "}}}
 " Filetype - SQL {{{
