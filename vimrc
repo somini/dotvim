@@ -1403,27 +1403,33 @@ let g:startify_commands = [
 			\ ['Startify Help', 'help startify']
 			\ ]
 let g:startify_list_order = [
-			\ ['My Bookmarks']             ,
-			\ 'bookmarks'                  ,
 			\ ['Most Recently Used files'] ,
 			\ 'files'                      ,
 			\ ['Current Directory']        ,
 			\ 'dir'                        ,
+			\ ['My Bookmarks']             ,
+			\ 'bookmarks'                  ,
 			\ ['Sessions']                 ,
 			\ 'sessions'                   ,
+			\ ]
+let g:startify_bookmarks = [
+			\ $MYVIMRC ,
 			\ ]
 let g:startify_enable_special = 0
 let g:startify_files_number = 15
 let g:startify_relative_path = 1
 let g:startify_mapping_nowait = 1
+let g:startify_change_to_dir = 0
 let g:startify_update_oldfiles = 1 "Update the MRU on the fly
 " Use the EasyMotion keys as custom indices
 " Filter those already mapped by Startify (see Best Practices)
 " Also filter my own mappings
 let g:startify_custom_indices = filter(
-			\ split(tolower(g:EasyMotion_keys),'.\zs'),
+			\ split(tolower(g:EasyMotion_keys).toupper(g:EasyMotion_keys),'.\zs'),
 			\ 'v:val !~# "[eiqbstvjk lo]"')
 function! s:vimrc_startify()
+	" TODO: Put this is the plugin itself
+	setlocal buftype=nofile
 	" It's easier to identify the file names
 	setlocal cursorline
 	" Mimic nerdtree horizontal mappings, for consitency
