@@ -345,3 +345,6 @@
 [submodule "vim-plugin-AnsiEsc"]
 	path = 3rd_party/vim-plugin-AnsiEsc
 	url = git@github.com:powerman/vim-plugin-AnsiEsc
+[submodule "vim-nftables"]
+	path = 3rd_party/vim-nftables
+	url = git@github.com:nfnty/vim-nftables
