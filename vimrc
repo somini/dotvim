@@ -792,6 +792,7 @@ function! s:vimrc_text()
 	" Keep the current location and leverage the "textobj-entire" plugin
 	nmap <silent> <buffer> == m`gqa<CR>'`
 	runtime scripts/text_wrapping.vim
+	runtime scripts/text_mappings.vim
 endfunction
 augroup vimrc_spelling | autocmd!
 	" Mark this files as "text"
