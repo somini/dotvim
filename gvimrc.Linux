@@ -7,7 +7,8 @@ set guifont=DejaVu\ Sans\ Mono\ 10,monospace
 " Windowing Systems {{{
 augroup gvimrc_Linux_windowing | autocmd!
 	" "Maximize" the gVim window on entering
-	autocmd VimEnter * set lines=1000 columns=10000
+	" TODO: implement this using xdotool or something reliable
+	"  xdotool getwindowfocus windowsize 100\% 100\%
 augroup END
 "}}}
 
