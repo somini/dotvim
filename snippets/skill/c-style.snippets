@@ -20,3 +20,20 @@ snippet unless
 	unless( ${1:condition}
 		${0}
 	)
+snippet setof
+	setof( x ${1:list}
+		${2:lambda}
+	)
+snippet log
+	when( verbose
+		printf( "%s ${1:message}\n" sklTxt ${2:args})
+	)
+snippet llog
+	printf( "%s ${1:message}\n" sklTxt ${2:args})
+snippet map
+	mapcar(
+		lambda( (${2:item})
+			${3:lambda}
+		)
+		${1:list}
+	)
