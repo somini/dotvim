@@ -1,0 +1,12 @@
+snippet mode
+	set $mode_${1:Name} "${2:Description}"
+	mode --pango_markup $mode_$1 {
+		${0}
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+		bindsym $3 mode "default"
+	}
+	bindsym ${3:KeyBind} mode $mode_$1
+snippet assign
+	assign [${1:class="^REGEX$"}] → workspace ${2:Workspace}
