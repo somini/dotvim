@@ -1,0 +1,45 @@
+; TODO: Replace all the ##VARIABLES##
+procedure( ##PNAME##( ##ARG##
+  @key
+    ( ##OPT_ARG## ##DEFAULT_VALUE## )
+    ( verbose nil )
+  "g"
+  )
+
+  let(
+    (
+      ##LOCAL_VARS##
+      ; sklName sklTxt ; infMsg wrnMsg errMsg
+    )
+
+    ; sklName = "##PNAME##"
+    ; sklVer  = "1"
+
+    ; sklTxt = strcat( "(" sklName "):" )
+    ; errMsg = strcat( "ERROR " sklTxt )
+    ; wrnMsg = strcat( "WARN  " sklTxt )
+    ; infMsg = strcat( "INFO  " sklTxt )
+    ; blkMsg = strcat( "      " sklTxt )
+
+    ; --- Sanity Checks
+    cond(
+      ( ##CHECK_1##
+        when( verbose
+          ; Warn the user with "printf" or "warn"
+        )
+        nil ; Error return value
+      )
+      ( ##CHECK_2##
+        when( verbose
+          ; Warn the user with "printf" or "warn"
+        )
+        nil ; Error return value
+      )
+      ( t
+        ; --- Actual function code
+        ; --- Actual function code
+        t ; Sucess Return value
+      )
+    )
+  )
+)
