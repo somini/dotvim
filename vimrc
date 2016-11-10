@@ -232,26 +232,40 @@ let g:root_markers = g:root_markers_vcs + g:root_markers_other
 nnoremap <silent> <Leader>ci :call <SID>stab()<CR>
 function! s:stab()
 	let l:in = input('Indentation Value: ')
-	if l:in =~# '\v[\+\-]?\d*'
+	if !empty(l:in) && l:in =~# '\v[\+\-]?\d*'
 		" Do it!
-		let l:tabs = l:in =~# '^-' "ExpandTab, unless you say not to
-		let l:value = abs(l:in)
-		call s:stab_change(l:value, l:tabs)
+		call s:stab_change(l:in, 0)
 	else
 		echohl WarningMsg
 		echo 'Pattern not a match'
+		call s:stab_check()
 		echohl None
 	endif
 endfunction
-function! s:stab_change(value, tabs)
-	let &l:expandtab = a:tabs
-	let &l:tabstop = a:value
-	let &l:shiftwidth = a:value
+function! s:stab_change(val, check)
+	let l:tabs = a:val =~# '^-' "NoExpandTab, unless you say so
+	let l:value = abs(a:val)
+	let &l:expandtab = l:tabs
+	let &l:tabstop = l:value
+	let &l:shiftwidth = l:value
 	" Refresh the indent guides
 	IndentGuidesToggle
 	IndentGuidesToggle
+	if a:check
+		call s:stab_check()
+	endif
+endfunction
+function! s:stab_check()
 	setlocal expandtab? tabstop? shiftwidth?
 endfunction
+function! s:stab_command(...)
+	if a:0 == 1
+		call s:stab_change(a:000[0], 1)
+	else
+		call s:stab_check()
+	endif
+endfunction
+command! -nargs=? Stab call s:stab_command(<args>)
 "}}}
 " }}}
 
