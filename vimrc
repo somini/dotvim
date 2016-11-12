@@ -1189,6 +1189,7 @@ let g:syntastic_javascript_gjslint_args = '--nojsdoc --disable 1,5,110'
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 let g:syntastic_elixir_checkers = ['elixir']
 let g:syntastic_enable_elixir_checker = 1 "Executes code, keep passive
+let g:syntastic_scss_checkers = ['sass', 'sassc']
 "}}}
 "}}}
 " SuperTab {{{

@@ -6,6 +6,11 @@ function! s:RunCurrentFile(interactive)
 	if getline(1) =~# '\V\^#!'
 		" Use the shebang
 		let l:cmd = getline(1)[2:]
+	else
+		if exists('b:python_exe')
+			" Allow forcing python version, if the file doesn't require it
+			let l:cmd = substitute(l:cmd, 'python$', b:python_exe, '')
+		endif
 	endif
 	if a:interactive
 		let l:cmd .= ' -i '
