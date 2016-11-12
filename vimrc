@@ -384,7 +384,6 @@ set fileformats=unix,dos,mac "ALL the formats, by this order
 set viminfo='150 "Save the marks for this much files !must exist!
 set viminfo+=f0 "Don't save '0 to '9
 set viminfo+=! "Save upper-case variables
-set viminfo+=% "Save the bufferlist when started with no file
 set viminfo+=h  "Don't activate search highlight on start
 set viminfo+=s50 "Don't save registers larger than this Kb
 set viminfo+=<100 "nor larger than these lines
