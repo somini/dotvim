@@ -1688,6 +1688,11 @@ nmap <C-n> <Plug>(expand_region_expand)
 vmap <C-n> <Plug>(expand_region_expand)
 vmap g<C-n> <Plug>(expand_region_shrink)
 " }}}
+" AnsiEsc {{{
+" Remove the junk. Better fork the repo
+let g:no_ansiesc_menu = 1
+let g:loaded_cecutil = 1
+" }}}
 "}}}
 
 " Modeline {{{
