@@ -1,6 +1,6 @@
 #!/bin/bash
 url_scowl_rss='https://sourceforge.net/projects/wordlist/rss?path=/SCOWL/'
-url_scowl='https://sourceforge.net/projects/wordlist/files/SCOWL/2016.01.19/scowl-2016.01.19.tar.gz/download'
+url_scowl='https://sourceforge.net/projects/wordlist/files/SCOWL/2016.06.26/scowl-2016.06.26.tar.gz/download'
 url_natura='http://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/LATEST/wordlist-preao-latest.txt.xz'
 url_natura_ao='http://natura.di.uminho.pt/download/sources/Dictionaries/wordlists/LATEST/wordlist-ao-latest.txt.xz'
 spell_level=70
