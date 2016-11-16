@@ -6,6 +6,7 @@ url_natura_ao='http://natura.di.uminho.pt/download/sources/Dictionaries/wordlist
 spell_level=70
 iconv_opt="-f iso8859-1 -t utf8"
 vim_folder="${VIMFOLDER:-$HOME/.vim/}"
+this_script="$(readlink -e "$0")"
 
 basedir="$(mktemp -d)"
 pushd "$basedir" >/dev/null
@@ -20,6 +21,7 @@ if [[ -z $url ]]; then
 fi
 if [[ $url != $url_scowl ]]; then
 	echo "New SCOWL version! URL: $url" >&2
+	sed -i "s,^url_scowl='.*'$,url_scowl='$url'," "$this_script"
 fi
 file="scowl.tar.gz"
 echo "Downloading '$url' to '$file'" >&2
