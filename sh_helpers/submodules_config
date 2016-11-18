@@ -1,0 +1,85 @@
+#!/bin/bash
+has_remote() { # name
+	git remote | grep -qF "$1"
+}
+clean_wd() {
+	git diff-index --quiet --ignore-submodules "HEAD"
+}
+equal_sha1() { # value1 value2
+	git diff-tree --quiet "$1" "$2"
+}
+remote_url() { # name url
+	name="$1"
+	url="$2"
+	has_remote "$name" \
+		&& git remote set-url "$name" "$url" \
+		|| git remote add "$name" "$url"
+
+}
+
+current_root="$(git rev-parse --show-toplevel)"
+if [[ $1 != 'INNERLOOP' ]]; then
+	# Entry point, recurse into the submodules
+	echo "Recursing into submodules"
+
+	git submodule foreach --quiet "$(readlink -e "$0")"' INNERLOOP "$name" "$path" "$sha1" "$toplevel"'
+
+	echo "DONE!"
+	exit 0
+else
+	# This is called from within a submodule
+	shift # was the InnerLoop marker
+	submodule_name="$1"
+	submodule_relpath="$2"
+	superproject_SHA1="$3"
+	superproject_path="$4"
+
+	gitmodules="$superproject_path/.gitmodules"
+	git_config_submodules() {
+		git config --file "$gitmodules" "$@"
+	}
+
+	# 3rd Party
+	# - Remotes:
+	#   - "origin": The upstream repository
+	# - No local changes, just pull and overwrite changes
+	# 1st Party:
+	# - Assume two remotes:
+	#   - "upstream": The original repository
+	#   - "origin": My fork
+	# - May contain local commits of changes, don't clobber them
+	#   On the other hand, if the upstream is a direct descendant,
+	#   Just Update the repository
+	url_origin="$(git_config_submodules submodule."$submodule_name".url)"
+	url_upstream="$(git_config_submodules submodule."$submodule_name".url-upstream)"
+
+	[ -z "$url_upstream" ] && provenance="1st" || provenance="3rd"
+
+	echo "$provenance | SubModule: $submodule_name @ $submodule_relpath"
+
+	branch_master="$(git_config_submodules --get submodule."$submodule_name".branch || echo "master")"
+	remote_origin="origin"
+	remote_upstream="upstream"
+	# Setup the origin remote
+	if [ -n "$url_origin" ]; then
+		echo "    | Reset remote: origin"
+		remote_url "$remote_origin" "$url_origin"
+	else
+		echo "    | No origin remote ???"
+	fi
+	# Setup the upstream remote
+	if [ -n "$url_upstream" ]; then
+		echo "    | Reset remote: upstream"
+		remote_url "$remote_upstream" "$url_upstream"
+	fi
+	# Make sure the active branch is correct
+	if clean_wd; then
+		echo "    | Checkout '$branch_master'"
+		equal_sha1 "$branch_master" "HEAD" && git checkout --quiet "$branch_master"
+	else
+		echo "    | Dirty Working Directory"
+		true # The Working Dir is dirty, skip it
+	fi
+
+	exit 0 # OK
+fi
