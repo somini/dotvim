@@ -1175,6 +1175,10 @@ let g:syntastic_check_on_open = 1 "Check when opening and saving
 let g:syntastic_check_on_wq = 0 "Not when leaving
 " Set a maximum size for the loc list
 let g:syntastic_max_loc_list_height = 5
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_style_error_symbol = 'Δ'
+let g:syntastic_warning_symbol = '†'
+let g:syntastic_style_warning_symbol  = '‡'
 function! SyntasticCheckHook(errors)
 	if !empty(a:errors)
 		let g:syntastic_loc_list_height = min([len(a:errors), g:syntastic_max_loc_list_height])
