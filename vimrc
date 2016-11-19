@@ -9,6 +9,7 @@ set fileencodings=ucs-bom,utf-8,default,latin1
 
 set backspace=indent,eol,start "Backspace works as intended
 set showcmd "Show the command line as you type
+set noshowmode " Redundant with Airline
 set modeline "Enable modeline
 if has('autocmd')
 	filetype plugin indent on "Enable filetype detection
@@ -35,6 +36,7 @@ function! s:SetupLegacy()
 	" Matchit
 	sunmap a%
 endfunction
+set tagcase=match " https://github.com/vim/vim/issues/712
 " }}}
 
 " Pathogen {{{
@@ -110,6 +112,7 @@ set wildignorecase "Ignore case
 " The SuperTab plugin helps with the rest
 set complete=.,w,b,u,U,t,i
 set completeopt=menu,preview,longest
+set isfname-== " Remove = from filenames. Breaks files with = on the name
 
 set lazyredraw "Don't update the screen in the middle of macros, etc
 set autoread "Re-read files if they haven't been changed in vim
@@ -430,7 +433,7 @@ set viewoptions+=unix  " The One True Format
 " }}}
 " Backup Files {{{
 set backup writebackup "Backup and delete old file
-set backupcopy=yes
+set backupcopy=yes " Keep the inodes on Linux
 " set backupdir=OS_specific
 " Don't backup this file patterns
 let &backupskip=expand($VIMRUNTIME).'/*'
@@ -524,6 +527,7 @@ nnoremap <silent> <Leader>tC :setlocal cursorcolumn!<CR>
 "}}}
 
 " Windowing Systems {{{
+set noequalalways " Don't resize the windows on resize
 function! s:vimrc_fullscreen()
 	echohl WarningMsg
 	echo 'Fullscreen: Needs OS specific mappings!'

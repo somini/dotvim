@@ -26,6 +26,7 @@ set winaltkeys=no
 set guioptions-=m guioptions-=T
 set go-=r go-=R go-=l go-=L go-=b "No scrollbars
 set guioptions-=t "Tear-off menus are too oldskool
+set guioptions+=c " Don't use graphical prompts
 "}}}
 
 " Toggle menu and toolbar {{{
