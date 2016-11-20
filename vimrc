@@ -1478,7 +1478,7 @@ let g:man_split_type = 'vertical'
 let g:templates_empty_files = 0 "Don't use the templates on existing, empty files
 "}}}
 " Colorizer {{{
-let g:colorizer_auto_filetype='css,html'
+let g:colorizer_auto_filetype='css,html,scss'
 let g:colorizer_skip_comments = 1
 let g:colorizer_x11_names = 1
 let g:colorizer_debug = 0
