@@ -17,18 +17,36 @@ remote_url() { # name url
 
 }
 
-current_root="$(git rev-parse --show-toplevel)"
-if [[ $1 != 'INNERLOOP' ]]; then
-	# Entry point, recurse into the submodules
-	echo "Recursing into submodules"
+is_online() {
+	[ -z "$OFFLINE" ]
+}
+is_noninteractive() {
+	[ -n "$INTERACTIVE" ]
+}
 
-	git submodule foreach --quiet "$(readlink -e "$0")"' INNERLOOP "$name" "$path" "$sha1" "$toplevel"'
+trap 'exit 254' SIGINT # Stop everything on CTRL-C
+
+current_root="$(git rev-parse --show-toplevel)"
+if [[ $# -le 1 ]]; then
+	operation="${1:-"config"}"
+	# Entry point, recurse into the submodules
+	echo "Recursing into submodules | Operation '$operation'"
+
+	git submodule foreach --quiet "$(readlink -e "$0") $operation"' "$name" "$path" "$sha1" "$toplevel"'
 
 	echo "DONE!"
+	read -N 1 -p "Commit changes[Yn]? > " prompt ; echo
+	if [ -z "$prompt" -o "$prompt" = 'y' ]; then
+		case "$operation" in
+			update_3rd)
+				git commit -m 'Maintenance: Update 3rd Party Plugins';;
+		esac
+	fi
 	exit 0
 else
 	# This is called from within a submodule
-	shift # was the InnerLoop marker
+	operation="$1"
+	shift # was the operation
 	submodule_name="$1"
 	submodule_relpath="$2"
 	superproject_SHA1="$3"
@@ -53,7 +71,7 @@ else
 	url_origin="$(git_config_submodules submodule."$submodule_name".url)"
 	url_upstream="$(git_config_submodules submodule."$submodule_name".url-upstream)"
 
-	[ -z "$url_upstream" ] && provenance="1st" || provenance="3rd"
+	provenance="${submodule_relpath:0:3}"
 
 	echo "$provenance | SubModule: $submodule_name @ $submodule_relpath"
 
@@ -74,11 +92,50 @@ else
 	fi
 	# Make sure the active branch is correct
 	if clean_wd; then
-		echo "    | Checkout '$branch_master'"
-		equal_sha1 "$branch_master" "HEAD" && git checkout --quiet "$branch_master"
+		if equal_sha1 "$branch_master" "HEAD"; then
+			echo "    | Checkout '$branch_master'"
+			git checkout --quiet "$branch_master"
+		else
+			echo "    | Branch '$branch_master' is not HEAD"
+		fi
 	else
 		echo "    | Dirty Working Directory"
-		true # The Working Dir is dirty, skip it
+	fi
+
+	if [[ $operation =~ ^update.* ]]; then
+		echo "    | Update Plugin"
+		commit_range=""
+		is_online && git fetch --quiet # Get all data
+		if [[ $provenance == "3rd" ]]; then
+			if ! equal_sha1 "$branch_master" "$remote_origin/$branch_master"; then
+				commit_range="$branch_master..$remote_origin/$branch_master"
+			fi
+		fi
+		if [ -n "$commit_range" ]; then
+			echo "    | Has changes: '$commit_range'"
+			if is_noninteractive; then
+				inner_command="u"
+			else
+				gitk "$commit_range" --
+				read -N 1 -p "    |> What to do? (update, skip)> " inner_command ; echo
+			fi
+			case "$inner_command" in
+				u)
+					if [[ $provenance == "3rd" ]]; then
+						# Simply update to the upstream commit
+						clean_wd && git checkout --quiet "$branch_master"
+						if git merge --quiet --ff-only "$remote_origin/$branch_master"; then
+							echo "    | Update: Fast Forward merge"
+							# Add it to the superproject
+							git -C "$superproject_path" add "$submodule_relpath"
+						fi
+					fi
+					;;
+				s)
+					echo "    | Skip this plugin"
+					;;
+			esac
+		fi
 	fi
 
 	exit 0 # OK
