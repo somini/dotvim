@@ -12,4 +12,5 @@ snippet modeline
 ### Should work on most filetypes, set &commentstring otherwise
 snippet fold
 	`tlib#string#Strip(split(&commentstring, '%s')[0])` ${1:Title} `split(&foldmarker, ',')[0]``' '.tlib#string#Strip(split(&commentstring, '%s')[1])`
-	$VISUAL`tlib#string#Strip(split(&commentstring, '%s')[0])` `split(&foldmarker, ',')[1]``' '.tlib#string#Strip(split(&commentstring, '%s')[1])`
+	${0:$VISUAL}
+	`tlib#string#Strip(split(&commentstring, '%s')[0])` `split(&foldmarker, ',')[1]``' '.tlib#string#Strip(split(&commentstring, '%s')[1])`
