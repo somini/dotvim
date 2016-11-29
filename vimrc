@@ -786,7 +786,8 @@ let g:spelling_filetypes = [
 			\ 'rst',
 			\ 'asciidoc',
 			\ 'gitcommit',
-			\ 'help'
+			\ 'help',
+			\ 'mail'
 			\]
 let g:spelling_filetypes_comma = join(g:spelling_filetypes,',')
 let g:spelling_filetypes_regex = '\V'.join(g:spelling_filetypes,'\|')
