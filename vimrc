@@ -1517,8 +1517,9 @@ nnoremap <silent> <Leader>gc :Gcommit<CR>
 nnoremap <silent> <Leader>gC :Gcommit --all<CR>
 nnoremap <silent> <Leader>ga :Gcommit --amend --reset-author --no-edit<CR>
 nnoremap <silent> <Leader>gA :Gcommit --amend --reset-author<CR>
-nnoremap <silent> <Leader>gj :Gpull<CR>
-nnoremap <silent> <Leader>gk :Gpush<CR>
+nnoremap <silent> <Leader>gj :call <SID>vimrc_git_fetch()<CR>
+nnoremap <silent> <Leader>gJ :call <SID>vimrc_git_pull()<CR>
+nnoremap <silent> <Leader>gk :call <SID>vimrc_git_push()<CR>
 " Stage the current file
 nnoremap <silent> <Leader>gw :call <SID>vimrc_git_stage()<CR>
 " Unstage the current file
@@ -1530,6 +1531,15 @@ endfunction
 function! s:vimrc_git_unstage()
 	execute 'silent Git reset '.shellescape(expand('%:p'))
 	GitGutter "Update the gutter
+endfunction
+function! s:vimrc_get_fetch()
+	Gfetch
+endfunction
+function! s:vimrc_git_pull()
+	Gpull
+endfunction
+function! s:vimrc_git_push()
+	Gpush
 endfunction
 "}}}
 "}}}
