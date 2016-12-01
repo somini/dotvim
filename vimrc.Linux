@@ -8,8 +8,12 @@ let s:global_mnt2= '/run/media/'.$USERNAME
 call CheckDir(s:user_cache)
 
 " Vim Info {{{
-let g:viminfo_old = $HOME.'/.viminfo'
-let g:viminfo_new = s:user_cache.'/viminfo'
+if !has('nvim')
+	let g:viminfo_old = $HOME.'/.viminfo'
+	let g:viminfo_new = s:user_cache.'/viminfo'
+else
+	let g:viminfo_new = s:user_cache.'/shada'
+endif
 let &viminfo = &viminfo.',r'.s:global_tmp
 let &viminfo = &viminfo.',r'.s:global_mnt
 let &viminfo = &viminfo.',r'.s:global_mnt2
