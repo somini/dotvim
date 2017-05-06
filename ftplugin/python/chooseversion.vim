@@ -25,7 +25,8 @@ function! s:onchange()
 endfunction
 
 function! s:autodetect()
-	let l:shebang = syntastic#util#parseShebang()['exe']
+	let l:buf = bufnr('')
+	let l:shebang = syntastic#util#parseShebang(l:buf)['exe']
 	if l:shebang == ''
 		" Get the default from the exe named "python"
 		return substitute(systemlist('python --version')[0], '^Python \([23]\).*', '\1', '')
